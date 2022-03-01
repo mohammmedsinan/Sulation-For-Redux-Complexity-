@@ -1,8 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { api } from '../../Api/index';
 
 export const fetchApi = createAsyncThunk('Dude/fetchApi', async () => {
-  const res = await axios.get('https://jsonplaceholder.typicode.com/todos');
+  const res = await api.get('/Tweets');
   return res.data;
 });
 
@@ -21,11 +22,14 @@ const model = createSlice({
       state.data = payload;
       state.status = 'success';
     },
-    [fetchApi.pending]: (state) => {},
-    [fetchApi.rejected]: (state) => {},
+    [fetchApi.pending]: (state) => {
+      state.loading = true;
+    },
+    [fetchApi.rejected]: (state) => {
+      state.status = 'Failed';
+    },
   },
 });
 
 export const { Handler } = model.actions;
-
 export default model.reducer;

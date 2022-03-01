@@ -1,9 +1,15 @@
 import { Routes, Route } from 'react-router-dom';
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 import { MenuSlider, TagSlider } from './Component/index';
 import Home from './Page/Home/index';
+import { connect } from 'react-redux';
+import { fetchApi } from './Api/index';
 
-function App() {
+function App(props) {
+  const { dispatch } = props;
+  useLayoutEffect(() => {
+    dispatch(fetchApi());
+  }, {});
   return (
     <div>
       <MenuSlider />
@@ -14,5 +20,9 @@ function App() {
     </div>
   );
 }
-
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    home: state.Home,
+  };
+};
+export default connect(mapStateToProps)(App);
