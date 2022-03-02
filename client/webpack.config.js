@@ -5,10 +5,17 @@ module.exports = {
   output: {
     path: path.join(__dirname, './dist'),
     filename: 'index.bundle.js',
+    publicPath: '/',
   },
   devServer: {
     port: 3000,
     static: true,
+    historyApiFallback: true,
+  },
+  resolve: {
+    alias: {
+      API: path.resolve(__dirname, 'src/Api/index.js'),
+    },
   },
   module: {
     rules: [

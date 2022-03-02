@@ -15,6 +15,7 @@ function App(props) {
       <MenuSlider />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="*" element={<>This Page is not found</>} />
       </Routes>
       <TagSlider />
     </div>
