@@ -5,11 +5,7 @@ import Home from './Page/Home/index';
 import { connect } from 'react-redux';
 import { fetchApi } from './Api/index';
 
-function App(props) {
-  const { dispatch } = props;
-  useLayoutEffect(() => {
-    dispatch(fetchApi());
-  }, {});
+function App() {
   return (
     <div>
       <MenuSlider />
@@ -21,9 +17,4 @@ function App(props) {
     </div>
   );
 }
-const mapStateToProps = (state) => {
-  return {
-    home: state.Home,
-  };
-};
-export default connect(mapStateToProps)(App);
+export default App;

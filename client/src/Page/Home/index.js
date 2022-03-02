@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { fetchApi } from 'API';
+import { Button } from 'antd';
 
-function index() {
-  return <div>index</div>;
+function index({ home, dispatch }) {
+  useEffect(() => {
+    dispatch(fetchApi());
+  }, []);
+
+  return <div>INDEX REACT JS</div>;
 }
 
-export default index;
+const mapStateToProps = (state) => {
+  return {
+    home: state.Home,
+  };
+};
+export default connect(mapStateToProps)(index);

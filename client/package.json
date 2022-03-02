@@ -10,10 +10,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
-  },
   "devDependencies": {
     "@babel/core": "^7.17.5",
     "@babel/plugin-transform-runtime": "^7.17.0",
@@ -26,12 +22,19 @@
     "css-loader": "^6.6.0",
     "file-loader": "^6.2.0",
     "mini-css-extract-plugin": "^2.5.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.1",
     "sass": "^1.49.9",
     "sass-loader": "^12.6.0",
+    "style-loader": "^3.3.1",
     "webpack": "^5.69.1",
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.7.4"
+  },
+  "dependencies": {
+    "less": "^2.7.2",
+    "less-loader": "^10.2.0"
   }
 }
