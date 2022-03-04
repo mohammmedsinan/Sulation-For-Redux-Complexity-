@@ -1,0 +1,30 @@
+POST http://localhost:5000/Tweets
+Content-Type: application/json
+
+{
+    "username":"Train Heartent" , 
+    "TweetText":"Random Thing in Twitter 5",
+    "Img":"Random img" , 
+    "Avatar":"Ranom Avtar usser" , 
+    "RealName":"Mohammed Sinan" 
+}
+
+###
+
+GET http://localhost:5000/Tweets/Train Heartent
+
+###
+
+POST http://localhost:5000/Tweets/all
+Content-Type: application/json
+
+{}
+
+###
+
+DELETE  http://localhost:5000/Tweets/delete
+Content-Type: application/json
+
+{
+    "id":"6221dc9cd673473a10ff0e18"
+}
