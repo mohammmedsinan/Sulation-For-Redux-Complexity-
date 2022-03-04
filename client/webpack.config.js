@@ -2,15 +2,21 @@ const path = require('path');
 const miniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
+  entry: {
+    index: './src/index.js',
+  },
+
   output: {
     path: path.join(__dirname, './dist'),
     filename: 'index.bundle.js',
     publicPath: '/',
+    asyncChunks: true,
   },
   devServer: {
     port: 3000,
     static: true,
     historyApiFallback: true,
+    hot: true,
   },
   resolve: {
     alias: {
@@ -31,7 +37,6 @@ module.exports = {
         use: [miniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
       {
-        test: /\.less$/,
         test: /\.less$/,
         use: ['style-loader', 'css-loader', 'less-loader'],
       },

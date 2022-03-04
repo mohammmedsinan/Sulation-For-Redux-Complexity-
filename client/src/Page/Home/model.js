@@ -2,10 +2,12 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { api } from '../../Api/index';
 
-export const fetchApi = createAsyncThunk('Dude/fetchApi', async () => {
-  const res = await api.get('/Tweets');
-  return res.data;
-});
+export const AsyncReducers = {
+  change: createAsyncThunk('Dude/fetchApi', async () => {
+    const res = await api.get('/Tweets');
+    return res.data;
+  }),
+};
 
 const model = createSlice({
   name: 'Dude',
@@ -18,14 +20,14 @@ const model = createSlice({
     Handler: (state, actions) => {},
   },
   extraReducers: {
-    [fetchApi.fulfilled]: (state, { payload }) => {
+    [AsyncReducers.change.fulfilled]: (state, { payload }) => {
       state.data = payload;
       state.status = 'success';
     },
-    [fetchApi.pending]: (state) => {
+    [AsyncReducers.change.pending]: (state) => {
       state.loading = true;
     },
-    [fetchApi.rejected]: (state) => {
+    [AsyncReducers.change.rejected]: (state) => {
       state.status = 'Failed';
     },
   },

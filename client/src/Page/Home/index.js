@@ -1,14 +1,13 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { fetchApi } from 'API';
-import { Button } from 'antd';
+import { Link } from 'react-router-dom';
 
 function index({ home, dispatch }) {
-  useEffect(() => {
-    dispatch(fetchApi());
-  }, []);
-
-  return <div>INDEX REACT JS</div>;
+  return (
+    <div>
+      React Hot server <Link to="/s">dd</Link>
+    </div>
+  );
 }
 
 const mapStateToProps = (state) => {
