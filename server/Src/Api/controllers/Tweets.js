@@ -15,29 +15,30 @@ export const PostTheTweets = async (req, res) => {
 //Get Post For One user
 export const GitTheTweetsByName = (req, res) => {
   const username = req.params.username;
-  TweetsModal.find({ username }).then((Tweets) => {
-    res.status(201).json({
-      Message: `Get Tweets for ${username} successfully`,
-      data: Tweets,
+  TweetsModal.find({ username })
+    .populate('user')
+    .then((Tweets) => {
+      res.status(201).json({
+        Message: `Get Tweets for ${username} successfully`,
+        data: Tweets,
+      });
     });
-  });
 };
 
 //Get Post the whole Tweets in database
-export const GitTweetsFromDB = (req, res) => {
-  TweetsModal.find((err, Tweets) => {
-    if (err) {
-      res.status(404).json({
-        message: 'Something went wrong',
-        Error: err,
-      });
-    } else {
-      res.status(201).json({
-        message: 'Successfully Get all tweets',
-        data: Tweets,
-      });
-    }
-  });
+export const GitTweetsFromDB = async (req, res) => {
+  const AllTweets = await TweetsModal.find({}).populate('user');
+  try {
+    res.status(201).json({
+      message: 'Tweets get successfully',
+      data: AllTweets,
+    });
+  } catch (err) {
+    res.status(401).json({
+      message: "Tweets didn't get something went Wrong",
+      err: err,
+    });
+  }
 };
 
 //delete one post for user depend on id

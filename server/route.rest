@@ -1,12 +1,10 @@
-POST http://localhost:5000/Tweets
+POST http://localhost:5000/Tweets/create
 Content-Type: application/json
 
 {
-    "username":"Train Heartent" , 
-    "TweetText":"Random Thing in Twitter 5",
-    "Img":"Random img" , 
-    "Avatar":"Ranom Avtar usser" , 
-    "RealName":"Mohammed Sinan" 
+    "TweetText":"Random Thing in Twitter Number 7",
+    "user":"62224083d99964c8fd924274",
+    "username":"Train Heartent"
 }
 
 ###
@@ -26,5 +24,28 @@ DELETE  http://localhost:5000/Tweets/delete
 Content-Type: application/json
 
 {
-    "id":"6221dc9cd673473a10ff0e18"
+    "id":"622238e69fb0514aa6fb6341"
 }
+###################################################
+
+POST http://localhost:5000/Profile/create
+Content-Type: application/json
+
+{
+    "username":"Hataki kakashi" , 
+    "Avatar":"Ranom Avtar usser" , 
+    "RealName":"Jaffer sinan" ,
+    "Followers":[],
+    "Following":[],
+    "NumberOfTweets":[],
+    "NumberOfLikedTWeets":[]
+}
+
+###
+
+POST http://localhost:5000/Profile/all
+Content-Type: application/json
+
+{}
+###
+GET http://localhost:5000/Profile/Hataki kakashi
