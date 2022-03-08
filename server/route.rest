@@ -37,7 +37,7 @@ Content-Type: application/json
     "RealName":"Jaffer sinan" ,
     "Followers":[],
     "Following":[],
-    "NumberOfTweets":[],
+    "YourTweets":[],
     "NumberOfLikedTWeets":[]
 }
 
@@ -49,3 +49,18 @@ Content-Type: application/json
 {}
 ###
 GET http://localhost:5000/Profile/Hataki kakashi
+
+####
+
+PUT http://localhost:5000/Profile/62224083d99964c8fd924274
+Content-Type: application/json
+
+{
+    "username":"Hataki" , 
+    "Avatar":"Ranom Avtar usser" , 
+    "RealName":"Jaffer sinan" ,
+    "Followers":[],
+    "Following":[],
+    "YourTweets":[],
+    "NumberOfLikedTWeets":[]
+}

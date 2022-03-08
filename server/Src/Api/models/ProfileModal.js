@@ -12,7 +12,7 @@ const Profile = mongoose.Schema({
   },
   Followers: [mongoose.SchemaTypes.ObjectId],
   Following: [mongoose.SchemaTypes.ObjectId],
-  NumberOfTweets: [mongoose.SchemaTypes.ObjectId],
+  YourTweets: [mongoose.SchemaTypes.ObjectId],
   NumberOfLikedTWeets: [mongoose.SchemaTypes.ObjectId],
   createdDate: {
     type: Date,

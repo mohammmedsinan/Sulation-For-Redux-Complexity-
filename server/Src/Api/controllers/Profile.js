@@ -54,3 +54,18 @@ export const GetOneUser = async (req, res) => {
     });
   }
 };
+
+export const UpdateUser = async (req, res) => {
+  const id = req.params.id;
+  const data = req.body;
+  try {
+    await Profile.updateOne({ _id: id }, { data });
+    await Profile.save();
+    res.status(201).json({ message: 'Successfully Update', data });
+  } catch (err) {
+    res.status(401).json({
+      message: 'failed update user',
+      err: err,
+    });
+  }
+};
