@@ -2,8 +2,6 @@ import { Routes, Route } from 'react-router-dom';
 import React, { useLayoutEffect } from 'react';
 import { MenuSlider, TagSlider } from './Component/index';
 import Home from './Page/Home/index';
-import { connect } from 'react-redux';
-import { fetchApi } from './Api/index';
 
 function App() {
   return (

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { AsyncReducer } from '../../Api/index';
+import { ExtraREducer } from '../../Api/index';
 
 const model = createSlice({
   name: 'Dude',
@@ -9,20 +9,7 @@ const model = createSlice({
     loading: '',
   },
   reducers: {},
-  extraReducers: {
-    [AsyncReducer('Dude/APi').GET.fulfilled]: (state, { payload }) => {
-      state.data = payload;
-      state.status = 'success';
-      state.loading = false;
-    },
-    [AsyncReducer('Dude/APi').GET.pending]: (state) => {
-      state.loading = true;
-    },
-    [AsyncReducer('Dude/APi').GET.rejected]: (state) => {
-      state.status = 'Failed';
-      state.loading = false;
-    },
-  },
+  extraReducers: { ...ExtraREducer.ExtraReducerCreatorGET('Dude/API') },
 });
 
 export default model.reducer;

@@ -5,7 +5,7 @@ import { AsyncReducer } from 'API';
 
 function index({ home, dispatch }) {
   React.useEffect(() => {
-    dispatch(AsyncReducer('Dude/APi', `/Profile/Train Heartent`).GET());
+    dispatch(AsyncReducer('Dude/API', '/Profile/Train Heartent').GET());
     console.log(home);
   }, [home.status]);
   return (
