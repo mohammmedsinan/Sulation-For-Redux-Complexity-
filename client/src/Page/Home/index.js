@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { AsyncReducers } from './model';
+import { AsyncReducer } from 'API';
 
 function index({ home, dispatch }) {
   React.useEffect(() => {
-    dispatch(AsyncReducers.change());
+    dispatch(AsyncReducer('Dude/APi', `/Profile/Train Heartent`).GET());
     console.log(home);
-  }, [home?.status]);
+  }, [home.status]);
   return (
     <div>
       React Hot server <Link to="/s">dd</Link>

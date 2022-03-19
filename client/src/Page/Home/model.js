@@ -1,13 +1,5 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { api, apiCaller } from '../../Api/index';
-
-export const AsyncReducers = {
-  change: createAsyncThunk('Dude/fetchApi', async () => {
-    //   const res = await api.get('/Profile/test');
-    //   return res.data;
-    return apiCaller('GET', '/Profile/test');
-  }),
-};
+import { createSlice } from '@reduxjs/toolkit';
+import { AsyncReducer } from '../../Api/index';
 
 const model = createSlice({
   name: 'Dude',
@@ -18,15 +10,15 @@ const model = createSlice({
   },
   reducers: {},
   extraReducers: {
-    [AsyncReducers.change.fulfilled]: (state, { payload }) => {
+    [AsyncReducer('Dude/APi').GET.fulfilled]: (state, { payload }) => {
       state.data = payload;
       state.status = 'success';
       state.loading = false;
     },
-    [AsyncReducers.change.pending]: (state) => {
+    [AsyncReducer('Dude/APi').GET.pending]: (state) => {
       state.loading = true;
     },
-    [AsyncReducers.change.rejected]: (state) => {
+    [AsyncReducer('Dude/APi').GET.rejected]: (state) => {
       state.status = 'Failed';
       state.loading = false;
     },
