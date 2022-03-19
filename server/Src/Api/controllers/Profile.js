@@ -14,20 +14,29 @@ export const createUser = async (req, res) => {
   } catch (err) {
     res.status(401).json({
       message: 'create user failed',
-      error: er,
+      error: err,
     });
   }
 };
-
 //Get All the Users
 export const GetAllUsers = async (req, res) => {
+  const BodyReq = req.body.username;
   try {
-    const Users = await Profile.find({}).then((users) => {
-      res.status(201).json({
-        message: 'Get all users work successfully',
-        data: users,
-      });
-    });
+    //search if the user didn't send any filter
+    if (BodyReq === undefined) {
+      //return all the Users
+      await Profile.find({})
+        .populate('YourTweets')
+        .then((users) => {
+          res.status(201).json({
+            message: 'Get all users work successfully',
+            data: users,
+          });
+        });
+    } else {
+      //return users by the filter that sent from front-end
+      console.log(BodyReq);
+    }
   } catch (err) {
     res.status(401).json({
       message: "Get user didn't work, something went wrong",
@@ -35,18 +44,18 @@ export const GetAllUsers = async (req, res) => {
     });
   }
 };
-
 //Get only one user
 export const GetOneUser = async (req, res) => {
   const username = req.params.username;
-
   try {
-    await Profile.find({ username }).then((User) => {
-      res.status(201).json({
-        message: 'Get one user successfully',
-        data: User,
+    await Profile.find({ username })
+      .populate('YourTweets Following Followers')
+      .then((User) => {
+        res.status(202).json({
+          message: 'Get one user successfully',
+          data: User,
+        });
       });
-    });
   } catch (err) {
     res.status(401).json({
       message: "Get one user didn't work",
@@ -54,18 +63,19 @@ export const GetOneUser = async (req, res) => {
     });
   }
 };
-
 export const UpdateUser = async (req, res) => {
   const id = req.params.id;
   const data = req.body;
   try {
-    await Profile.updateOne({ _id: id }, { data });
-    await Profile.save();
-    res.status(201).json({ message: 'Successfully Update', data });
+    const user = await Profile.findOneAndUpdate({ _id: id }, { ...data });
+    await user.save((err, u) => {
+      if (err) res.json(err);
+      res.json(data);
+    });
   } catch (err) {
     res.status(401).json({
       message: 'failed update user',
-      err: err,
+      err,
     });
   }
 };

@@ -2,9 +2,9 @@ POST http://localhost:5000/Tweets/create
 Content-Type: application/json
 
 {
-    "TweetText":"Random Thing in Twitter Number 7",
-    "user":"62224083d99964c8fd924274",
-    "username":"Train Heartent"
+    "TweetText":"Random Thing in Twitter Number 4",
+    "user":"62332312c0aacaf1d432353d",
+    "username":"test"
 }
 
 ###
@@ -32,12 +32,13 @@ POST http://localhost:5000/Profile/create
 Content-Type: application/json
 
 {
-    "username":"Hataki kakashi" , 
-    "Avatar":"Ranom Avtar usser" , 
-    "RealName":"Jaffer sinan" ,
+    "username":"Ahmed" , 
+    "Avatar":"Ahmed Avtar usser" , 
+    "RealName":"Ahmed test" ,
+    "YourTweets":[],
     "Followers":[],
     "Following":[],
-    "YourTweets":[],
+    "NumberOfTweets":[],
     "NumberOfLikedTWeets":[]
 }
 
@@ -48,19 +49,19 @@ Content-Type: application/json
 
 {}
 ###
-GET http://localhost:5000/Profile/Hataki kakashi
+GET http://localhost:5000/Profile/Train Heartent
 
-####
+###
 
-PUT http://localhost:5000/Profile/62224083d99964c8fd924274
+PUT http://localhost:5000/Profile/62332312c0aacaf1d432353d
 Content-Type: application/json
 
 {
-    "username":"Hataki" , 
-    "Avatar":"Ranom Avtar usser" , 
-    "RealName":"Jaffer sinan" ,
-    "Followers":[],
-    "Following":[],
-    "YourTweets":[],
-    "NumberOfLikedTWeets":[]
+    "username": "test",
+      "Avatar": "test Avtar usser",
+      "RealName": "test tester",
+      "Followers": ["62224083d99964c8fd924274","622282a7d22250bc6720b992"],
+      "Following": ["62224083d99964c8fd924274","622282a7d22250bc6720b992"],
+      "YourTweets": ["623453cb75a1bd999d45bee2","623453ce75a1bd999d45bee4","623453c675a1bd999d45bee0","623453c375a1bd999d45bede","623453bc75a1bd999d45bedc"],
+      "NumberOfLikedTWeets": []
 }

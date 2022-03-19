@@ -10,10 +10,10 @@ const Profile = mongoose.Schema({
   RealName: {
     type: String,
   },
-  Followers: [mongoose.SchemaTypes.ObjectId],
-  Following: [mongoose.SchemaTypes.ObjectId],
-  YourTweets: [mongoose.SchemaTypes.ObjectId],
-  NumberOfLikedTWeets: [mongoose.SchemaTypes.ObjectId],
+  Followers: { type: [mongoose.SchemaTypes.ObjectId], ref: 'Profile' },
+  Following: { type: [mongoose.SchemaTypes.ObjectId], ref: 'Profile' },
+  YourTweets: { type: [mongoose.SchemaTypes.ObjectId], ref: 'Tweets' },
+  NumberOfLikedTWeets: { type: [mongoose.SchemaTypes.ObjectId], ref: 'Profile' },
   createdDate: {
     type: Date,
     default: Date.now(),

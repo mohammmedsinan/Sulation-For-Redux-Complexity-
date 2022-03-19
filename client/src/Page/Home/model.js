@@ -1,11 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
-import { api } from '../../Api/index';
+import { api, apiCaller } from '../../Api/index';
 
 export const AsyncReducers = {
   change: createAsyncThunk('Dude/fetchApi', async () => {
-    const res = await api.get('/Tweets');
-    return res.data;
+    //   const res = await api.get('/Profile/test');
+    //   return res.data;
+    return apiCaller('GET', '/Profile/test');
   }),
 };
 
@@ -16,22 +16,21 @@ const model = createSlice({
     status: null,
     loading: '',
   },
-  reducers: {
-    Handler: (state, actions) => {},
-  },
+  reducers: {},
   extraReducers: {
     [AsyncReducers.change.fulfilled]: (state, { payload }) => {
       state.data = payload;
       state.status = 'success';
+      state.loading = false;
     },
     [AsyncReducers.change.pending]: (state) => {
       state.loading = true;
     },
     [AsyncReducers.change.rejected]: (state) => {
       state.status = 'Failed';
+      state.loading = false;
     },
   },
 });
 
-export const { Handler } = model.actions;
 export default model.reducer;
