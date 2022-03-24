@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { AsyncReducer } from 'API';
+import { AsyncReducer, Dispatch } from '../../Api/index';
 
 function index({ home, dispatch }) {
   React.useEffect(() => {
-    dispatch(AsyncReducer('Dude/API', '/Profile/Train Heartent').GET());
-    console.log(home);
+    Dispatch('Dude/API', '/profile/test');
+    Dispatch('Dude/API2', '/profile/Train Heartent');
+    home.status === 'success' && console.log(home);
   }, [home.status]);
   return (
     <div>

@@ -1,10 +1,14 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { store } from '../Redux/Store';
 
 const api = axios.create({
   baseURL: 'http://localhost:5000',
 });
 
+export function Dispatch(spaceName, prefix, body) {
+  return store.dispatch(AsyncReducer(spaceName, prefix).GET());
+}
 export function AsyncReducer(spaceName = 'SPACE/Name', preFix = '/', PostParams) {
   const AsyncReducers = {
     GET: createAsyncThunk(spaceName, async () => {
@@ -23,24 +27,44 @@ export function AsyncReducer(spaceName = 'SPACE/Name', preFix = '/', PostParams)
         console.log(err);
       }
     }),
+    DELETE: createAsyncThunk(spaceName, async () => {
+      try {
+        const data = await api.get(preFix);
+        return data?.data;
+      } catch (err) {
+        console.log(err);
+      }
+    }),
+    PUT: createAsyncThunk(spaceName, async () => {
+      try {
+        const data = await api.get(preFix);
+        return data?.data;
+      } catch (err) {
+        console.log(err);
+      }
+    }),
+    PATCH: createAsyncThunk(spaceName, async () => {
+      try {
+        const data = await api.get(preFix);
+        return data?.data;
+      } catch (err) {
+        console.log(err);
+      }
+    }),
   };
-
   return AsyncReducers;
 }
 export const ExtraREducer = {
-  ExtraReducerCreatorGET: (spaceName) => {
+  ExtraReducerCreatorGET: (spaceName, fulfilled, pending, rejected) => {
     const Reducers = {
       [AsyncReducer(spaceName).GET.fulfilled]: (state, { payload }) => {
-        state.data = payload;
-        state.status = 'success';
-        state.loading = false;
+        fulfilled(state, payload);
       },
       [AsyncReducer(spaceName).GET.pending]: (state) => {
-        state.loading = true;
+        pending(state);
       },
       [AsyncReducer(spaceName).GET.rejected]: (state) => {
-        state.status = 'Failed';
-        state.loading = false;
+        rejected(state);
       },
     };
     return Reducers;
@@ -90,6 +114,24 @@ export const ExtraREducer = {
         state.loading = true;
       },
       [AsyncReducer(spaceName).DELETE.rejected]: (state) => {
+        state.status = 'Failed';
+        state.loading = false;
+      },
+    };
+
+    return Reducers;
+  },
+  ExtraReducerCreatorPATCH: (spaceName) => {
+    const Reducers = {
+      [AsyncReducer(spaceName).PATCH.fulfilled]: (state, { payload }) => {
+        state.data = payload;
+        state.status = 'success';
+        state.loading = false;
+      },
+      [AsyncReducer(spaceName).PATCH.pending]: (state) => {
+        state.loading = true;
+      },
+      [AsyncReducer(spaceName).PATCH.rejected]: (state) => {
         state.status = 'Failed';
         state.loading = false;
       },

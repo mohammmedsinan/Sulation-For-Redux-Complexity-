@@ -37,6 +37,7 @@
     "webpack-dev-server": "^4.7.4"
   },
   "dependencies": {
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "redux-thunk": "^2.4.1"
   }
 }
