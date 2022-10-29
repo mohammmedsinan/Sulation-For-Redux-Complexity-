@@ -11,8 +11,8 @@ app.use(bodyParser.json({ limit: '1mb' }));
 app.use(cors());
 dotenv.config();
 
-const PORT = process.env.PORT || 5000;
-const MONGO_URI = process.env.DB_SECRETE_CODE;
+const PORT = 5000;
+const MONGO_URI = 'mongodb://localhost:27017/test';
 
 app.get('/', (req, res) => {
   res.status(201).send('<h1 style="text-align:center">This is Home of Tweeter API</h1>');

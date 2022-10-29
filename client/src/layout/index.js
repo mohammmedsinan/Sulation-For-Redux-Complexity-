@@ -1,9 +1,10 @@
 import { MenuSlider, TagSlider } from '../Component/index';
 import { Routes, Route } from 'react-router-dom';
 import { Routers } from '../utilities/routes';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 function index() {
+  useEffect(() => {}, []);
   return (
     <div>
       <MenuSlider />
