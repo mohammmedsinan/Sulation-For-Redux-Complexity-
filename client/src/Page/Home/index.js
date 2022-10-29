@@ -1,21 +1,19 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { AsyncReducer, Dispatch } from '../../Api/index';
+import { Dispatch } from '../../Api/index';
 
-function index({ home, dispatch }) {
+function index({ home }) {
   React.useEffect(() => {
-    Dispatch('Dude/API', '/profile/test');
-    Dispatch('Dude/API2', '/profile/Train Heartent');
-    home.status === 'success' && console.log(home);
+    Dispatch('Dude/API', '/Tweets/test' , "GET" );
+    home.status === 'success';
   }, [home.status]);
   return (
     <div>
-      React Hot server <Link to="/s">dd</Link>
+      React Hot server <Link to="/About">dd</Link>
     </div>
   );
 }
-
 const mapStateToProps = (state) => {
   return {
     home: state.Home,
