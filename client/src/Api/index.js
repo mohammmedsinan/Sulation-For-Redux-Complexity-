@@ -6,18 +6,18 @@ const api = axios.create({
   baseURL: 'http://localhost:5000',
 });
 
-export function Dispatch(spaceName, prefix, reqMethod , body) {
-  if (reqMethod === "GET") {
+export function Dispatch(spaceName, prefix, reqMethod, body) {
+  if (reqMethod === 'GET') {
     return store.dispatch(AsyncReducer(spaceName, prefix).GET());
-  } else if (reqMethod === "POST") {
-    return store.dispatch(AsyncReducer(spaceName, prefix , body).POST());
-  }else if (reqMethod === "PUT") {
-    return store.dispatch(AsyncReducer(spaceName, prefix , body).PUT());
-  }else if (reqMethod === "DELETE"){
-    return store.dispatch(AsyncReducer(spaceName, prefix , body).DELETE());
+  } else if (reqMethod === 'POST') {
+    return store.dispatch(AsyncReducer(spaceName, prefix, body).POST());
+  } else if (reqMethod === 'PUT') {
+    return store.dispatch(AsyncReducer(spaceName, prefix, body).PUT());
+  } else if (reqMethod === 'DELETE') {
+    return store.dispatch(AsyncReducer(spaceName, prefix, body).DELETE());
   }
 }
-export function AsyncReducer(spaceName = 'SPACE/Name', preFix = '/', PostParams={}) {
+export function AsyncReducer(spaceName = 'SPACE/Name', preFix = '/', PostParams = {}) {
   const AsyncReducers = {
     GET: createAsyncThunk(spaceName, async () => {
       try {
@@ -29,7 +29,7 @@ export function AsyncReducer(spaceName = 'SPACE/Name', preFix = '/', PostParams=
     }),
     POST: createAsyncThunk(spaceName, async () => {
       try {
-        const data = await api.post(preFix,PostParams);
+        const data = await api.post(preFix, PostParams);
         return data?.data;
       } catch (err) {
         console.log(err);
@@ -59,6 +59,14 @@ export function AsyncReducer(spaceName = 'SPACE/Name', preFix = '/', PostParams=
         console.log(err);
       }
     }),
+    all: createAsyncThunk(spaceName, async () => {
+      try {
+        const data = await api.get(preFix);
+        return data?.data;
+      } catch (err) {
+        console.log(err);
+      }
+    }).fulfilled,
   };
   return AsyncReducers;
 }

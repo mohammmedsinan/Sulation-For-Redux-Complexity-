@@ -8,7 +8,7 @@ const model = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    [AsyncReducer('Buy/Api').GET.fulfilled]: (state, { payload }) => {
+    [AsyncReducer('Buy/Api').all]: (state, { payload }) => {
       state.data = payload;
       state.status = 'success';
     },
