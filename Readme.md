@@ -1,3 +1,4 @@
+**
 ├── dist
 ├── .babelrc
 ├── webpack.config.js
@@ -13,3 +14,4 @@
    |  └── Home
    ├── Redux
    └── utilities
+**
