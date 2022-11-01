@@ -1,5 +1,5 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import { Routers } from '../utilities/routes';
+import { Routers } from './routes';
 
 let Reducers = [];
 Routers.map(({ tag, model }) => {
@@ -25,17 +25,6 @@ export const store = configureStore({
     ...Reducers[13],
     ...Reducers[14],
     ...Reducers[15],
-    ...Reducers[16],
-    ...Reducers[17],
-    ...Reducers[18],
-    ...Reducers[19],
-    ...Reducers[20],
-    ...Reducers[21],
-    ...Reducers[22],
-    ...Reducers[23],
-    ...Reducers[24],
-    ...Reducers[25],
-    ...Reducers[26],
   },
 });
 export default store;
