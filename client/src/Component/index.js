@@ -1,4 +1,7 @@
-import MenuSlider from './MenuSlider';
-import TagSlider from './TagSlider';
+import React from 'react';
 
-export { MenuSlider, TagSlider };
+function index() {
+  return <div>index</div>;
+}
+
+export default index;

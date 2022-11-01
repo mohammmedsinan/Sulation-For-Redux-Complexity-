@@ -5,9 +5,10 @@ module.exports = {
   Api_Base_URl: 'http://localhost:5000',
   Header_Fixed: false,
   Site_Theme: {
-    Primary: '#fbaf41',
-    Secondary: '#262161',
-    Links: '#',
+    Primary: '#0c4a2a',
+    Secondary: '#990011',
     Border_Radius: '2px',
+    Text_Color: '#FCF6F5',
   },
+  Dark_Mode: false,
 };
