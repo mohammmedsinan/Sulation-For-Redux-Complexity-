@@ -1,20 +1,13 @@
 import { FileOutlined } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import { Routers } from '../../utilities/routes';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 const { Sider } = Layout;
-function getItem(label, key, icon, children) {
-  return {
-    key,
-    icon,
-    children,
-    label,
-  };
-}
 
 function index() {
   const items = [];
+  let defaultAcctive = '';
   const history = useNavigate();
   Routers.map((route) => {
     if (!route.parent) {
@@ -39,13 +32,19 @@ function index() {
       });
     }
   });
-  console.log(items);
+  const pathname = window.location.pathname.substring(1);
+  const firstRoute = Routers.find((ele) => ele.name === pathname);
+  defaultAcctive = firstRoute.id;
   const [collapsed, setCollapsed] = useState(false);
-
   return (
-    <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
-      <div className="logo" style={{ height: '100px', backgroundColor: '#032f5a' }} />
-      <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
+    <Sider
+      collapsible
+      collapsed={collapsed}
+      onCollapse={(value) => setCollapsed(value)}
+      style={{ boxShadow: '1px 0px 20px 0px' }}
+    >
+      <div className="logo" style={{ height: '100px', backgroundColor: '#346beb' }} />
+      <Menu theme="dark" defaultSelectedKeys={`${defaultAcctive}`} mode="inline" items={items} />
     </Sider>
   );
 }
