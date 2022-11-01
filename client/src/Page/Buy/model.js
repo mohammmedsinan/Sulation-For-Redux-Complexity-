@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { AsyncReducer } from '../../Api/index';
+import { AsyncReducer } from 'API';
 
 const initialState = { data: {}, status: null, loading: '' };
 

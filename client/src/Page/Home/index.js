@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Dispatch } from '../../Api/index';
+import { Dispatch } from 'API';
 function index({ home }) {
   return (
     <div>
