@@ -1,6 +1,31 @@
 import { StarFilled, CiCircleFilled } from '@ant-design/icons';
 
+// {
+//   name: @String &&this name will appear on menu slider
+//   parent: @boolean && to know if it had a parent
+//   child: @boolean && to know if it had a child
+//   model: @boolean && to know if it had a model
+//   parentId: @Int && parent id
+//   id: @int && his id should be uniq
+//   icon: method && should defined as a antd icon
+//   pin: @boolean && to know if its ping or not
+//   outSide: @boolean && to know if it will be inside the layout or outside the layout
+// },
+
 export const Routers = [
+  //Pins----------------
+  {
+    name: 'feed',
+    parent: false,
+    child: true,
+    model: false,
+    parentId: 0,
+    id: 5,
+    icon: StarFilled,
+    outSide: false,
+    pin: true,
+  },
+  //Routes----------------
   {
     name: 'Home',
     parent: false,
@@ -10,36 +35,29 @@ export const Routers = [
     id: 1,
     icon: StarFilled,
     pin: false,
+    outSide: false,
   },
   {
     name: 'Buy',
     parent: false,
     child: false,
     model: true,
-    parentId: 1,
+    parentId: '',
     id: 2,
     icon: StarFilled,
     pin: false,
+    outSide: false,
   },
   {
     name: 'About',
     parent: false,
     child: false,
     model: true,
-    parentId: 1,
+    parentId: '',
     id: 3,
     icon: StarFilled,
     pin: false,
-  },
-  {
-    name: 'feed',
-    parent: false,
-    child: true,
-    model: false,
-    parentId: 0,
-    id: 5,
-    icon: StarFilled,
-    pin: true,
+    outSide: false,
   },
   {
     name: 'Contact',
@@ -50,5 +68,19 @@ export const Routers = [
     id: 4,
     icon: CiCircleFilled,
     pin: false,
+    outSide: false,
+  },
+  //outside the layout
+  {
+    name: 'create-home',
+    parent: true,
+    child: false,
+    model: false,
+    parentId: 1,
+    id: 6,
+    icon: CiCircleFilled,
+    pin: false,
+    outSide: true,
+    parentName: 'Home',
   },
 ];

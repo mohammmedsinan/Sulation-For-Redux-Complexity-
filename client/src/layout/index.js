@@ -1,6 +1,6 @@
 import { Routes, Route, useLocation, Link } from 'react-router-dom';
 import { Routers } from '../utilities/routes';
-import React from 'react';
+import React, { useState } from 'react';
 import MenuS from './menu/index';
 import { Breadcrumb, Layout } from 'antd';
 import HeaderS from './header';
@@ -56,35 +56,80 @@ function BreadCrumb() {
   }
 }
 function index() {
+  let currentPage = [];
   const location = useLocation();
+  const current = location.pathname.split('/');
+  if (current.length === 2) {
+    Routers.map((route) => {
+      if (route.name === current[1]) {
+        currentPage.push(route);
+      }
+    });
+  }
   React.useEffect(() => {
     BreadCrumb();
   }, [location.pathname]);
   const { Content } = Layout;
   return (
-    <Layout style={{ minHeight: '100vh' }}>
-      <MenuS />
-      <Layout>
-        <HeaderS />
-        <Content
-          style={{
-            margin: '0 16px',
-          }}
-        >
-          <BreadCrumb />
-          <Routes>
-            {Routers.map(({ name, pin }) => {
-              if (!pin) {
-                const AllRoutes = require('../Page/' + name + '/index').default;
-                return <Route path={'/' + name} key={name} element={<AllRoutes />} />;
-              }
-            })}
-            <Route path="*" element={<>This Page is not found</>} />
-          </Routes>
-        </Content>
-        <FooterS />
-      </Layout>
-    </Layout>
+    <>
+      {currentPage[0]?.outSide === false ? (
+        <Layout style={{ minHeight: '100vh' }}>
+          <MenuS />
+          <Layout>
+            <HeaderS />
+            <Content
+              style={{
+                margin: '0 16px',
+              }}
+            >
+              <BreadCrumb />
+              <Routes>
+                {Routers.map(({ name, pin, outSide }) => {
+                  if (!pin && !outSide) {
+                    const AllRoutes = require('../Page/' + name + '/index').default;
+                    return <Route path={'/' + name} key={name} element={<AllRoutes />} />;
+                  }
+                })}
+                <Route path="*" element={<>This Page is not found</>} />
+              </Routes>
+            </Content>
+            <FooterS />
+          </Layout>
+        </Layout>
+      ) : (
+        <>
+          {currentPage.length === 0 ? (
+            <Layout style={{ minHeight: '100vh' }}>
+              <MenuS />
+              <Layout>
+                <HeaderS />
+                <Content
+                  style={{
+                    margin: '0 16px',
+                  }}
+                >
+                  <BreadCrumb />
+                  <Routes>
+                    <Route path="*" element={<>This Page is not found</>} />
+                  </Routes>
+                </Content>
+                <FooterS />
+              </Layout>
+            </Layout>
+          ) : (
+            <>
+              <BreadCrumb />
+              <Routes>
+                {currentPage.map(({ name, parentName }) => {
+                  const AllRoutes = require(`../Page/${parentName}/${name}`).default;
+                  return <Route path={'/' + name} key={name} element={<AllRoutes />} />;
+                })}
+              </Routes>
+            </>
+          )}
+        </>
+      )}
+    </>
   );
 }
 export default index;
