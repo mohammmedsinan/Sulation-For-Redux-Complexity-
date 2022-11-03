@@ -6,7 +6,8 @@ const { Sider } = Layout;
 
 function index() {
   const items = [];
-  let defaultAcctive = '';
+  let defaultActive = '';
+  let defaultOpen = '';
   const history = useNavigate();
   Routers.map((route) => {
     if (!route.parent) {
@@ -22,12 +23,12 @@ function index() {
       } else {
         items.push({
           label: route.name,
-          children: route.child ? [] : undefined,
+          children: undefined,
           pid: route.parentId,
           icon: <route.icon />,
           id: route.id,
           key: route.id,
-          onClick: () => history(`/${route.name}`),
+          onClick: () => history(`${route.url}`),
         });
       }
     } else {
@@ -39,17 +40,32 @@ function index() {
         icon: <route.icon />,
         id: route.id,
         key: route.id,
-        onClick: () => history(`/${route.name}`),
+        onClick: () => history(`${route.url}`),
       });
     }
   });
-  const pathname = window.location.pathname.substring(1);
-  const firstRoute = Routers.find((ele) => ele.name.toLowerCase() === pathname.toLowerCase());
-  if (firstRoute === undefined) {
-    defaultAcctive = 1;
-  } else {
-    defaultAcctive = firstRoute.id;
-  }
+  const pathname = window.location.pathname.split('/');
+  Routers.map((route) => {
+    if (pathname.length === 2) {
+      if (pathname[1].toLowerCase() === route.name.toLowerCase()) {
+        defaultActive = route.id;
+      }
+    } else if (pathname.length === 3) {
+      if (pathname[2].toLowerCase() === route.name.toLowerCase()) {
+        defaultActive = route.id;
+      }
+      if (pathname[1].toLowerCase() === route.name.toLowerCase()) {
+        defaultOpen = route.id;
+      }
+    } else if (pathname.length === 4) {
+      if (pathname[3].toLowerCase() === route.name.toLowerCase()) {
+        defaultActive = route.id;
+      }
+      if (pathname[2].toLowerCase() === route.name.toLowerCase()) {
+        defaultOpen = route.id;
+      }
+    }
+  });
   const [collapsed, setCollapsed] = useState(false);
   return (
     <Sider
@@ -59,7 +75,13 @@ function index() {
       style={{ boxShadow: '1px 0px 20px 0px' }}
     >
       <div className="logo" style={{ height: '100px', backgroundColor: '#346beb' }} />
-      <Menu theme="dark" defaultSelectedKeys={`${defaultAcctive}`} mode="inline" items={items} />
+      <Menu
+        theme="dark"
+        defaultSelectedKeys={[`${defaultActive}`]}
+        mode="inline"
+        items={items}
+        defaultOpenKeys={[`${defaultOpen}`]}
+      />
     </Sider>
   );
 }

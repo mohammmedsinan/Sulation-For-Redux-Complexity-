@@ -1,4 +1,4 @@
-import { StarFilled, CiCircleFilled } from '@ant-design/icons';
+import { StarFilled, CiCircleFilled, DownSquareFilled, FileAddFilled } from '@ant-design/icons';
 
 // {
 //   name: @String &&this name will appear on menu slider
@@ -10,82 +10,84 @@ import { StarFilled, CiCircleFilled } from '@ant-design/icons';
 //   icon: method && should defined as a antd icon
 //   pin: @boolean && to know if its ping or not
 //   outSide: @boolean && to know if it will be inside the layout or outside the layout
+//   url: '/home/create-home' @string path of url
 // },
 
 export const Routers = [
   //Pins----------------
+
   {
-    name: 'feed',
+    name: 'STAGING',
     parent: false,
     child: true,
     model: false,
     parentId: 0,
-    id: 5,
+    id: 1,
     icon: StarFilled,
     outSide: false,
     pin: true,
-    url: '/feed',
+    url: '/STAGING',
+  },
+  {
+    name: 'PRODUCTION',
+    parent: false,
+    child: true,
+    model: false,
+    parentId: 0,
+    id: 2,
+    icon: DownSquareFilled,
+    outSide: false,
+    pin: true,
+    url: '/PRODUCTION',
+  },
+  {
+    name: 'TESTING',
+    parent: false,
+    child: true,
+    model: false,
+    parentId: 0,
+    id: 3,
+    icon: CiCircleFilled,
+    outSide: false,
+    pin: true,
+    url: '/TESTING',
+  },
+  {
+    name: 'STAGING v2',
+    parent: true,
+    child: true,
+    model: false,
+    parentId: 1,
+    id: 4,
+    icon: StarFilled,
+    outSide: false,
+    pin: true,
+    url: '/staging/STAGINGv2',
   },
   //Routes----------------
   {
-    name: 'Home',
+    name: 'comps',
+    parent: true,
+    child: false,
+    model: false,
+    parentId: 1,
+    id: 10,
+    icon: FileAddFilled,
+    pin: false,
+    outSide: false,
+    url: '/staging/comps',
+  },
+  {
+    name: 'home',
     parent: false,
     child: false,
-    model: true,
+    model: false,
     parentId: '',
-    id: 1,
+    id: 11,
     icon: StarFilled,
     pin: false,
     outSide: false,
     url: '/home',
   },
-  {
-    name: 'Buy',
-    parent: false,
-    child: false,
-    model: true,
-    parentId: '',
-    id: 2,
-    icon: StarFilled,
-    pin: false,
-    outSide: false,
-    url: '/buy',
-  },
-  {
-    name: 'About',
-    parent: false,
-    child: false,
-    model: true,
-    parentId: '',
-    id: 3,
-    icon: StarFilled,
-    pin: false,
-    outSide: false,
-    url: 'about',
-  },
-  {
-    name: 'Contact',
-    parent: true,
-    child: false,
-    model: false,
-    parentId: 5,
-    id: 4,
-    icon: CiCircleFilled,
-    pin: false,
-    outSide: false,
-    url: '/contact',
-  },
-  //outside the layout
-  {
-    name: 'create-home',
-    parent: true,
-    child: false,
-    model: false,
-    parentId: 1,
-    id: 6,
-    icon: CiCircleFilled,
-    pin: false,
-    outSide: true,
-    url: '/home/create-home',
-  },
+  //outside the layout------------
 ];
