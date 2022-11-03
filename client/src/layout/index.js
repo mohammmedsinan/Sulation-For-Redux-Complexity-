@@ -15,7 +15,11 @@ function BreadCrumb() {
     (route) => route.name.toLowerCase() === slicePathname[1].toLowerCase(),
   );
   Routers.find((route) => {
-    if (slicePathname[1].toLowerCase() === route.name.toLowerCase()) {
+    if (slicePathname[1]?.toLowerCase() === route?.name.toLowerCase()) {
+      currentUrl = route;
+    } else if (slicePathname[2]?.toLowerCase() === route?.name.toLowerCase()) {
+      currentUrl = route;
+    } else if (slicePathname[3]?.toLowerCase() === route?.name?.toLowerCase()) {
       currentUrl = route;
     }
   });
@@ -62,7 +66,7 @@ function index() {
   const location = useLocation();
   const navigate = useNavigate();
   React.useEffect(() => {
-    if (location.pathname === '/') return navigate('/Home');
+    // if (location.pathname === '/') return navigate('/staging/comps');
     BreadCrumb();
   }, [location.pathname]);
   const current = location.pathname.split('/');
@@ -74,7 +78,6 @@ function index() {
     });
   } else if (current.length >= 3) {
     Routers.map((route) => {
-      console.log(route.name, current[2]);
       if (route.name.toLowerCase() === current[2].toLowerCase()) {
         currentPage.push(route);
       }
