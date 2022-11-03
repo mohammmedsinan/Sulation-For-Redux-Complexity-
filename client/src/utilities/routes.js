@@ -1,29 +1,86 @@
+import { StarFilled, CiCircleFilled } from '@ant-design/icons';
+
+// {
+//   name: @String &&this name will appear on menu slider
+//   parent: @boolean && to know if it had a parent
+//   child: @boolean && to know if it had a child
+//   model: @boolean && to know if it had a model
+//   parentId: @Int && parent id
+//   id: @int && his id should be uniq
+//   icon: method && should defined as a antd icon
+//   pin: @boolean && to know if its ping or not
+//   outSide: @boolean && to know if it will be inside the layout or outside the layout
+// },
+
 export const Routers = [
+  //Pins----------------
   {
-    url: './Page/Home/index',
-    tag: 'Home',
-    name: '',
+    name: 'feed',
     parent: false,
     child: true,
+    model: false,
+    parentId: 0,
+    id: 5,
+    icon: StarFilled,
+    outSide: false,
+    pin: true,
+  },
+  //Routes----------------
+  {
+    name: 'Home',
+    parent: false,
+    child: false,
     model: true,
-    parentUrl: '',
+    parentId: '',
+    id: 1,
+    icon: StarFilled,
+    pin: false,
+    outSide: false,
   },
   {
-    url: './Page/Buy/index',
     name: 'Buy',
-    tag: 'Buy',
-    parent: true,
+    parent: false,
     child: false,
     model: true,
-    parentUrl: '',
+    parentId: '',
+    id: 2,
+    icon: StarFilled,
+    pin: false,
+    outSide: false,
   },
   {
-    url: './Page/About/index',
     name: 'About',
-    tag: 'About',
-    parent: true,
+    parent: false,
     child: false,
     model: true,
-    parentUrl: '',
+    parentId: '',
+    id: 3,
+    icon: StarFilled,
+    pin: false,
+    outSide: false,
+  },
+  {
+    name: 'Contact',
+    parent: true,
+    child: false,
+    model: false,
+    parentId: 5,
+    id: 4,
+    icon: CiCircleFilled,
+    pin: false,
+    outSide: false,
+  },
+  //outside the layout
+  {
+    name: 'create-home',
+    parent: true,
+    child: false,
+    model: false,
+    parentId: 1,
+    id: 6,
+    icon: CiCircleFilled,
+    pin: false,
+    outSide: true,
+    parentName: 'Home',
   },
 ];
