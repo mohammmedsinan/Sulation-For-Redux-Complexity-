@@ -3,9 +3,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Layout from './layout/index';
 import { BrowserRouter as Router } from 'react-router-dom';
-import store from './Redux/Store';
+import store from './utilities/Store';
 import { Provider } from 'react-redux';
 import 'antd/dist/antd.less';
+import './public/style.less';
 const app = document.getElementById('root');
 ReactDOM.render(
   <Provider store={store}>

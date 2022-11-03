@@ -1,9 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { store } from './Store';
+import { Api_Base_URl } from './config';
 import axios from 'axios';
-import { store } from '../Redux/Store';
 
 const api = axios.create({
-  baseURL: 'http://localhost:5000',
+  baseURL: `${Api_Base_URl}`,
 });
 
 export function Dispatch(spaceName, prefix, reqMethod, body) {

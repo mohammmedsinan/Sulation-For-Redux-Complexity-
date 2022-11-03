@@ -1,18 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { Dispatch } from '../../Api/index';
+import { Dispatch } from 'API';
 
 function index({ buy }) {
   React.useEffect(() => {
     Dispatch('Buy/Api', '/Profile/all', 'POST', {});
     buy.status === 'success';
   }, [buy.status]);
-  return (
-    <div>
-      React Hot server <Link to="/About">dd</Link>
-    </div>
-  );
+  return <div>Buy</div>;
 }
 const mapStateToProps = (state) => {
   return {
