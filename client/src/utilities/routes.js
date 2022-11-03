@@ -24,6 +24,7 @@ export const Routers = [
     icon: StarFilled,
     outSide: false,
     pin: true,
+    url: '/feed',
   },
   //Routes----------------
   {
@@ -36,6 +37,7 @@ export const Routers = [
     icon: StarFilled,
     pin: false,
     outSide: false,
+    url: '/home',
   },
   {
     name: 'Buy',
@@ -47,6 +49,7 @@ export const Routers = [
     icon: StarFilled,
     pin: false,
     outSide: false,
+    url: '/buy',
   },
   {
     name: 'About',
@@ -58,6 +61,7 @@ export const Routers = [
     icon: StarFilled,
     pin: false,
     outSide: false,
+    url: 'about',
   },
   {
     name: 'Contact',
@@ -69,6 +73,7 @@ export const Routers = [
     icon: CiCircleFilled,
     pin: false,
     outSide: false,
+    url: '/contact',
   },
   //outside the layout
   {
@@ -81,6 +86,6 @@ export const Routers = [
     icon: CiCircleFilled,
     pin: false,
     outSide: true,
-    parentName: 'Home',
+    url: '/home/create-home',
   },
 ];

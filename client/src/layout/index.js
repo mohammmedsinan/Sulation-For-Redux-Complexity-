@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation, Link } from 'react-router-dom';
+import { Routes, Route, useLocation, Link, useNavigate } from 'react-router-dom';
 import { Routers } from '../utilities/routes';
 import React, { useState } from 'react';
 import MenuS from './menu/index';
@@ -11,9 +11,11 @@ function BreadCrumb() {
   let Parent = {};
   const pathname = window.location.pathname;
   const slicePathname = pathname.split('/');
-  const isRoute = Routers.find((route) => route.name === slicePathname[1]);
+  const isRoute = Routers.find(
+    (route) => route.name.toLowerCase() === slicePathname[1].toLowerCase(),
+  );
   Routers.find((route) => {
-    if (slicePathname[1] === route.name) {
+    if (slicePathname[1].toLowerCase() === route.name.toLowerCase()) {
       currentUrl = route;
     }
   });
@@ -58,17 +60,26 @@ function BreadCrumb() {
 function index() {
   let currentPage = [];
   const location = useLocation();
+  const navigate = useNavigate();
+  React.useEffect(() => {
+    if (location.pathname === '/') return navigate('/Home');
+    BreadCrumb();
+  }, [location.pathname]);
   const current = location.pathname.split('/');
   if (current.length === 2) {
     Routers.map((route) => {
-      if (route.name === current[1]) {
+      if (route.name.ignoreCase === current[1].ignoreCase) {
+        currentPage.push(route);
+      }
+    });
+  } else if (current.length >= 3) {
+    Routers.map((route) => {
+      console.log(route.name, current[2]);
+      if (route.name.toLowerCase() === current[2].toLowerCase()) {
         currentPage.push(route);
       }
     });
   }
-  React.useEffect(() => {
-    BreadCrumb();
-  }, [location.pathname]);
   const { Content } = Layout;
   return (
     <>
@@ -84,10 +95,10 @@ function index() {
             >
               <BreadCrumb />
               <Routes>
-                {Routers.map(({ name, pin, outSide }) => {
+                {Routers.map(({ name, pin, outSide, url }) => {
                   if (!pin && !outSide) {
                     const AllRoutes = require('../Page/' + name + '/index').default;
-                    return <Route path={'/' + name} key={name} element={<AllRoutes />} />;
+                    return <Route path={url} key={name} element={<AllRoutes />} />;
                   }
                 })}
                 <Route path="*" element={<>This Page is not found</>} />
@@ -120,9 +131,15 @@ function index() {
             <>
               <BreadCrumb />
               <Routes>
-                {currentPage.map(({ name, parentName }) => {
-                  const AllRoutes = require(`../Page/${parentName}/${name}`).default;
-                  return <Route path={'/' + name} key={name} element={<AllRoutes />} />;
+                {currentPage.map(({ name, url }) => {
+                  let parentOFCurrentPage = '';
+                  Routers.map((route) => {
+                    if (route.id === currentPage[0].parentId) {
+                      parentOFCurrentPage = route.name;
+                    }
+                  });
+                  const AllRoutes = require(`../Page/${parentOFCurrentPage}/${name}`).default;
+                  return <Route path={url} key={name} element={<AllRoutes />} />;
                 })}
               </Routes>
             </>

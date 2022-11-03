@@ -44,7 +44,7 @@ function index() {
     }
   });
   const pathname = window.location.pathname.substring(1);
-  const firstRoute = Routers.find((ele) => ele.name === pathname);
+  const firstRoute = Routers.find((ele) => ele.name.toLowerCase() === pathname.toLowerCase());
   if (firstRoute === undefined) {
     defaultAcctive = 1;
   } else {
