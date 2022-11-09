@@ -1,22 +1,155 @@
-import { MenuSlider, TagSlider } from '../Component/index';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation, Link, useNavigate } from 'react-router-dom';
 import { Routers } from '../utilities/routes';
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
+import MenuS from './menu/index';
+import { Breadcrumb, Layout } from 'antd';
+import HeaderS from './header';
+import FooterS from './footer';
 
+function BreadCrumb() {
+  let currentUrl = {};
+  let Parent = {};
+  const pathname = window.location.pathname;
+  const slicePathname = pathname.split('/');
+  const isRoute = Routers.find(
+    (route) => route.name.toLowerCase() === slicePathname[1].toLowerCase(),
+  );
+  Routers.find((route) => {
+    if (slicePathname[1]?.toLowerCase() === route?.name.toLowerCase()) {
+      currentUrl = route;
+    } else if (slicePathname[2]?.toLowerCase() === route?.name.toLowerCase()) {
+      currentUrl = route;
+    } else if (slicePathname[3]?.toLowerCase() === route?.name?.toLowerCase()) {
+      currentUrl = route;
+    }
+  });
+  if (JSON.stringify(currentUrl) !== '{}') {
+    if (currentUrl.child) {
+    } else if (currentUrl.parent) {
+      Routers.find((route) => {
+        if (currentUrl.parentId === route.id) {
+          Parent = route;
+        }
+      });
+    }
+  }
+  if (isRoute) {
+    return (
+      <Breadcrumb
+        style={{
+          margin: '16px 0',
+        }}
+      >
+        <>
+          {JSON.stringify(currentUrl) !== '{}' && (
+            <>
+              {currentUrl.parent === true && (
+                <Breadcrumb.Item>
+                  <Parent.icon />
+                  <Link to={`/${Parent.name}`}>{Parent.name}</Link>
+                </Breadcrumb.Item>
+              )}
+            </>
+          )}
+          <Breadcrumb.Item>
+            <currentUrl.icon /> <Link to={`/${currentUrl.name}`}>{currentUrl.name}</Link>
+          </Breadcrumb.Item>
+        </>
+      </Breadcrumb>
+    );
+  } else {
+    return <></>;
+  }
+}
 function index() {
-  useEffect(() => {}, []);
+  let currentPage = [];
+  const location = useLocation();
+  const navigate = useNavigate();
+  React.useEffect(() => {
+    // if (location.pathname === '/') return navigate('/staging/comps');
+    BreadCrumb();
+  }, [location.pathname]);
+  const current = location.pathname.split('/');
+  if (current.length === 2) {
+    Routers.map((route) => {
+      if (route.name.ignoreCase === current[1].ignoreCase) {
+        currentPage.push(route);
+      }
+    });
+  } else if (current.length >= 3) {
+    Routers.map((route) => {
+      if (route.name.toLowerCase() === current[2].toLowerCase()) {
+        currentPage.push(route);
+      }
+    });
+  }
+  const { Content } = Layout;
   return (
-    <div>
-      <MenuSlider />
-      <Routes>
-        {Routers.map(({ name, tag }) => {
-          const AllRoutes = require('../Page/' + tag + '/index').default;
-          return <Route path={'/' + name} key={tag} element={<AllRoutes />} />;
-        })}
-        <Route path="*" element={<>This Page is not found</>} />
-      </Routes>
-      <TagSlider />
-    </div>
+    <>
+      {currentPage[0]?.outSide === false ? (
+        <Layout style={{ minHeight: '100vh' }}>
+          <MenuS />
+          <Layout>
+            <HeaderS />
+            <Content
+              style={{
+                margin: '0 16px',
+              }}
+            >
+              <BreadCrumb />
+              <Routes>
+                {Routers.map(({ name, pin, outSide, url }) => {
+                  if (!pin && !outSide) {
+                    const AllRoutes = require('../Page/' + name + '/index').default;
+                    return <Route path={url} key={name} element={<AllRoutes />} />;
+                  }
+                })}
+                <Route path="*" element={<>This Page is not found</>} />
+              </Routes>
+            </Content>
+            <FooterS />
+          </Layout>
+        </Layout>
+      ) : (
+        <>
+          {currentPage.length === 0 ? (
+            <Layout style={{ minHeight: '100vh' }}>
+              <MenuS />
+              <Layout>
+                <HeaderS />
+                <Content
+                  style={{
+                    margin: '0 16px',
+                  }}
+                >
+                  <BreadCrumb />
+                  <Routes>
+                    <Route path="*" element={<>This Page is not found</>} />
+                  </Routes>
+                </Content>
+                <FooterS />
+              </Layout>
+            </Layout>
+          ) : (
+            <>
+              <BreadCrumb />
+              <Routes>
+                {currentPage.map(({ name, url }) => {
+                  let parentOFCurrentPage = '';
+                  Routers.map((route) => {
+                    if (route.id === currentPage[0].parentId) {
+                      parentOFCurrentPage = route.name;
+                    }
+                  });
+                  const AllRoutes = require(`../Page/${parentOFCurrentPage}/${name}`).default;
+                  return <Route path={url} key={name} element={<AllRoutes />} />;
+                })}
+              </Routes>
+            </>
+          )}
+        </>
+      )}
+    </>
   );
 }
 export default index;

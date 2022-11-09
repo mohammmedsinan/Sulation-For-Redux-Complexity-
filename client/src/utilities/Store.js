@@ -1,10 +1,10 @@
-import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import { Routers } from './routes';
 
 let Reducers = [];
-Routers.map(({ tag, model }) => {
+Routers.map(({ name, model }) => {
   if (model) {
-    return Reducers.push({ [tag]: require('../Page/' + tag + '/model').default });
+    return Reducers.push({ [name]: require('../Page/' + name + '/model').default });
   }
 });
 export const store = configureStore({
