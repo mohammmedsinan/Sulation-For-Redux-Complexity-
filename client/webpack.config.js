@@ -1,7 +1,6 @@
 const miniCssExtractPlugin = require('mini-css-extract-plugin');
 const config = require('./src/utilities/config');
 const path = require('path');
-
 const { Site_Theme } = config;
 module.exports = {
   entry: {
@@ -10,7 +9,7 @@ module.exports = {
 
   output: {
     path: path.join(__dirname, './dist'),
-    filename: 'index.bundle.js',
+    filename: 'index.js',
     publicPath: '/',
     asyncChunks: true,
   },

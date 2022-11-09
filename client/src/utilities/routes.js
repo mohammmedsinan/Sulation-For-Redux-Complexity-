@@ -40,5 +40,17 @@ export const Routers = [
   //   outSide: false,
   //   url: '/staging/comps',
   // },
+  {
+    name: 'home',
+    parent: false,
+    child: false,
+    model: false,
+    parentId: 0,
+    id: 10,
+    icon: FileAddFilled,
+    pin: false,
+    outSide: false,
+    url: '/home',
+  },
   //outside the layout------------
 ];
