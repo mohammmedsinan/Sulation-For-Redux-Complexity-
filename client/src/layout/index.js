@@ -1,5 +1,5 @@
 import { Routes, Route, useLocation, Link, useNavigate } from 'react-router-dom';
-import { Routers } from '../utilities/routes';
+import { Routers } from '../routes';
 import React, { useState } from 'react';
 import MenuS from './menu/index';
 import { Breadcrumb, Layout } from 'antd';
@@ -9,6 +9,7 @@ import FooterS from './footer';
 function BreadCrumb() {
   let currentUrl = {};
   let Parent = {};
+  let father = {};
   const pathname = window.location.pathname;
   const slicePathname = pathname.split('/');
   const isRoute = Routers.find(
@@ -21,14 +22,20 @@ function BreadCrumb() {
       currentUrl = route;
     } else if (slicePathname[3]?.toLowerCase() === route?.name?.toLowerCase()) {
       currentUrl = route;
+    } else if (slicePathname[4]?.toLowerCase() === route?.name?.toLowerCase()) {
+      currentUrl = route;
     }
   });
   if (JSON.stringify(currentUrl) !== '{}') {
-    if (currentUrl.child) {
-    } else if (currentUrl.parent) {
-      Routers.find((route) => {
-        if (currentUrl.parentId === route.id) {
+    if (currentUrl?.parent) {
+      Routers.map((route) => {
+        if (currentUrl?.parentId === route.id) {
           Parent = route;
+        }
+      });
+      Routers.map((route) => {
+        if (Parent?.parentId === route.id) {
+          father = route;
         }
       });
     }
@@ -43,16 +50,22 @@ function BreadCrumb() {
         <>
           {JSON.stringify(currentUrl) !== '{}' && (
             <>
-              {currentUrl.parent === true && (
+              {Parent?.parent === true && (
                 <Breadcrumb.Item>
                   <Parent.icon />
-                  <Link to={`/${Parent.name}`}>{Parent.name}</Link>
+                  <Link to={`/${father?.name}`}>{father?.name}</Link>
+                </Breadcrumb.Item>
+              )}
+              {currentUrl?.parent === true && (
+                <Breadcrumb.Item>
+                  <Parent.icon />
+                  <Link to={`/${Parent?.name}`}>{Parent?.name}</Link>
                 </Breadcrumb.Item>
               )}
             </>
           )}
           <Breadcrumb.Item>
-            <currentUrl.icon /> <Link to={`/${currentUrl.name}`}>{currentUrl.name}</Link>
+            <currentUrl.icon /> <Link to={`/${currentUrl?.name}`}>{currentUrl?.name}</Link>
           </Breadcrumb.Item>
         </>
       </Breadcrumb>

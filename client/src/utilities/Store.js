@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { Routers } from './routes';
+import { Routers } from '../routes';
 
 let Reducers = [];
 Routers.map(({ name, model }) => {
