@@ -1,5 +1,5 @@
 import { Layout, Menu } from 'antd';
-import { Routers } from '../../utilities/routes';
+import { Routers } from '../../routes';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 const { Sider } = Layout;
@@ -12,9 +12,38 @@ function index() {
   Routers.map((route) => {
     if (!route.parent) {
       if (route.pin) {
+        let childs = [];
+        Routers.map((route) => {
+          if (route.pin && route.child) {
+            childs.push(route);
+          }
+        });
         items.push({
           label: route.name,
-          children: route.child ? [] : undefined,
+          children: childs.map((child) => {
+            if (child.parentId === route.id) {
+              return {
+                label: child.name,
+                children: Routers.map((route) => {
+                  if (route.parentId === child.id) {
+                    return {
+                      label: route.name,
+                      children: undefined,
+                      pid: route.parentId,
+                      icon: <route.icon />,
+                      id: route.id,
+                      key: route.id,
+                      onClick: () => history(`${route.url}`),
+                    };
+                  }
+                }),
+                pid: child.parentId,
+                icon: <route.icon />,
+                id: child.id,
+                key: child.id,
+              };
+            }
+          }),
           pid: route.parentId,
           icon: <route.icon />,
           id: route.id,
@@ -33,15 +62,17 @@ function index() {
       }
     } else {
       const parent = items.find((ele) => ele.id === route.parentId);
-      parent?.children?.push({
-        label: route.name,
-        children: undefined,
-        pid: route.parentId,
-        icon: <route.icon />,
-        id: route.id,
-        key: route.id,
-        onClick: () => history(`${route.url}`),
-      });
+      if (!route.pin && !route.child) {
+        parent?.children?.push({
+          label: route.name,
+          children: undefined,
+          pid: route.parentId,
+          icon: <route.icon />,
+          id: route.id,
+          key: route.id,
+          onClick: () => history(`${route.url}`),
+        });
+      }
     }
   });
   const pathname = window.location.pathname.split('/');
