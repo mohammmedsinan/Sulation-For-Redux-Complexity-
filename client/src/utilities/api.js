@@ -22,62 +22,38 @@ export function Dispatch(spaceName, prefix, reqMethod, body) {
 export function AsyncReducer(spaceName = 'SPACE/Name', preFix = '/', PostParams = {}) {
   const AsyncReducers = {
     GET: createAsyncThunk(spaceName, async () => {
-      try {
-        const data = await api.get(preFix);
-        return data?.data;
-      } catch (err) {
-        console.log(err);
-      }
+      const data = await api.get(preFix);
+      return data?.data;
     }),
     POST: createAsyncThunk(spaceName, async () => {
-      try {
-        const data = await api.post(preFix, PostParams);
-        return data?.data;
-      } catch (err) {
-        console.log(err);
-      }
+      const data = await api.post(preFix, PostParams);
+      return data?.data;
     }),
     DELETE: createAsyncThunk(spaceName, async () => {
-      try {
-        const data = await api.get(preFix);
-        return data?.data;
-      } catch (err) {
-        console.log(err);
-      }
+      const data = await api.get(preFix);
+      return data?.data;
     }),
     PUT: createAsyncThunk(spaceName, async () => {
-      try {
-        const data = await api.get(preFix);
-        return data?.data;
-      } catch (err) {
-        console.log(err);
-      }
+      const data = await api.get(preFix);
+      return data?.data;
     }),
     PATCH: createAsyncThunk(spaceName, async () => {
-      try {
-        const data = await api.get(preFix);
-        return data?.data;
-      } catch (err) {
-        console.log(err);
-      }
+      const data = await api.get(preFix);
+      return data?.data;
     }),
     all: createAsyncThunk(spaceName, async () => {
-      try {
-        const data = await api.get(preFix);
-        return data?.data;
-      } catch (err) {
-        console.log(err);
-      }
-    }).fulfilled,
+      const data = await api.get(preFix);
+      return data?.data;
+    }),
   };
   return AsyncReducers;
 }
-export function slice(sliceName, initialState, extra) {
+export function slice(sliceName, initialState, extraReducers, reducers) {
   const model = createSlice({
     name: sliceName,
     initialState,
-    reducers: {},
-    extraReducers: extra,
+    reducers,
+    extraReducers,
   });
 
   return model.reducer;
