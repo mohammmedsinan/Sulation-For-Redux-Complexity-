@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { Routers } from '../routes';
+import common from '../service/model';
 
 let Reducers = [];
 Routers.map(({ name, model }) => {
@@ -9,6 +10,7 @@ Routers.map(({ name, model }) => {
 });
 export const store = configureStore({
   reducer: {
+    common,
     ...Reducers[0],
     ...Reducers[1],
     ...Reducers[2],

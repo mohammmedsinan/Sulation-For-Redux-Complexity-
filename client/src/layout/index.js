@@ -5,6 +5,7 @@ import MenuS from './menu/index';
 import { Breadcrumb, Layout } from 'antd';
 import HeaderS from './header';
 import FooterS from './footer';
+import { useSelector } from 'react-redux';
 
 function BreadCrumb() {
   let currentUrl = {};
@@ -74,7 +75,7 @@ function BreadCrumb() {
     return <></>;
   }
 }
-function index() {
+function index(props) {
   let currentPage = [];
   const location = useLocation();
   const navigate = useNavigate();
@@ -114,7 +115,22 @@ function index() {
                 {Routers.map(({ name, pin, outSide, url }) => {
                   if (!pin && !outSide) {
                     const AllRoutes = require('../Page/' + name + '/index').default;
-                    return <Route path={url} key={name} element={<AllRoutes />} />;
+                    const state = useSelector((state) => state);
+                    return (
+                      <Route
+                        path={url}
+                        key={name}
+                        element={
+                          <>
+                            {state[name]?.status !== 'loading' ? (
+                              <AllRoutes dispatch={props.Dispatch} state={state} />
+                            ) : (
+                              <div>Loading</div>
+                            )}
+                          </>
+                        }
+                      />
+                    );
                   }
                 })}
                 <Route path="*" element={<>This Page is not found</>} />
@@ -155,7 +171,15 @@ function index() {
                     }
                   });
                   const AllRoutes = require(`../Page/${parentOFCurrentPage}/${name}`).default;
-                  return <Route path={url} key={name} element={<AllRoutes />} />;
+                  const state = useSelector((state) => state);
+
+                  return (
+                    <Route
+                      path={url}
+                      key={name}
+                      element={<AllRoutes dispatch={props.Dispatch} state={state} />}
+                    />
+                  );
                 })}
               </Routes>
             </>

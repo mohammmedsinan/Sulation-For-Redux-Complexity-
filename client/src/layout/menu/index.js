@@ -93,7 +93,7 @@ function index() {
         defaultActive = route.id;
       }
       if (pathname[2].toLowerCase() === route.name.toLowerCase()) {
-        defaultOpen = route.id;
+        defaultOpen = [route.id, route.parentId];
       }
     }
   });
@@ -111,7 +111,7 @@ function index() {
         defaultSelectedKeys={[`${defaultActive}`]}
         mode="inline"
         items={items}
-        defaultOpenKeys={[`${defaultOpen}`]}
+        defaultOpenKeys={[`${defaultOpen[0]}`, `${defaultOpen[1]}`]}
       />
     </Sider>
   );

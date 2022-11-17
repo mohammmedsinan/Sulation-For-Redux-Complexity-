@@ -21,7 +21,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      API: path.resolve(__dirname, 'src/utilities/api.js'),
+      API: path.resolve(__dirname, 'src/service/api.js'),
       Config: path.resolve(__dirname, 'src/utilities/config.js'),
     },
   },

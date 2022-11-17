@@ -1,11 +1,15 @@
 import React from 'react';
-import { Dispatch } from 'API';
 
-function index() {
+function index({ dispatch, state: { home } }) {
+  const [data, setData] = React.useState([]);
   React.useEffect(() => {
-    Dispatch('home/Api', '/Tweets/test', 'GET');
+    if (!home.data.Message) {
+      dispatch('home/Api', '/Tweets/test', 'GET');
+      dispatch('home/Api1', '/Tweets/test', 'GET');
+    }
+    setData(home?.data?.data);
   }, []);
-  return <div>index</div>;
+  return <div>afkjdshfksajdhfkjsdahfjs</div>;
 }
 
 export default index;
