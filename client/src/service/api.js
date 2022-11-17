@@ -58,151 +58,121 @@ export function slice(sliceName, initialState, ExtraReducers = [], reducers) {
       ...ExtraReducers.map((data) => ({
         [AsyncReducer(data.SpaceName).all.pending]: (state, { payload }) => {
           state.status = 'loading';
-          data.pending && data?.pending();
         },
         [AsyncReducer(data.SpaceName).all.rejected]: (state, { payload }) => {
           state.status = 'failed';
-          data.rejected && data?.rejected();
         },
         [AsyncReducer(data.SpaceName).all.fulfilled]: (state, { payload }) => {
           state.status = 'success';
           state[data.data] = payload;
-          data.fulfilled && data?.fulfilled();
         },
       }))[0],
       ...ExtraReducers.map((data) => ({
         [AsyncReducer(data.SpaceName).all.pending]: (state, { payload }) => {
           state.status = 'loading';
-          data.pending && data?.pending();
         },
         [AsyncReducer(data.SpaceName).all.rejected]: (state, { payload }) => {
           state.status = 'failed';
-          data.rejected && data?.rejected();
         },
         [AsyncReducer(data.SpaceName).all.fulfilled]: (state, { payload }) => {
           state.status = 'success';
           state[data.data] = payload;
-          data.fulfilled && data?.fulfilled();
         },
       }))[1],
       ...ExtraReducers.map((data) => ({
         [AsyncReducer(data.SpaceName).all.pending]: (state, { payload }) => {
           state.status = 'loading';
-          data.pending && data?.pending();
         },
         [AsyncReducer(data.SpaceName).all.rejected]: (state, { payload }) => {
           state.status = 'failed';
-          data.rejected && data?.rejected();
         },
         [AsyncReducer(data.SpaceName).all.fulfilled]: (state, { payload }) => {
           state.status = 'success';
           state[data.data] = payload;
-          data.fulfilled && data?.fulfilled();
         },
       }))[2],
       ...ExtraReducers.map((data) => ({
         [AsyncReducer(data.SpaceName).all.pending]: (state, { payload }) => {
           state.status = 'loading';
-          data.pending && data?.pending();
         },
         [AsyncReducer(data.SpaceName).all.rejected]: (state, { payload }) => {
           state.status = 'failed';
-          data.rejected && data?.rejected();
         },
         [AsyncReducer(data.SpaceName).all.fulfilled]: (state, { payload }) => {
           state.status = 'success';
           state[data.data] = payload;
-          data.fulfilled && data?.fulfilled();
         },
       }))[3],
       ...ExtraReducers.map((data) => ({
         [AsyncReducer(data.SpaceName).all.pending]: (state, { payload }) => {
           state.status = 'loading';
-          data.pending && data?.pending();
         },
         [AsyncReducer(data.SpaceName).all.rejected]: (state, { payload }) => {
           state.status = 'failed';
-          data.rejected && data?.rejected();
         },
         [AsyncReducer(data.SpaceName).all.fulfilled]: (state, { payload }) => {
           state.status = 'success';
           state[data.data] = payload;
-          data.fulfilled && data?.fulfilled();
         },
       }))[4],
       ...ExtraReducers.map((data) => ({
         [AsyncReducer(data.SpaceName).all.pending]: (state, { payload }) => {
           state.status = 'loading';
-          data.pending && data?.pending();
         },
         [AsyncReducer(data.SpaceName).all.rejected]: (state, { payload }) => {
           state.status = 'failed';
-          data.rejected && data?.rejected();
         },
         [AsyncReducer(data.SpaceName).all.fulfilled]: (state, { payload }) => {
           state.status = 'success';
           state[data.data] = payload;
-          data.fulfilled && data?.fulfilled();
         },
       }))[5],
       ...ExtraReducers.map((data) => ({
         [AsyncReducer(data.SpaceName).all.pending]: (state, { payload }) => {
           state.status = 'loading';
-          data.pending && data?.pending();
         },
         [AsyncReducer(data.SpaceName).all.rejected]: (state, { payload }) => {
           state.status = 'failed';
-          data.rejected && data?.rejected();
         },
         [AsyncReducer(data.SpaceName).all.fulfilled]: (state, { payload }) => {
           state.status = 'success';
           state[data.data] = payload;
-          data.fulfilled && data?.fulfilled();
         },
       }))[6],
       ...ExtraReducers.map((data) => ({
         [AsyncReducer(data.SpaceName).all.pending]: (state, { payload }) => {
           state.status = 'loading';
-          data.pending && data?.pending();
         },
         [AsyncReducer(data.SpaceName).all.rejected]: (state, { payload }) => {
           state.status = 'failed';
-          data.rejected && data?.rejected();
         },
         [AsyncReducer(data.SpaceName).all.fulfilled]: (state, { payload }) => {
           state.status = 'success';
           state[data.data] = payload;
-          data.fulfilled && data?.fulfilled();
         },
       }))[7],
       ...ExtraReducers.map((data) => ({
         [AsyncReducer(data.SpaceName).all.pending]: (state, { payload }) => {
           state.status = 'loading';
-          data.pending && data?.pending();
         },
         [AsyncReducer(data.SpaceName).all.rejected]: (state, { payload }) => {
           state.status = 'failed';
-          data.rejected && data?.rejected();
         },
         [AsyncReducer(data.SpaceName).all.fulfilled]: (state, { payload }) => {
           state.status = 'success';
           state[data.data] = payload;
-          data.fulfilled && data?.fulfilled();
         },
       }))[8],
       ...ExtraReducers.map((data) => ({
         [AsyncReducer(data.SpaceName).all.pending]: (state, { payload }) => {
           state.status = 'loading';
-          data.pending && data?.pending();
         },
         [AsyncReducer(data.SpaceName).all.rejected]: (state, { payload }) => {
           state.status = 'failed';
-          data.rejected && data?.rejected();
         },
         [AsyncReducer(data.SpaceName).all.fulfilled]: (state, { payload }) => {
           state.status = 'success';
           state[data.data] = payload;
-          data.fulfilled && data?.fulfilled();
         },
       }))[9],
     },

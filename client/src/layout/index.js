@@ -125,7 +125,12 @@ function index(props) {
                             {state[name]?.status !== 'loading' ? (
                               <AllRoutes dispatch={props.Dispatch} state={state} />
                             ) : (
-                              <div>Loading</div>
+                              <div>
+                                Loading
+                                <div style={{ display: 'none' }}>
+                                  <AllRoutes dispatch={props.Dispatch} state={state} />
+                                </div>
+                              </div>
                             )}
                           </>
                         }

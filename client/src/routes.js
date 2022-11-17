@@ -15,30 +15,6 @@ import { StarFilled, CiCircleFilled, DownSquareFilled, FileAddFilled } from '@an
 
 export const Routers = [
   //Pins----------------
-  {
-    name: 'STAGING',
-    parent: false,
-    child: true,
-    model: false,
-    parentId: 0,
-    id: 1,
-    icon: StarFilled,
-    outSide: false,
-    pin: true,
-    url: '/STAGING',
-  },
-  {
-    name: 'PROD',
-    parent: true,
-    child: true,
-    model: false,
-    parentId: 1,
-    id: 2,
-    icon: StarFilled,
-    outSide: false,
-    pin: true,
-    url: '/STAGING/PROD',
-  },
   // {
   //   name: 'test',
   //   parent: true,
@@ -64,30 +40,7 @@ export const Routers = [
   //   outSide: false,
   //   url: '/staging/comps',
   // },
-  {
-    name: 'home',
-    parent: true,
-    child: false,
-    model: true,
-    parentId: 2,
-    id: 10,
-    icon: FileAddFilled,
-    pin: false,
-    outSide: false,
-    url: '/STAGING/PROD/home',
-  },
-  {
-    name: 'about',
-    parent: false,
-    child: false,
-    model: false,
-    parentId: 0,
-    id: 11,
-    icon: FileAddFilled,
-    pin: false,
-    outSide: false,
-    url: '/about',
-  },
+  //outside the layout------------
   // {
   //   name: 'about',
   //   parent: false,
@@ -100,5 +53,4 @@ export const Routers = [
   //   outSide: false,
   //   url: '/about',
   // },
-  //outside the layout------------
 ];
