@@ -1,12 +1,3 @@
-// import { slice, AsyncReducer } from './api';
+import { slice } from './api';
 
-// export default slice(
-//   'common',
-//   { data: {}, status: null },
-//   {
-//     [AsyncReducer('common/test').GET.fulfilled]: (state, { payload }) => {
-//       state.status = 'success';
-//       state.data = payload;
-//     },
-//   },
-// );
+export default slice('common', { data: {}, status: 'null' });

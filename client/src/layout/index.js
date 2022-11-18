@@ -121,18 +121,18 @@ function index(props) {
                         path={url}
                         key={name}
                         element={
-                          <>
-                            {state[name]?.status !== 'loading' ? (
-                              <AllRoutes dispatch={props.Dispatch} state={state} />
-                            ) : (
-                              <div>
-                                Loading
-                                <div style={{ display: 'none' }}>
-                                  <AllRoutes dispatch={props.Dispatch} state={state} />
-                                </div>
-                              </div>
-                            )}
-                          </>
+                          // <>
+                          //   {state[name]?.status !== 'loading' ? (
+                          //     <AllRoutes dispatch={props.Dispatch} state={state} />
+                          //   ) : (
+                          //     <div>
+                          //       Loading
+                          //       <div style={{ display: 'none' }}>
+                          <AllRoutes dispatch={props.Dispatch} state={state} />
+                          //       </div>
+                          //     </div>
+                          //   )}
+                          // </>
                         }
                       />
                     );
