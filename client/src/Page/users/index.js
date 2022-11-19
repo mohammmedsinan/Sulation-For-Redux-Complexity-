@@ -1,12 +1,12 @@
 import React from 'react';
 import List from './components/list';
 
-function index({ state: { users }, dispatch }) {
+function index({ state: { Users }, dispatch }) {
   React.useEffect(() => {
-    if (users?.status === 'loading') {
-      dispatch('users/get', '/Profile/all', 'POST', {});
+    if (Users?.status === 'loading') {
+      dispatch('users/get', '/users/all', 'POST', {});
     }
-  }, [users?.status]);
+  }, [Users?.status]);
   return (
     <div>
       <List />

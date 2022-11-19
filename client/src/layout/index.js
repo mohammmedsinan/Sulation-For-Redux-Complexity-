@@ -1,6 +1,6 @@
 import { Routes, Route, useLocation, Link, useNavigate } from 'react-router-dom';
 import { Routers } from '../routes';
-import React, { useState } from 'react';
+import React from 'react';
 import MenuS from './menu/index';
 import { Breadcrumb, Layout } from 'antd';
 import HeaderS from './header';
@@ -78,15 +78,15 @@ function BreadCrumb() {
 function index(props) {
   let currentPage = [];
   const location = useLocation();
-  const navigate = useNavigate();
+  const current = location.pathname.split('/');
+  const state = useSelector((state) => state);
   React.useEffect(() => {
     // if (location.pathname === '/') return navigate('/staging/comps');
     BreadCrumb();
   }, [location.pathname]);
-  const current = location.pathname.split('/');
   if (current.length === 2) {
     Routers.map((route) => {
-      if (route.name.ignoreCase === current[1].ignoreCase) {
+      if (route.name.toLowerCase() === current[1].toLowerCase()) {
         currentPage.push(route);
       }
     });
@@ -115,25 +115,11 @@ function index(props) {
                 {Routers.map(({ name, pin, outSide, url }) => {
                   if (!pin && !outSide) {
                     const AllRoutes = require('../Page/' + name + '/index').default;
-                    const state = useSelector((state) => state);
                     return (
                       <Route
                         path={url}
                         key={name}
-                        element={
-                          // <>
-                          //   {state[name]?.status !== 'loading' ? (
-                          //     <AllRoutes dispatch={props.Dispatch} state={state} />
-                          //   ) : (
-                          //     <div>
-                          //       Loading
-                          //       <div style={{ display: 'none' }}>
-                          <AllRoutes dispatch={props.Dispatch} state={state} />
-                          //       </div>
-                          //     </div>
-                          //   )}
-                          // </>
-                        }
+                        element={<AllRoutes dispatch={props.Dispatch} state={state} />}
                       />
                     );
                   }
@@ -166,27 +152,38 @@ function index(props) {
             </Layout>
           ) : (
             <>
-              <BreadCrumb />
-              <Routes>
-                {currentPage.map(({ name, url }) => {
-                  let parentOFCurrentPage = '';
-                  Routers.map((route) => {
-                    if (route.id === currentPage[0].parentId) {
-                      parentOFCurrentPage = route.name;
-                    }
-                  });
-                  const AllRoutes = require(`../Page/${parentOFCurrentPage}/${name}`).default;
-                  const state = useSelector((state) => state);
-
-                  return (
-                    <Route
-                      path={url}
-                      key={name}
-                      element={<AllRoutes dispatch={props.Dispatch} state={state} />}
-                    />
-                  );
-                })}
-              </Routes>
+              <Layout style={{ minHeight: '100vh' }}>
+                <MenuS />
+                <Layout>
+                  <HeaderS />
+                  <Content
+                    style={{
+                      margin: '0 16px',
+                    }}
+                  >
+                    <BreadCrumb />
+                    <Routes>
+                      {currentPage.map(({ name, url }) => {
+                        let parentOFCurrentPage = '';
+                        Routers.map((route) => {
+                          if (route.id === currentPage[0].parentId) {
+                            parentOFCurrentPage = route.name;
+                          }
+                        });
+                        const AllRoutes = require(`../Page/${parentOFCurrentPage}/${name}`).default;
+                        return (
+                          <Route
+                            path={url}
+                            key={name}
+                            element={<AllRoutes dispatch={props.Dispatch} state={state} />}
+                          />
+                        );
+                      })}
+                    </Routes>
+                  </Content>
+                  <FooterS />
+                </Layout>
+              </Layout>
             </>
           )}
         </>

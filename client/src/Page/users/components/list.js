@@ -7,22 +7,26 @@ const columns = [
     title: 'ID',
     dataIndex: '_id',
     key: '_id',
+    width: '300px',
   },
   {
     title: 'Name',
     dataIndex: 'username',
     key: 'username',
+    width: '150px',
   },
   {
     title: 'Avatar',
     dataIndex: 'Avatar',
     key: 'Avatar',
+    width: '200px',
   },
 
   {
     title: 'Followers',
     render: (e) => <>{e.Followers.length}</>,
     key: 'Followers',
+    width: '150px',
   },
   {
     title: 'Following',
@@ -47,7 +51,7 @@ const List = () => {
       history(`${location.pathname}?pagesize=${state.current}`);
     }
   }
-  const data = useSelector((state) => state?.users);
+  const data = useSelector((state) => state?.Users);
   return (
     <Table
       onChange={onChange}
@@ -59,8 +63,8 @@ const List = () => {
         defaultCurrent: search.pagesize,
         current: search.pagesize,
         position: ['bottomCenter'],
-        pageSize: 2,
-        total: 7,
+        pageSize: data.data.pageSize,
+        total: data.data.total,
       }}
     />
   );

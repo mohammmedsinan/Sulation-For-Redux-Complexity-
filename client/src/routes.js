@@ -1,4 +1,4 @@
-import { StarFilled, CiCircleFilled, DownSquareFilled, FileAddFilled } from '@ant-design/icons';
+import { UserOutlined, HddOutlined, StarFilled } from '@ant-design/icons';
 
 // {
 //   name: @String &&this name will appear on menu slider
@@ -27,54 +27,55 @@ export const Routers = [
   //   pin: true,
   //   url: '/STAGING/test',
   // },
-  //Routes----------------
-  // {
-  //   name: 'comps',
-  //   parent: true,
-  //   child: false,
-  //   model: false,
-  //   parentId: 1,
-  //   id: 10,
-  //   icon: FileAddFilled,
-  //   pin: false,
-  //   outSide: false,
-  //   url: '/staging/comps',
-  // },
   {
-    name: 'users',
+    name: 'Analytics',
+    parent: false,
+    child: true,
+    model: false,
+    parentId: 0,
+    id: 1,
+    icon: StarFilled,
+    outSide: false,
+    pin: true,
+    url: '/Analytics',
+  },
+  //Routes----------------
+  {
+    name: 'Users',
     parent: false,
     child: false,
     model: true,
     parentId: 0,
     id: 10,
-    icon: FileAddFilled,
+    icon: UserOutlined,
     pin: false,
     outSide: false,
     url: '/users',
   },
   {
-    name: 'login',
+    name: 'Products',
     parent: false,
     child: false,
     model: true,
     parentId: 0,
     id: 11,
-    icon: FileAddFilled,
+    icon: HddOutlined,
     pin: false,
     outSide: false,
-    url: '/login',
+    url: '/products',
   },
+
   //outside the layout------------
-  // {
-  //   name: 'about',
-  //   parent: false,
-  //   child: false,
-  //   model: false,
-  //   parentId: 0,
-  //   id: 11,
-  //   icon: FileAddFilled,
-  //   pin: false,
-  //   outSide: false,
-  //   url: '/about',
-  // },
+  {
+    name: 'create-product',
+    parent: true,
+    child: false,
+    model: false,
+    parentId: 11,
+    id: 100,
+    icon: HddOutlined,
+    pin: false,
+    outSide: true,
+    url: '/products/create-product/:id',
+  },
 ];

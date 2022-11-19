@@ -65,3 +65,38 @@ Content-Type: application/json
       "YourTweets": ["623453cb75a1bd999d45bee2","623453ce75a1bd999d45bee4","623453c675a1bd999d45bee0","623453c375a1bd999d45bede","623453bc75a1bd999d45bedc"],
       "NumberOfLikedTWeets": []
 }
+################Products##########################
+
+POST http://localhost:5000/products/create
+Content-Type: application/json
+
+{
+    "name":"mouse" , 
+    "img":"https://m.media-amazon.com/images/I/61O-tBIkcfS.jpg" , 
+    "price":320 ,
+    "stock":24
+
+}
+
+###
+
+POST http://localhost:5000/products/all
+Content-Type: application/json
+
+{}
+###
+DELETE  http://localhost:5000/products/delete
+Content-Type: application/json
+
+{
+    "id":"6377c095fe51278f440f6d8c"
+}
+
+
+###
+POST http://localhost:5000/products/find
+Content-Type: application/json
+
+{
+    "id":"6377c05efe51278f440f6d87"
+}

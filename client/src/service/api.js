@@ -30,7 +30,7 @@ export function AsyncReducer(spaceName = 'SPACE/Name', preFix = '/', PostParams 
       return data?.data;
     }),
     DELETE: createAsyncThunk(spaceName, async () => {
-      const data = await api.delete(preFix, PostParams);
+      const data = await api.delete(preFix, { data: PostParams });
       return data?.data;
     }),
     PUT: createAsyncThunk(spaceName, async () => {
