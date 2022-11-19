@@ -93,7 +93,7 @@ function index() {
         defaultActive = route.id;
       }
       if (pathname[2].toLowerCase() === route.name.toLowerCase()) {
-        defaultOpen = route.id;
+        defaultOpen = [route.id, route.parentId];
       }
     }
   });
@@ -105,13 +105,13 @@ function index() {
       onCollapse={(value) => setCollapsed(value)}
       style={{ boxShadow: '1px 0px 20px 0px' }}
     >
-      <div className="logo" style={{ height: '100px', backgroundColor: '#346beb' }} />
+      <div className="logo" style={{ height: '100px', backgroundColor: '#995909' }} />
       <Menu
         theme="dark"
         defaultSelectedKeys={[`${defaultActive}`]}
         mode="inline"
         items={items}
-        defaultOpenKeys={[`${defaultOpen}`]}
+        defaultOpenKeys={[`${defaultOpen[0]}`, `${defaultOpen[1]}`]}
       />
     </Sider>
   );

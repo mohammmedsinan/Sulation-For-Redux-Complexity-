@@ -1,4 +1,4 @@
-import Profile from '../models/ProfileModal.js';
+import Profile from '../models/usersModal.js';
 
 //Create User
 export const createUser = async (req, res) => {
@@ -31,6 +31,8 @@ export const GetAllUsers = async (req, res) => {
           res.status(201).json({
             message: 'Get all users work successfully',
             data: users,
+            pageSize: 10,
+            total: users.length,
           });
         });
     } else {

@@ -21,7 +21,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      API: path.resolve(__dirname, 'src/utilities/api.js'),
+      API: path.resolve(__dirname, 'src/service/api.js'),
       Config: path.resolve(__dirname, 'src/utilities/config.js'),
     },
   },
@@ -49,9 +49,9 @@ module.exports = {
               lessOptions: {
                 // If you are using less-loader@5 please spread the lessOptions to options directly
                 modifyVars: {
-                  'primary-color': '#346beb',
-                  'link-color': '#1DA57A',
-                  'secondary-color': '#ce714f',
+                  'primary-color': '#995909',
+                  'link-color': '#f01a30',
+                  'secondary-color': '#8644EB',
                   'border-radius-base': '2px',
                 },
                 javascriptEnabled: true,
