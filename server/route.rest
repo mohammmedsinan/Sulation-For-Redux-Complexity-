@@ -110,3 +110,39 @@ Content-Type: application/json
     "price":320 ,
     "stock":24
 }
+
+################ Event ##########################
+
+###
+POST http://localhost:5000/events/create
+Content-Type: application/json
+
+{
+    "name":"Blackfriday" , 
+    "img":"https://media.istockphoto.com/id/1281067367/photo/sale-tag-with-black-friday-written-on-yellow-background.jpg?s=612x612&w=0&k=20&c=bQfZ-GhXjPDoXLiBqf3GX0ISpqrllDyRW9h0wzFhuXQ=" , 
+    "about":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum" ,
+    "link":"www.google.com"
+
+}
+
+###
+
+POST http://localhost:5000/events/all
+Content-Type: application/json
+
+{}
+
+###
+GET http://localhost:5000/events/find/63799fae8b330a72ff3b14b3
+Content-Type: application/json
+
+###
+PUT  http://localhost:5000/events/update/63799fae8b330a72ff3b14b3
+Content-Type: application/json
+
+{
+    "name":"Blackfriday1" , 
+    "img":"https://media.istockphoto.com/id/1281067367/photo/sale-tag-with-black-friday-written-on-yellow-background.jpg?s=612x612&w=0&k=20&c=bQfZ-GhXjPDoXLiBqf3GX0ISpqrllDyRW9h0wzFhuXQ=" , 
+    "about":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum" ,
+    "link":"www.google.com"
+}

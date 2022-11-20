@@ -7,31 +7,28 @@ import { useSelector } from 'react-redux';
 function onFinishFailed() {}
 
 function index() {
-  let data = useSelector((state) => state?.Products);
+  let data = useSelector((state) => state?.Events);
   const location = useLocation();
   const editMode = window.location.href.includes('edit');
   const navigate = useNavigate();
   const id = location.pathname.split('/')[3];
   const [form] = Form.useForm();
   React.useEffect(() => {
-    editMode &&
-      Dispatch('products/details', '/products/find', 'POST', {
-        id,
-      });
+    if (editMode) {
+      Dispatch('events/details', `/events/find/${id}`, 'GET');
+    }
   }, []);
   function onFinish(values) {
     if (editMode) {
-      Dispatch('products/create', `/products/update/${id}`, 'PUT', { ...values });
+      Dispatch('events/create', `/events/update/${id}`, 'PUT', { ...values });
     } else {
-      Dispatch('products/create', '/products/create', 'POST', { ...values });
+      Dispatch('events/create', '/events/create', 'POST', { ...values });
     }
     setTimeout(() => {
-      Dispatch('products/details', '/products/find', 'POST', {
-        id,
-      });
+      Dispatch('events/details', `/events/find/${id}`, 'GET');
     }, 700);
 
-    navigate('/products');
+    navigate('/events');
   }
 
   if ((data?.status !== 'loading' && data?.details?.data?._id === id) || editMode === false) {
@@ -39,10 +36,10 @@ function index() {
       <Card>
         <Form form={form} name="Register" onFinish={onFinish} onFinishFailed={onFinishFailed}>
           <Row>
-            <Col span={24}>
+            <Col span={12}>
               <Form.Item
                 name={['name']}
-                label="Product Name"
+                label="Event Name"
                 rules={[{ required: true }]}
                 labelCol={{ span: 24 }}
                 initialValue={editMode ? data?.details?.data?.name : undefined}
@@ -50,10 +47,12 @@ function index() {
                 <Input placeholder="Product Name..." />
               </Form.Item>
             </Col>
+          </Row>
+          <Row>
             <Col span={12}>
               <Form.Item
                 name={['img']}
-                label="Image Url"
+                label="Image slider"
                 rules={[{ required: true }]}
                 labelCol={{ span: 24 }}
                 initialValue={editMode ? data?.details?.data?.img : undefined}
@@ -65,24 +64,26 @@ function index() {
           <Row>
             <Col span={12}>
               <Form.Item
-                name={['price']}
-                label="Price"
+                name={['about']}
+                label="About the event"
                 rules={[{ required: true }]}
                 labelCol={{ span: 24 }}
-                initialValue={editMode ? data?.details?.data?.price : undefined}
+                initialValue={editMode ? data?.details?.data?.about : undefined}
               >
-                <InputNumber placeholder="Price of product" />
+                <Input placeholder="info about the event" />
               </Form.Item>
             </Col>
+          </Row>
+          <Row>
             <Col span={12}>
               <Form.Item
-                name={['stock']}
-                label="Stocks"
+                name={['link']}
+                label="Redirect Link"
                 rules={[{ required: true }]}
                 labelCol={{ span: 24 }}
-                initialValue={editMode ? data?.details?.data?.stock : undefined}
+                initialValue={editMode ? data?.details?.data?.link : undefined}
               >
-                <InputNumber placeholder="How much stock is available" />
+                <Input placeholder="How much stock is available" />
               </Form.Item>
             </Col>
           </Row>

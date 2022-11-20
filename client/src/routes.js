@@ -64,6 +64,18 @@ export const Routers = [
     outSide: false,
     url: '/products',
   },
+  {
+    name: 'Events',
+    parent: false,
+    child: false,
+    model: true,
+    parentId: 0,
+    id: 12,
+    icon: HddOutlined,
+    pin: false,
+    outSide: false,
+    url: '/events',
+  },
 
   //outside the layout------------
   {
@@ -77,5 +89,17 @@ export const Routers = [
     pin: false,
     outSide: true,
     url: '/products/create-product/:id',
+  },
+  {
+    name: 'create-event',
+    parent: true,
+    child: false,
+    model: false,
+    parentId: 12,
+    id: 100,
+    icon: HddOutlined,
+    pin: false,
+    outSide: true,
+    url: '/events/create-event/:id',
   },
 ];
