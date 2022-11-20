@@ -100,3 +100,13 @@ Content-Type: application/json
 {
     "id":"6377c05efe51278f440f6d87"
 }
+###
+PUT  http://localhost:5000/products/update/6377c05efe51278f440f6d87
+Content-Type: application/json
+
+{
+    "name":"mouse" , 
+    "img":"https://m.media-amazon.com/images/I/61O-tBIkcfS.jpg" , 
+    "price":320 ,
+    "stock":24
+}

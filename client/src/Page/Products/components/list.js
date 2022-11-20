@@ -8,7 +8,9 @@ const { Text } = Typography;
 
 function onConfirm({ _id }) {
   Dispatch('products/delete', '/products/delete', 'DELETE', { id: _id });
-  Dispatch('products/get', '/products/all', 'POST', {});
+  setTimeout(() => {
+    Dispatch('products/get', '/products/all', 'POST', {});
+  }, 500);
 }
 const columns = [
   {

@@ -1,4 +1,4 @@
-import { Button, Form, Input, Card, InputNumber, Row, Col } from 'antd';
+import { Button, Form, Input, Card, InputNumber, Row, Col, Skeleton } from 'antd';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Dispatch } from 'API';
 import React from 'react';
@@ -7,31 +7,28 @@ import { useSelector } from 'react-redux';
 function onFinishFailed() {}
 
 function index() {
-  const data = useSelector((state) => state?.Products);
-  const editMode = window.location.href.includes('edit');
+  let data = useSelector((state) => state?.Products);
   const location = useLocation();
+  const editMode = window.location.href.includes('edit');
   const navigate = useNavigate();
+  const id = location.pathname.split('/')[3];
   const [form] = Form.useForm();
-
   React.useEffect(() => {
-    if (editMode && data?.status === 'loading') {
+    editMode &&
       Dispatch('products/details', '/products/find', 'POST', {
-        id: location.pathname.split('/')[3],
+        id,
       });
-    }
-  }, [data?.details]);
-  React.useEffect(() => {
-    Dispatch('products/details', '/products/find', 'POST', {
-      id: location.pathname.split('/')[3],
-    });
-    Dispatch('products/get', '/products/all', 'POST', {});
-    console.log('faired');
   }, []);
   function onFinish(values) {
-    Dispatch('products/create', '/products/create', 'POST', { ...values });
+    if (editMode) {
+      Dispatch('products/create', `/products/update/${id}`, 'PUT', { ...values });
+    } else {
+      Dispatch('products/create', '/products/create', 'POST', { ...values });
+    }
     navigate('/products');
   }
-  if (data?.status !== 'loading') {
+
+  if ((data?.status !== 'loading' && data?.details?.data?._id === id) || editMode === false) {
     return (
       <Card>
         <Form form={form} name="Register" onFinish={onFinish} onFinishFailed={onFinishFailed}>
@@ -42,9 +39,9 @@ function index() {
                 label="Product Name"
                 rules={[{ required: true }]}
                 labelCol={{ span: 24 }}
-                initialValue={data?.details?.data?.name}
+                initialValue={editMode ? data?.details?.data?.name : undefined}
               >
-                <Input />
+                <Input placeholder="Product Name..." />
               </Form.Item>
             </Col>
             <Col span={12}>
@@ -53,9 +50,9 @@ function index() {
                 label="Image Url"
                 rules={[{ required: true }]}
                 labelCol={{ span: 24 }}
-                initialValue={data?.details?.data?.img}
+                initialValue={editMode ? data?.details?.data?.img : undefined}
               >
-                <Input />
+                <Input placeholder="add image url" />
               </Form.Item>
             </Col>
           </Row>
@@ -66,9 +63,9 @@ function index() {
                 label="Price"
                 rules={[{ required: true }]}
                 labelCol={{ span: 24 }}
-                initialValue={data?.details?.data?.price}
+                initialValue={editMode ? data?.details?.data?.price : undefined}
               >
-                <InputNumber />
+                <InputNumber placeholder="Price of product" />
               </Form.Item>
             </Col>
             <Col span={12}>
@@ -77,9 +74,9 @@ function index() {
                 label="Stocks"
                 rules={[{ required: true }]}
                 labelCol={{ span: 24 }}
-                initialValue={data?.details?.data?.stock}
+                initialValue={editMode ? data?.details?.data?.stock : undefined}
               >
-                <InputNumber />
+                <InputNumber placeholder="How much stock is available" />
               </Form.Item>
             </Col>
           </Row>
@@ -100,7 +97,15 @@ function index() {
       </Card>
     );
   }
-  return null;
+  return (
+    <Skeleton
+      avatar
+      active
+      paragraph={{
+        rows: 4,
+      }}
+    />
+  );
 }
 
 export default index;
