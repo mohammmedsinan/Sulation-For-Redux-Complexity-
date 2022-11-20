@@ -1,4 +1,10 @@
-import { StarFilled, CiCircleFilled } from '@ant-design/icons';
+import {
+  UserOutlined,
+  HddOutlined,
+  StarFilled,
+  BarChartOutlined,
+  AlertOutlined,
+} from '@ant-design/icons';
 
 // {
 //   name: @String &&this name will appear on menu slider
@@ -10,77 +16,96 @@ import { StarFilled, CiCircleFilled } from '@ant-design/icons';
 //   icon: method && should defined as a antd icon
 //   pin: @boolean && to know if its ping or not
 //   outSide: @boolean && to know if it will be inside the layout or outside the layout
+//   url: '/home/create-home' @string path of url
 // },
 
 export const Routers = [
   //Pins----------------
   {
-    name: 'feed',
+    name: 'Analytics',
     parent: false,
     child: true,
     model: false,
     parentId: 0,
-    id: 5,
+    id: 1,
     icon: StarFilled,
     outSide: false,
     pin: true,
+    url: '/Analytics',
   },
   //Routes----------------
   {
-    name: 'Home',
+    name: 'Users',
     parent: false,
     child: false,
     model: true,
-    parentId: '',
-    id: 1,
-    icon: StarFilled,
+    parentId: 0,
+    id: 10,
+    icon: UserOutlined,
     pin: false,
     outSide: false,
+    url: '/users',
   },
   {
-    name: 'Buy',
+    name: 'Products',
     parent: false,
     child: false,
     model: true,
-    parentId: '',
-    id: 2,
-    icon: StarFilled,
+    parentId: 0,
+    id: 11,
+    icon: HddOutlined,
     pin: false,
     outSide: false,
+    url: '/products',
   },
   {
-    name: 'About',
+    name: 'Events',
     parent: false,
     child: false,
     model: true,
-    parentId: '',
-    id: 3,
-    icon: StarFilled,
+    parentId: 0,
+    id: 12,
+    icon: AlertOutlined,
     pin: false,
     outSide: false,
+    url: '/events',
   },
   {
-    name: 'Contact',
+    name: 'Chart',
     parent: true,
     child: false,
-    model: false,
-    parentId: 5,
-    id: 4,
-    icon: CiCircleFilled,
-    pin: false,
-    outSide: false,
-  },
-  //outside the layout
-  {
-    name: 'create-home',
-    parent: true,
-    child: false,
-    model: false,
+    model: true,
     parentId: 1,
-    id: 6,
-    icon: CiCircleFilled,
+    id: 13,
+    icon: BarChartOutlined,
+    pin: false,
+    outSide: false,
+    url: '/Analytics/chart',
+  },
+
+  //outside the layout------------
+  {
+    name: 'create-product',
+    parent: true,
+    child: false,
+    model: false,
+    parentId: 11,
+    id: 100,
+    icon: HddOutlined,
     pin: false,
     outSide: true,
-    parentName: 'Home',
+    url: '/products/create-product/:id',
+  },
+  {
+    name: 'create-event',
+    parent: true,
+    child: false,
+    model: false,
+    parentId: 12,
+    id: 100,
+    icon: HddOutlined,
+    pin: false,
+    outSide: true,
+    url: '/events/create-event/:id',
   },
 ];

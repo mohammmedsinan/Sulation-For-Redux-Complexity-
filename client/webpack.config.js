@@ -1,7 +1,6 @@
 const miniCssExtractPlugin = require('mini-css-extract-plugin');
 const config = require('./src/utilities/config');
 const path = require('path');
-
 const { Site_Theme } = config;
 module.exports = {
   entry: {
@@ -10,7 +9,7 @@ module.exports = {
 
   output: {
     path: path.join(__dirname, './dist'),
-    filename: 'index.bundle.js',
+    filename: 'index.js',
     publicPath: '/',
     asyncChunks: true,
   },
@@ -22,7 +21,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      API: path.resolve(__dirname, 'src/utilities/api.js'),
+      API: path.resolve(__dirname, 'src/service/api.js'),
       Config: path.resolve(__dirname, 'src/utilities/config.js'),
     },
   },
@@ -34,10 +33,6 @@ module.exports = {
         use: {
           loader: 'babel-loader',
         },
-      },
-      {
-        test: /\.scss$/,
-        use: [miniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
       {
         test: /\.less$/,
@@ -54,9 +49,9 @@ module.exports = {
               lessOptions: {
                 // If you are using less-loader@5 please spread the lessOptions to options directly
                 modifyVars: {
-                  'primary-color': '#346beb',
-                  'link-color': '#1DA57A',
-                  'secondary-color': '#ce714f',
+                  'primary-color': '#ef3f37',
+                  'link-color': '#fbaf41',
+                  'secondary-color': '#262161',
                   'border-radius-base': '2px',
                 },
                 javascriptEnabled: true,
