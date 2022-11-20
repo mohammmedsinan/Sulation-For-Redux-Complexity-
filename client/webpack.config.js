@@ -49,9 +49,9 @@ module.exports = {
               lessOptions: {
                 // If you are using less-loader@5 please spread the lessOptions to options directly
                 modifyVars: {
-                  'primary-color': '#995909',
-                  'link-color': '#f01a30',
-                  'secondary-color': '#8644EB',
+                  'primary-color': '#ef3f37',
+                  'link-color': '#fbaf41',
+                  'secondary-color': '#262161',
                   'border-radius-base': '2px',
                 },
                 javascriptEnabled: true,

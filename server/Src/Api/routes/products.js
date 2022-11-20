@@ -4,6 +4,7 @@ import {
   GetAllProducts,
   DeleteProductById,
   GitSingleProduct,
+  updateProduct,
 } from '../controllers/productsControl.js';
 
 const router = express.Router();
@@ -11,5 +12,6 @@ router.post('/create', createProduct);
 router.post('/find', GitSingleProduct);
 router.post('/all', GetAllProducts);
 router.delete('/delete', DeleteProductById);
+router.put('/update/:id', updateProduct);
 
 export default router;

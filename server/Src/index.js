@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import Users from './Api/routes/users.js';
 import Tweets from './Api/routes/Tweets.js';
+import Events from './Api/routes/events.js';
 import Products from './Api/routes/products.js';
 
 const app = express();
@@ -21,6 +22,7 @@ app.get('/', (req, res) => {
 app.use('/Tweets', Tweets);
 app.use('/users', Users);
 app.use('/products', Products);
+app.use('/events', Events);
 mongoose.connect(
   MONGO_URI,
   {

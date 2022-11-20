@@ -7,9 +7,9 @@ import React from 'react';
 const { Text } = Typography;
 
 function onConfirm({ _id }) {
-  Dispatch('products/delete', '/products/delete', 'DELETE', { id: _id });
+  Dispatch('events/delete', `/events/delete/${_id}`, 'DELETE');
   setTimeout(() => {
-    Dispatch('products/get', '/products/all', 'POST', {});
+    Dispatch('events/get', '/events/all', 'POST', {});
   }, 500);
 }
 const columns = [
@@ -32,16 +32,14 @@ const columns = [
     width: '300px',
   },
   {
-    title: 'Price',
-    render: ({ price }) => <Text mark>{price}$</Text>,
-    key: 'price',
-    width: '150px',
+    title: 'about',
+    dataIndex: 'about',
+    key: 'about',
   },
   {
-    title: 'Stock',
-    render: ({ stock }) => <Text type="warning">{stock === 0 ? 'Out of Stock' : stock}</Text>,
-    key: 'stock',
-    width: '150px',
+    title: 'link',
+    dataIndex: 'link',
+    key: 'link',
   },
   {
     title: 'Operations',
@@ -55,7 +53,7 @@ const columns = [
         >
           <a href="#">Delete</a>
         </Popconfirm>
-        <Link to={`/products/create-product/${data._id}?edit=true`} style={{ margin: '0px 10px' }}>
+        <Link to={`/events/create-event/${data._id}?edit=true`} style={{ margin: '0px 10px' }}>
           <Text type="warning">Edit</Text>
         </Link>
       </>
@@ -81,7 +79,7 @@ const List = () => {
       history(`${location.pathname}?pagesize=${state.current}`);
     }
   }
-  const data = useSelector((state) => state?.Products);
+  const data = useSelector((state) => state?.Events);
   return (
     <>
       <Table

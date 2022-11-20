@@ -1,13 +1,13 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { store } from '../utilities/Store';
 import { Api_Base_URl } from 'Config';
-import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const api = axios.create({
   baseURL: `${Api_Base_URl}`,
 });
 
+//Dispatch any reducer and any type of reducers
 export function Dispatch(spaceName, prefix, reqMethod, body) {
   if (reqMethod === 'GET') {
     return store.dispatch(AsyncReducer(spaceName, prefix).GET());
@@ -19,7 +19,9 @@ export function Dispatch(spaceName, prefix, reqMethod, body) {
     return store.dispatch(AsyncReducer(spaceName, prefix, body).DELETE());
   }
 }
-export function AsyncReducer(spaceName = 'SPACE/Name', preFix = '/', PostParams = {}) {
+
+//Api AsyncThunk creator
+function AsyncReducer(spaceName = 'SPACE/Name', preFix = '/', PostParams = {}) {
   const AsyncReducers = {
     GET: createAsyncThunk(spaceName, async () => {
       const data = await api.get(preFix);
@@ -48,8 +50,9 @@ export function AsyncReducer(spaceName = 'SPACE/Name', preFix = '/', PostParams 
   };
   return AsyncReducers;
 }
+
+//Slice creator
 export function slice(sliceName, initialState, ExtraReducers = [], reducers) {
-  console.log();
   const model = createSlice({
     name: sliceName,
     initialState,

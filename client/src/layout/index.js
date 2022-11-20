@@ -2,7 +2,7 @@ import { Routes, Route, useLocation, Link, useNavigate } from 'react-router-dom'
 import { Routers } from '../routes';
 import React from 'react';
 import MenuS from './menu/index';
-import { Breadcrumb, Layout } from 'antd';
+import { Breadcrumb, Card, Layout } from 'antd';
 import HeaderS from './header';
 import FooterS from './footer';
 import { useSelector } from 'react-redux';
@@ -111,21 +111,23 @@ function index(props) {
               }}
             >
               <BreadCrumb />
-              <Routes>
-                {Routers.map(({ name, pin, outSide, url }) => {
-                  if (!pin && !outSide) {
-                    const AllRoutes = require('../Page/' + name + '/index').default;
-                    return (
-                      <Route
-                        path={url}
-                        key={name}
-                        element={<AllRoutes dispatch={props.Dispatch} state={state} />}
-                      />
-                    );
-                  }
-                })}
-                <Route path="*" element={<>This Page is not found</>} />
-              </Routes>
+              <Card>
+                <Routes>
+                  {Routers.map(({ name, pin, outSide, url }) => {
+                    if (!pin && !outSide) {
+                      const AllRoutes = require('../Page/' + name + '/index').default;
+                      return (
+                        <Route
+                          path={url}
+                          key={name}
+                          element={<AllRoutes dispatch={props.Dispatch} state={state} />}
+                        />
+                      );
+                    }
+                  })}
+                  <Route path="*" element={<>This Page is not found</>} />
+                </Routes>
+              </Card>
             </Content>
             <FooterS />
           </Layout>

@@ -67,11 +67,28 @@ export const DeleteProductById = async (req, res) => {
 //============================Get one Product each request==================================
 export const GitSingleProduct = (req, res) => {
   const id = req.body.id;
-  console.log(req.body);
   Products.find({ _id: id }).then((data) => {
     res.status(201).json({
       Message: `Get this ${id} Product successfully`,
       data: data[0],
     });
   });
+};
+//============================Update the product==================================
+
+export const updateProduct = async (req, res) => {
+  const id = req.params.id;
+  const data = req.body;
+  try {
+    const product = await Products.findOneAndUpdate({ _id: id }, { ...data });
+    await product.save((err, u) => {
+      if (err) res.json(err);
+      res.json(data);
+    });
+  } catch (err) {
+    res.status(401).json({
+      message: 'failed update product',
+      err,
+    });
+  }
 };
