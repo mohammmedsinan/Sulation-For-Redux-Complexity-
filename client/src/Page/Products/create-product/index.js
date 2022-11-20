@@ -25,11 +25,12 @@ function index() {
     } else {
       Dispatch('products/create', '/products/create', 'POST', { ...values });
     }
-    setTimeout(() => {
-      Dispatch('products/details', '/products/find', 'POST', {
-        id,
-      });
-    }, 700);
+    editMode &&
+      setTimeout(() => {
+        Dispatch('products/details', '/products/find', 'POST', {
+          id,
+        });
+      }, 700);
 
     navigate('/products');
   }

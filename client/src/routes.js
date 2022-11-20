@@ -1,4 +1,10 @@
-import { UserOutlined, HddOutlined, StarFilled } from '@ant-design/icons';
+import {
+  UserOutlined,
+  HddOutlined,
+  StarFilled,
+  BarChartOutlined,
+  AlertOutlined,
+} from '@ant-design/icons';
 
 // {
 //   name: @String &&this name will appear on menu slider
@@ -15,18 +21,6 @@ import { UserOutlined, HddOutlined, StarFilled } from '@ant-design/icons';
 
 export const Routers = [
   //Pins----------------
-  // {
-  //   name: 'test',
-  //   parent: true,
-  //   child: true,
-  //   model: false,
-  //   parentId: 1,
-  //   id: 3,
-  //   icon: StarFilled,
-  //   outSide: false,
-  //   pin: true,
-  //   url: '/STAGING/test',
-  // },
   {
     name: 'Analytics',
     parent: false,
@@ -71,10 +65,22 @@ export const Routers = [
     model: true,
     parentId: 0,
     id: 12,
-    icon: HddOutlined,
+    icon: AlertOutlined,
     pin: false,
     outSide: false,
     url: '/events',
+  },
+  {
+    name: 'Chart',
+    parent: true,
+    child: false,
+    model: true,
+    parentId: 1,
+    id: 13,
+    icon: BarChartOutlined,
+    pin: false,
+    outSide: false,
+    url: '/Analytics/chart',
   },
 
   //outside the layout------------

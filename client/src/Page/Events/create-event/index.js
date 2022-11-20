@@ -24,9 +24,10 @@ function index() {
     } else {
       Dispatch('events/create', '/events/create', 'POST', { ...values });
     }
-    setTimeout(() => {
-      Dispatch('events/details', `/events/find/${id}`, 'GET');
-    }, 700);
+    editMode &&
+      setTimeout(() => {
+        Dispatch('events/details', `/events/find/${id}`, 'GET');
+      }, 700);
 
     navigate('/events');
   }

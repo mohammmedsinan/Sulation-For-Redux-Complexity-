@@ -97,6 +97,7 @@ function index() {
       }
     }
   });
+  console.log(defaultActive);
   const [collapsed, setCollapsed] = useState(false);
   return (
     <Sider
@@ -111,7 +112,9 @@ function index() {
         defaultSelectedKeys={[`${defaultActive}`]}
         mode="inline"
         items={items}
-        defaultOpenKeys={[`${defaultOpen[0]}`, `${defaultOpen[1]}`]}
+        defaultOpenKeys={
+          pathname.length > 4 ? [`${defaultOpen[0]}`, `${defaultOpen[1]}`] : [`${defaultOpen}`]
+        }
       />
     </Sider>
   );
