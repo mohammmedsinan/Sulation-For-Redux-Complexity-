@@ -1,10 +1,10 @@
 import { Routes, Route, useLocation, Link, useNavigate } from 'react-router-dom';
 import { Routers } from '../routes';
 import React from 'react';
-import MenuS from './menu/index';
+import MenuS from '../Component/menu';
 import { Breadcrumb, Card, Layout } from 'antd';
-import HeaderS from './header';
-import FooterS from './footer';
+import HeaderS from '../Component/header';
+import FooterS from '../Component/footer';
 import { useSelector } from 'react-redux';
 
 function BreadCrumb() {
@@ -80,8 +80,9 @@ function index(props) {
   const location = useLocation();
   const current = location.pathname.split('/');
   const state = useSelector((state) => state);
+  const navigate = useNavigate();
   React.useEffect(() => {
-    // if (location.pathname === '/') return navigate('/staging/comps');
+    if (location.pathname === '/') return navigate('/Analytics/chart');
     BreadCrumb();
   }, [location.pathname]);
   if (current.length === 2) {

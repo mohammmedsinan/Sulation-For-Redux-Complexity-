@@ -4,6 +4,7 @@ import {
   StarFilled,
   BarChartOutlined,
   AlertOutlined,
+  RiseOutlined,
 } from '@ant-design/icons';
 
 // {
@@ -81,6 +82,18 @@ export const Routers = [
     pin: false,
     outSide: false,
     url: '/Analytics/chart',
+  },
+  {
+    name: 'Statics',
+    parent: true,
+    child: false,
+    model: true,
+    parentId: 1,
+    id: 14,
+    icon: RiseOutlined,
+    pin: false,
+    outSide: false,
+    url: '/Analytics/statics',
   },
 
   //outside the layout------------

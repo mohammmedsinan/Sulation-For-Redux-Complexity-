@@ -97,7 +97,6 @@ function index() {
       }
     }
   });
-  console.log(defaultActive);
   const [collapsed, setCollapsed] = useState(false);
   return (
     <Sider
