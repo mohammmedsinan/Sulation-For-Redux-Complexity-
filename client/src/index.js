@@ -5,7 +5,6 @@ import Layout from './layout/index';
 import { BrowserRouter as Router } from 'react-router-dom';
 import store from './utilities/Store';
 import { Provider } from 'react-redux';
-import 'antd/dist/antd.less';
 import './utilities/style.less';
 import { Dispatch } from 'API';
 

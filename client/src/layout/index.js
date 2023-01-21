@@ -7,6 +7,32 @@ import HeaderS from '../Component/header';
 import FooterS from '../Component/footer';
 import { useSelector } from 'react-redux';
 
+function BaseLayout({ child }) {
+  const { Content } = Layout;
+  return (
+    <Layout style={{ minHeight: '100vh' }}>
+      <MenuS />
+      <Layout>
+        <HeaderS />
+        <Content
+          style={{
+            margin: '0 16px',
+          }}
+        >
+          <BreadCrumb />
+          <Card>
+            <Routes>
+              {child}
+              <Route path="*" element={<>This Page is not found</>} />
+            </Routes>
+          </Card>
+        </Content>
+        <FooterS />
+      </Layout>
+    </Layout>
+  );
+}
+
 function BreadCrumb() {
   let currentUrl = {};
   let Parent = {};
@@ -98,100 +124,49 @@ function index(props) {
       }
     });
   }
-  const { Content } = Layout;
-  return (
-    <>
-      {currentPage[0]?.outSide === false ? (
-        <Layout style={{ minHeight: '100vh' }}>
-          <MenuS />
-          <Layout>
-            <HeaderS />
-            <Content
-              style={{
-                margin: '0 16px',
-              }}
-            >
-              <BreadCrumb />
-              <Card>
-                <Routes>
-                  {Routers.map(({ name, pin, outSide, url }) => {
-                    if (!pin && !outSide) {
-                      const AllRoutes = require('../Page/' + name + '/index').default;
-                      return (
-                        <Route
-                          path={url}
-                          key={name}
-                          element={<AllRoutes dispatch={props.Dispatch} state={state} />}
-                        />
-                      );
-                    }
-                  })}
-                  <Route path="*" element={<>This Page is not found</>} />
-                </Routes>
-              </Card>
-            </Content>
-            <FooterS />
-          </Layout>
-        </Layout>
-      ) : (
-        <>
-          {currentPage.length === 0 ? (
-            <Layout style={{ minHeight: '100vh' }}>
-              <MenuS />
-              <Layout>
-                <HeaderS />
-                <Content
-                  style={{
-                    margin: '0 16px',
-                  }}
-                >
-                  <BreadCrumb />
-                  <Routes>
-                    <Route path="*" element={<>This Page is not found</>} />
-                  </Routes>
-                </Content>
-                <FooterS />
-              </Layout>
-            </Layout>
-          ) : (
-            <>
-              <Layout style={{ minHeight: '100vh' }}>
-                <MenuS />
-                <Layout>
-                  <HeaderS />
-                  <Content
-                    style={{
-                      margin: '0 16px',
-                    }}
-                  >
-                    <BreadCrumb />
-                    <Routes>
-                      {currentPage.map(({ name, url }) => {
-                        let parentOFCurrentPage = '';
-                        Routers.map((route) => {
-                          if (route.id === currentPage[0].parentId) {
-                            parentOFCurrentPage = route.name;
-                          }
-                        });
-                        const AllRoutes = require(`../Page/${parentOFCurrentPage}/${name}`).default;
-                        return (
-                          <Route
-                            path={url}
-                            key={name}
-                            element={<AllRoutes dispatch={props.Dispatch} state={state} />}
-                          />
-                        );
-                      })}
-                    </Routes>
-                  </Content>
-                  <FooterS />
-                </Layout>
-              </Layout>
-            </>
-          )}
-        </>
-      )}
-    </>
-  );
+  // return -------------------------------------------
+  if (currentPage[0]?.outSide === false) {
+    return (
+      <BaseLayout
+        child={Routers.map(({ name, pin, outSide, url }) => {
+          if (!pin && !outSide) {
+            const AllRoutes = require('../Page/' + name + '/index').default;
+            return (
+              <Route
+                path={url}
+                key={name}
+                element={<AllRoutes dispatch={props.Dispatch} state={state} />}
+              />
+            );
+          }
+        })}
+      />
+    );
+  } else {
+    if (currentPage.length === 0) {
+      return <BaseLayout />;
+    } else {
+      return (
+        <BaseLayout
+          child={currentPage.map(({ name, url }) => {
+            let parentOFCurrentPage = '';
+            Routers.map((route) => {
+              if (route.id === currentPage[0].parentId) {
+                parentOFCurrentPage = route.name;
+              }
+            });
+            const AllRoutes = require(`../Page/${parentOFCurrentPage}/${name}`).default;
+            return (
+              <Route
+                path={url}
+                key={name}
+                element={<AllRoutes dispatch={props.Dispatch} state={state} />}
+              />
+            );
+          })}
+        />
+      );
+    }
+  }
 }
 export default index;
