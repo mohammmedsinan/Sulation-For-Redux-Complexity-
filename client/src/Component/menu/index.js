@@ -105,10 +105,10 @@ function index() {
       collapsed={collapsed}
       onCollapse={(value) => setCollapsed(value)}
       style={{ boxShadow: '1px 0px 20px 0px' }}
+      theme="light"
     >
-      <div className="logo" style={{ height: '100px', backgroundColor: '#082846' }} />
+      <div id="logo" style={{ height: '100px' }} />
       <Menu
-        theme="dark"
         defaultSelectedKeys={[`${defaultActive}`]}
         mode="inline"
         items={items}

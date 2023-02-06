@@ -75,7 +75,7 @@ export const Routers = [
     name: 'Chart',
     parent: true,
     child: false,
-    model: true,
+    model: false,
     parentId: 1,
     id: 13,
     icon: BarChartOutlined,
@@ -87,7 +87,7 @@ export const Routers = [
     name: 'Statics',
     parent: true,
     child: false,
-    model: true,
+    model: false,
     parentId: 1,
     id: 14,
     icon: RiseOutlined,
@@ -95,7 +95,18 @@ export const Routers = [
     outSide: false,
     url: '/Analytics/statics',
   },
-
+  {
+    name: 'test',
+    parent: false,
+    child: false,
+    model: false,
+    parentId: 0,
+    id: 13,
+    icon: AlertOutlined,
+    pin: false,
+    outSide: false,
+    url: '/test',
+  },
   //outside the layout------------
   {
     name: 'create-product',
