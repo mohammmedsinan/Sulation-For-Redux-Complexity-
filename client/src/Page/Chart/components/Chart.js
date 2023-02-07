@@ -1,4 +1,4 @@
-import { Row, Col } from 'antd';
+import { Row, Col, Card } from 'antd';
 import { Chart } from 'react-chartjs-2';
 import React from 'react';
 import 'chart.js/auto';
@@ -15,23 +15,36 @@ function Charts() {
     ],
   };
   return (
-    <Row justify={'center'}>
-      <Col span={12}>
-        <Chart type="line" data={chartData} />
-      </Col>
-      <Col span={12}>
-        <Chart type="bar" data={chartData} />
-      </Col>
-      <Col span={12}>
-        <Chart type="pie" data={chartData} />
-      </Col>
-      <Col span={12}>
-        <Chart type="doughnut" data={chartData} />
-      </Col>
+    <>
+      <Row justify={'space-around'}>
+        <Col span={11}>
+          <Card>
+            <Chart type="line" data={chartData} />
+          </Card>
+        </Col>
+        <Col span={11}>
+          <Card>
+            <Chart type="bar" data={chartData} />
+          </Card>
+        </Col>
+      </Row>
+      <Row justify={'space-around'} style={{ marginTop: '30px' }}>
+        <Col span={11}>
+          <Card>
+            <Chart type="pie" data={chartData} />
+          </Card>
+        </Col>
+        <Col span={11}>
+          <Card>
+            <Chart type="doughnut" data={chartData} />
+          </Card>
+        </Col>
+      </Row>
+
       <Col span={17}>
         <Chart type="radar" data={chartData} />
       </Col>
-    </Row>
+    </>
   );
 }
 

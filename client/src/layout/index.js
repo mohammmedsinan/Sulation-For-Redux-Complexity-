@@ -1,4 +1,4 @@
-import { Route, useLocation } from 'react-router-dom';
+import { Route, useLocation, useNavigate } from 'react-router-dom';
 import { Routers } from '../routes';
 import React from 'react';
 import { useSelector } from 'react-redux';
@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 function index(props) {
   const state = useSelector((state) => state);
   const location = useLocation();
+  const navigate = useNavigate();
   const [switcher, setSwitcher] = React.useState('');
   React.useEffect(() => {
     if (location.pathname.split('/').length === 2) {
@@ -15,6 +16,9 @@ function index(props) {
       setSwitcher(location.pathname.split('/')[2].toLowerCase());
     }
   }, [location.pathname]);
+  React.useEffect(() => {
+    location.pathname === '/' && navigate('/Analytics/chart');
+  }, []);
   return (
     <>
       {Routers.map(({ name, pin, outSide, url, parentId, customLayout }) => {
