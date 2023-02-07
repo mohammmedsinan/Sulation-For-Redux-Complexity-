@@ -2,13 +2,10 @@ module.exports = {
   Site_Name: 'test',
   Site_Logo: './',
   Site_Copy_Right: '@test',
-  Api_Base_URl: 'http://localhost:5000',
+  Api_Base_URl: 'http://192.168.1.242:5000/',
   Header_Fixed: false,
   Site_Theme: {
-    Primary: '#0c4a2a',
-    Secondary: '#990011',
-    Border_Radius: '2px',
-    Text_Color: '#FCF6F5',
+    // '@primary-color': '#EBE2C7',
   },
   Dark_Mode: false,
 };
