@@ -40,11 +40,13 @@ function BreadCrumb() {
       }}
     >
       <Breadcrumb.Item>
-        <Current.icon /> <Link to={`/${Current?.name}`}>{Current?.name}</Link>
+        <Current.icon />
+        <Link to={`/${Current?.name}`}>{!Current.label ? Current?.name : Current.label}</Link>
       </Breadcrumb.Item>
       {Parent && (
         <Breadcrumb.Item>
-          <Parent.icon /> <Link to={`/${Parent?.name}`}>{Parent?.name}</Link>
+          <Parent.icon />
+          <Link to={`/${Parent?.name}`}>{!Parent.label ? Parent?.name : Parent.label}</Link>
         </Breadcrumb.Item>
       )}
     </Breadcrumb>

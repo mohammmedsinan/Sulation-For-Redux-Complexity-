@@ -19,7 +19,7 @@ function index() {
           }
         });
         items.push({
-          label: route.name,
+          label: !route.label ? route.name : route.label,
           children: childs.map((child) => {
             if (child.parentId === route.id) {
               return {
@@ -27,7 +27,7 @@ function index() {
                 children: Routers.map((route) => {
                   if (route.parentId === child.id) {
                     return {
-                      label: route.name,
+                      label: !route.label ? route.name : route.label,
                       children: undefined,
                       pid: route.parentId,
                       icon: <route.icon />,
@@ -51,7 +51,7 @@ function index() {
         });
       } else {
         items.push({
-          label: route.name,
+          label: !route.label ? route.name : route.label,
           children: undefined,
           pid: route.parentId,
           icon: <route.icon />,
@@ -64,7 +64,7 @@ function index() {
       const parent = items.find((ele) => ele.id === route.parentId);
       if (!route.pin && !route.child) {
         parent?.children?.push({
-          label: route.name,
+          label: !route.label ? route.name : route.label,
           children: undefined,
           pid: route.parentId,
           icon: <route.icon />,

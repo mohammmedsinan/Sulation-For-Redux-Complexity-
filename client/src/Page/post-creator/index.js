@@ -1,7 +1,7 @@
 import React from 'react';
 
 function index() {
-  return <div>index</div>;
+  return <div>post-creator</div>;
 }
 
 export default index;

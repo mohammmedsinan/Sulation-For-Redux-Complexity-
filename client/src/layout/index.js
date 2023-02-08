@@ -1,7 +1,8 @@
-import { Route, useLocation, useNavigate } from 'react-router-dom';
+import { Route, Router, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { Routers } from '../routes';
 import React from 'react';
 import { useSelector } from 'react-redux';
+import Dashboard from './error';
 
 function index(props) {
   const state = useSelector((state) => state);
@@ -46,7 +47,9 @@ function index(props) {
                       element={<AllRoutes dispatch={props.Dispatch} state={state} />}
                     />
                   ) : (
-                    <AllRoutes dispatch={props.Dispatch} state={state} />
+                    <Routes>
+                      <AllRoutes dispatch={props.Dispatch} state={state} />
+                    </Routes>
                   )
                 }
               />
