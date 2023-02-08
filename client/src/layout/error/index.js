@@ -1,10 +1,8 @@
-import { Routes, Route } from 'react-router-dom';
 import React from 'react';
 import MenuS from '../../Component/menu';
 import { Card, Layout } from 'antd';
 import HeaderS from '../../Component/header';
 import FooterS from '../../Component/footer';
-import BreadCrumb from '../../Component/breadcrumb';
 
 function BaseLayout({ child }) {
   const { Content } = Layout;
@@ -15,12 +13,15 @@ function BaseLayout({ child }) {
         <HeaderS />
         <Content
           style={{
-            margin: '0 16px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
           }}
         >
-          <Routes>
-            <Route path="*" element={child} />
-          </Routes>
+          <Card>
+            <h1 style={{ fontSize: '30px' }}>Error this page isn't found</h1>
+            {child}
+          </Card>
         </Content>
         <FooterS />
       </Layout>

@@ -19,10 +19,7 @@ function BaseLayout({ child }) {
           }}
         >
           <BreadCrumb />
-          <Routes>
-            {child}
-            <Route path="*" element={<>This Page is not found</>} />
-          </Routes>
+          {child}
         </Content>
         <FooterS />
       </Layout>

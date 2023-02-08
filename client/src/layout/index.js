@@ -21,7 +21,8 @@ function index(props) {
     location.pathname === '/' && navigate('/Analytics/chart');
   }, []);
   return (
-    <>
+    <Routes>
+      <Route path="*" element={<Dashboard />} />
       {Routers.map(({ name, pin, outSide, url, parentId, customLayout }) => {
         let CustomLayout = require(`./DashboardLayout`).default;
         if (customLayout) {
@@ -38,26 +39,26 @@ function index(props) {
         return (
           <>
             {switcher === name.toLocaleLowerCase() && (
-              <CustomLayout
-                child={
-                  !customLayout ? (
-                    <Route
-                      path={url}
-                      key={name}
-                      element={<AllRoutes dispatch={props.Dispatch} state={state} />}
-                    />
-                  ) : (
-                    <Routes>
-                      <AllRoutes dispatch={props.Dispatch} state={state} />
-                    </Routes>
-                  )
+              <Route
+                path={url}
+                key={name}
+                element={
+                  <CustomLayout
+                    child={
+                      !customLayout ? (
+                        <AllRoutes dispatch={props.Dispatch} state={state} />
+                      ) : (
+                        <AllRoutes dispatch={props.Dispatch} state={state} />
+                      )
+                    }
+                  />
                 }
               />
             )}
           </>
         );
       })}
-    </>
+    </Routes>
   );
 }
 export default index;
