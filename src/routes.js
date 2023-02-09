@@ -147,6 +147,7 @@ export const Routers = [
     id: 109,
     icon: UserOutlined,
     url: '/Users',
+    model: true,
   },
   {
     name: 'Orders',

@@ -38,6 +38,7 @@
     "webpack-dev-server": "^4.7.4"
   },
   "dependencies": {
-    "@ant-design/charts": "^1.4.2"
+    "@ant-design/charts": "^1.4.2",
+    "react-highlight-words": "^0.20.0"
   }
 }
