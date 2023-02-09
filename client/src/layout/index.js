@@ -7,27 +7,18 @@ import Dashboard from './error';
 function index(props) {
   const state = useSelector((state) => state);
   const location = useLocation();
-  const navigate = useNavigate();
+  const pathname = location.pathname.split('/');
   const [switcher, setSwitcher] = React.useState('');
   React.useEffect(() => {
-    if (location.pathname.split('/').length === 2) {
-      setSwitcher(location.pathname.split('/')[1].toLowerCase());
-    }
-    if (location.pathname.split('/').length >= 3) {
-      setSwitcher(location.pathname.split('/')[2].toLowerCase());
-    }
+    if (pathname.length === 2) setSwitcher(pathname[1].toLowerCase());
+    if (pathname.length >= 3) setSwitcher(pathname[2].toLowerCase());
   }, [location.pathname]);
-  React.useEffect(() => {
-    location.pathname === '/' && navigate('/Analytics/chart');
-  }, []);
   return (
     <Routes>
       <Route path="*" element={<Dashboard />} />
       {Routers.map(({ name, pin, outSide, url, parentId, customLayout }) => {
         let CustomLayout = require(`./DashboardLayout`).default;
-        if (customLayout) {
-          CustomLayout = require(`./${customLayout}`).default;
-        }
+        if (customLayout) CustomLayout = require(`./${customLayout}`).default;
         let AllRoutes = '';
         if (!pin) {
           if (!outSide) AllRoutes = require('../Page/' + name + '/index').default;

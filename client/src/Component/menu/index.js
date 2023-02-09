@@ -104,13 +104,13 @@ function index() {
       collapsible
       collapsed={collapsed}
       onCollapse={(value) => setCollapsed(value)}
-      style={{ boxShadow: '1px 0px 20px 0px' }}
+      style={{ boxShadow: '1px 0px 10px 0px' }}
       theme="light"
     >
       <div id="logo" style={{ height: '100px' }} />
       <Menu
-        defaultSelectedKeys={[`${defaultActive}`]}
         mode="inline"
+        defaultSelectedKeys={[`${defaultActive}`]}
         items={items}
         defaultOpenKeys={
           pathname.length > 4 ? [`${defaultOpen[0]}`, `${defaultOpen[1]}`] : [`${defaultOpen}`]

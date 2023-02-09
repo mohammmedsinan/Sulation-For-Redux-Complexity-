@@ -1,5 +1,5 @@
 import {
-  UserOutlined,
+  NotificationOutlined,
   StarFilled,
   ToolOutlined,
   DatabaseOutlined,
@@ -9,6 +9,9 @@ import {
   CodeSandboxOutlined,
   UserSwitchOutlined,
   DotChartOutlined,
+  UserOutlined,
+  ShoppingCartOutlined,
+  BellOutlined,
 } from '@ant-design/icons';
 
 // {
@@ -18,7 +21,7 @@ import {
 //   model: @boolean && to know if it had a model
 //   parentId: @Int && parent id
 //   id: @int && his id should be uniq
-//   icon: method && should defined as a antd icon
+//   icon: method && should defined as a ant d icon
 //   pin: @boolean && to know if its ping or not
 //   outSide: @boolean && to know if it will be inside the layout or outside the layout
 //   customLayout: 'static', @string name of the layout
@@ -132,17 +135,29 @@ export const Routers = [
     icon: DotChartOutlined,
     url: '/Product_Folder/product-analysis',
   },
-  //outside the layout------------
-  // {
-  //   name: 'create-product',
-  //   parent: true,
-  //   child: false,
-  //   model: false,
-  //   parentId: 11,
-  //   id: 100,
-  //   icon: HddOutlined,
-  //   pin: false,
-  //   outSide: true,
-  //   url: '/products/create-product/:id',
-  // },
+
+  {
+    name: 'Events',
+    id: 108,
+    icon: NotificationOutlined,
+    url: '/Events',
+  },
+  {
+    name: 'Users',
+    id: 109,
+    icon: UserOutlined,
+    url: '/Users',
+  },
+  {
+    name: 'Orders',
+    id: 110,
+    icon: ShoppingCartOutlined,
+    url: '/Orders',
+  },
+  {
+    name: 'Notification',
+    id: 111,
+    icon: BellOutlined,
+    url: '/Notification',
+  },
 ];
