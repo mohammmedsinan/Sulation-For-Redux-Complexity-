@@ -1,4 +1,4 @@
-import { Routers } from '../../routes';
+import { Routers } from 'routes';
 import React, { useEffect } from 'react';
 import { Breadcrumb } from 'antd';
 import { Link, useLocation } from 'react-router-dom';

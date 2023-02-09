@@ -1,5 +1,5 @@
 import { Route, Router, Routes, useLocation, useNavigate } from 'react-router-dom';
-import { Routers } from '../routes';
+import { Routers } from 'routes';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import Dashboard from './error';

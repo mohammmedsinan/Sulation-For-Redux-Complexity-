@@ -1,5 +1,5 @@
 import { Layout, Menu } from 'antd';
-import { Routers } from '../../routes';
+import { Routers } from 'routes';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 const { Sider } = Layout;
