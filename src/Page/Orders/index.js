@@ -1,7 +1,11 @@
 import React from 'react';
-
-function index() {
-  return <div>Orders</div>;
+import List from './components/List';
+function index({ dispatch, state: { Orders } }) {
+  return (
+    <div>
+      <List orders={Orders} dispatch={dispatch} />
+    </div>
+  );
 }
 
 export default index;

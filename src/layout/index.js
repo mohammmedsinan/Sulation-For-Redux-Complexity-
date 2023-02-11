@@ -34,15 +34,7 @@ function index(props) {
                 path={url}
                 key={name}
                 element={
-                  <CustomLayout
-                    child={
-                      !customLayout ? (
-                        <AllRoutes dispatch={props.Dispatch} state={state} />
-                      ) : (
-                        <AllRoutes dispatch={props.Dispatch} state={state} />
-                      )
-                    }
-                  />
+                  <CustomLayout child={<AllRoutes dispatch={props.Dispatch} state={state} />} />
                 }
               />
             )}
