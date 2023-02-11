@@ -27,11 +27,11 @@ function index({
         autoComplete="off"
       >
         <Row>
-          <Co l>
+          <Col>
             <Form.Item label="Username" name="username" rules={[{ required: true }]}>
               <Input />
             </Form.Item>
-          </Co>
+          </Col>
           <Col>
             <Form.Item label="Password" name="password" rules={[{ required: true }]}>
               <Input.Password />
