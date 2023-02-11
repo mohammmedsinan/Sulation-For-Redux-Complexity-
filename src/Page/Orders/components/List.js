@@ -1,13 +1,18 @@
-import { Card, Table } from 'antd';
+import { Card, Popconfirm, Popover, Table, Typography } from 'antd';
 import { Link } from 'react-router-dom';
 import React from 'react';
 import { Search } from '../../../Component/listSearch/index';
 
 function List({ dispatch, orders }) {
+  const { Text } = Typography;
   React.useEffect(() => {
     dispatch('orders/get', '/orders/all', 'POST', {});
   }, []);
-
+  function pageRefresher() {
+    setTimeout(() => {
+      dispatch('orders/get', '/orders/all', 'POST', {});
+    }, 400);
+  }
   const columns = [
     {
       title: 'Customer Name',
@@ -59,16 +64,29 @@ function List({ dispatch, orders }) {
             <div>
               <Link to={`/Orders/orders-edit/${index._id}`}>Edit </Link>
             </div>
-            <div>Delete</div>
+            <Popconfirm
+              title="Delete"
+              onConfirm={() => {
+                dispatch('orders/submit', '/orders/delete', 'DELETE', { id: index._id });
+                pageRefresher();
+              }}
+            >
+              <Text
+                type="danger"
+                style={{
+                  cursor: 'pointer',
+                }}
+              >
+                Delete
+              </Text>
+            </Popconfirm>
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <div
               className="PrimaryColor"
               onClick={() => {
                 dispatch('orders/submit', '/orders/close', 'PUT', { _id: index._id });
-                setTimeout(() => {
-                  dispatch('orders/get', '/orders/all', 'POST', {});
-                }, 400);
+                pageRefresher();
               }}
             >
               Submit

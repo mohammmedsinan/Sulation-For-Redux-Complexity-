@@ -110,4 +110,5 @@ export function Search(data) {
         text
       ),
   });
+  return getColumnSearchProps(data);
 }
