@@ -27,7 +27,7 @@ function index() {
     editMode &&
       setTimeout(() => {
         Dispatch('events/details', `/events/find/${id}`, 'GET');
-      }, 700);
+      }, 1000);
 
     navigate('/events');
   }

@@ -97,18 +97,18 @@ function index() {
       }
     }
   });
-  console.log(defaultActive);
   const [collapsed, setCollapsed] = useState(false);
   return (
     <Sider
+      width={250}
       collapsible
       collapsed={collapsed}
       onCollapse={(value) => setCollapsed(value)}
       style={{ boxShadow: '1px 0px 20px 0px' }}
+      theme="light"
     >
-      <div className="logo" style={{ height: '100px', backgroundColor: '#ef3f37' }} />
+      <div id="logo" style={{ height: '100px' }} />
       <Menu
-        theme="dark"
         defaultSelectedKeys={[`${defaultActive}`]}
         mode="inline"
         items={items}
