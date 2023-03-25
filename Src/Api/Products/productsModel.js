@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import moment from "moment";
 
 const Products = mongoose.Schema({
   name: {
@@ -22,8 +23,8 @@ const Products = mongoose.Schema({
     require: true,
   },
   createdDate: {
-    type: Date,
-    default: Date.now(),
+    type: Number,
+    default: moment().unix(),
   },
 });
 
