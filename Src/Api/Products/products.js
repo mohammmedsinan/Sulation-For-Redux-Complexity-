@@ -9,9 +9,9 @@ import {
 
 const router = express.Router();
 router.post("/create", createProduct);
-router.post("/get", GitSingleProduct);
+router.get("/get/:id", GitSingleProduct);
 router.post("/all", GetAllProducts);
-router.delete("/delete", DeleteProductById);
+router.delete("/delete/:id", DeleteProductById);
 router.put("/update/:id", updateProduct);
 
 export default router;

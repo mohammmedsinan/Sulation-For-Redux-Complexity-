@@ -49,7 +49,7 @@ export const GetAllProducts = async (req, res) => {
 
 //============================Delete one Product==================================
 export const DeleteProductById = async (req, res) => {
-  const id = req.body.id;
+  const id = req.params.id;
   try {
     await Products.deleteOne({ _id: id }).then((e) => {
       res.status(201).json({
@@ -64,9 +64,9 @@ export const DeleteProductById = async (req, res) => {
     });
   }
 };
-//============================Get one Product each request==================================
+//============================ Get one Product each request ==================================
 export const GitSingleProduct = (req, res) => {
-  const id = req.body.id;
+  const id = req.params.id;
   Products.find({ _id: id }).then((data) => {
     res.status(201).json({
       Message: `Get this ${id} Product successfully`,
