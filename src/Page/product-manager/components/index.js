@@ -1,10 +1,10 @@
-import React from 'react';
-import List from './List';
+import React from "react";
+import List from "./List";
 
-function index() {
+function index({ props }) {
   return (
     <div>
-      <List />
+      <List props={props} />
     </div>
   );
 }

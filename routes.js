@@ -29,7 +29,9 @@ import {
 //   outSide: @boolean && to know if it will be inside the layout or outside the layout
 //   customLayout: 'static', @string name of the layout
 //   url: '/home/create-home' @string path of url
-//   menuName:"Static Props" @string name that will display on menu
+//   label:"Static Props" @string name that will display on menu
+//   fixedName: @string to change the name inside the redux reducers
+//   subRoute : @Path && to where the subRoute is located
 // },
 
 export const Routers = [
@@ -136,8 +138,10 @@ export const Routers = [
     parentId: 3,
     name: "product-manager",
     label: "Product Manager",
+    fixedName: "ProductManager",
     parent: true,
     icon: CodeSandboxOutlined,
+    model: true,
     url: "/Product_Folder/product-manager",
   },
   {
@@ -226,5 +230,15 @@ export const Routers = [
     icon: ShoppingCartOutlined,
     outSide: true,
     url: "/Orders/orders-edit/:id",
+  },
+  {
+    id: 1002,
+    parent: true,
+    parentId: 106,
+    name: "product-edit",
+    label: "Product Edit",
+    icon: ShoppingCartOutlined,
+    outSide: true,
+    url: "/Product_Folder/product-manager/product-edit/:id",
   },
 ];

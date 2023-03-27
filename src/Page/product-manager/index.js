@@ -1,9 +1,9 @@
 import React from "react";
 import List from "./components";
-function index() {
+function index(props) {
   return (
     <div>
-      <List />
+      <List props={props} />
     </div>
   );
 }

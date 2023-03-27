@@ -1,11 +1,15 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { Routers } from 'routes';
-import common from '../service/model';
+import { configureStore } from "@reduxjs/toolkit";
+import { Routers } from "routes";
+import common from "../service/model";
 
 let Reducers = [];
-Routers.map(({ name, model }) => {
+Routers.map(({ name, model, fixedName }) => {
+  let FixedName = name;
+  if (fixedName) FixedName = fixedName;
   if (model) {
-    return Reducers.push({ [name]: require('../Page/' + name + '/model').default });
+    return Reducers.push({
+      [FixedName]: require("../Page/" + name + "/model").default,
+    });
   }
 });
 export const store = configureStore({
