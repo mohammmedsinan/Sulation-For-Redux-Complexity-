@@ -84,7 +84,7 @@ function List({ props }) {
           </p>
           <Link
             style={editStyle}
-            to={`/Product_Folder/product-manager/product-edit/${ele._id}`}
+            to={`/Product_Folder/product-manager/product/${ele._id}?edit`}
           >
             Edit
           </Link>
@@ -93,14 +93,13 @@ function List({ props }) {
     },
   ];
   return (
-    <Card>
       <Table
         columns={columns}
         dataSource={props.state.ProductManager.data.product}
         bordered
+        loading={props.state.ProductManager.status ==="loading"}
         pagination={{ position: ["bottomCenter"] }}
       />
-    </Card>
   );
 }
 export default List;

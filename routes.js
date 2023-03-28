@@ -235,10 +235,9 @@ export const Routers = [
     id: 1002,
     parent: true,
     parentId: 106,
-    name: "product-edit",
-    label: "Product Edit",
+    name: "Product",
     icon: ShoppingCartOutlined,
     outSide: true,
-    url: "/Product_Folder/product-manager/product-edit/:id",
+    url: "/Product_Folder/product-manager/product/:id",
   },
 ];

@@ -25,7 +25,6 @@ function index({ dispatch, state: { Orders } }) {
     }
   }, [Orders.details]);
   const onFinish = (values) => {
-    console.log('Success:', values);
     dispatch(`orders/details`, `/orders/edit`, 'POST', {
       ...values,
       id: Orders.details._id,
