@@ -22,6 +22,10 @@ const Products = mongoose.Schema({
     type: Number,
     require: true,
   },
+  bought_items: {
+    type: [Number],
+    require: true,
+  },
   createdDate: {
     type: Number,
     default: moment().unix(),

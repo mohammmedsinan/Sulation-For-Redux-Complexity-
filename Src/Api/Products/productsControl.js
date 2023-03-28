@@ -7,7 +7,6 @@ export const createProduct = async (req, res) => {
   try {
     await newProfile.save().then((profileData) => {
       res.status(201).json({
-        message: "Products Created Successfully",
         data: profileData,
       });
     });
@@ -29,10 +28,9 @@ export const GetAllProducts = async (req, res) => {
       //return all the Users
       await Products.find({}).then((product) => {
         res.status(201).json({
-          message: "Get all Products work successfully",
-          data: product,
           pageSize: 6,
           total: product.length,
+          product,
         });
       });
     } else {
@@ -53,7 +51,6 @@ export const DeleteProductById = async (req, res) => {
   try {
     await Products.deleteOne({ _id: id }).then((e) => {
       res.status(201).json({
-        message: "deleted this Product successfully",
         data: e,
       });
     });
@@ -68,10 +65,7 @@ export const DeleteProductById = async (req, res) => {
 export const GitSingleProduct = (req, res) => {
   const id = req.params.id;
   Products.find({ _id: id }).then((data) => {
-    res.status(201).json({
-      Message: `Get this ${id} Product successfully`,
-      data: data[0],
-    });
+    res.status(201).json(data[0]);
   });
 };
 //============================Update the product==================================
