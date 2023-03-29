@@ -240,4 +240,13 @@ export const Routers = [
     outSide: true,
     url: "/Product_Folder/product-manager/product/:id",
   },
+  {
+    id: 1003,
+    parent: true,
+    parentId: 107,
+    name: "detail",
+    icon: ShoppingCartOutlined,
+    outSide: true,
+    url: "/Product_Folder/product-analysis/detail/:id",
+  },
 ];

@@ -6,8 +6,12 @@ import "./style.less";
 import ProductCard from "../../Component/routeCard/index";
 import { AccountBookFilled } from "@ant-design/icons";
 
-function index() {
+function index({ dispatch, state: { ProductManager } }) {
   const array = [{ name: "mouse" }, { name: "Keyboard" }, { name: "headset" }];
+  React.useEffect(() => {
+    dispatch("product/all", "/products/all", "POST", {});
+  }, []);
+  console.log(ProductManager.data.product);
   return (
     <Row justify={"center"} align={"middle"}>
       <Col span={18}>
@@ -20,16 +24,19 @@ function index() {
           <MultiLine />
         </Card>
       </Col>
-      <Col span={23}>
+      <Col span={18}>
         <Card style={{ marginTop: "40px" }}>
           <h1 className="headerTitle">Product List</h1>
           <Divider />
           <Row justify={"space-around"} align={"middle"}>
-            {array.map((ele) => {
+            {ProductManager?.data?.product?.map((ele) => {
               let props = {
                 name: ele.name,
-                url: "AccountBookFilled",
-                icon: AccountBookFilled,
+                elementUrl: ele._id,
+                img: ele.image,
+                category: ele.category,
+                price: ele.price,
+                stock: ele.stock,
               };
               return <ProductCard props={props} />;
             })}

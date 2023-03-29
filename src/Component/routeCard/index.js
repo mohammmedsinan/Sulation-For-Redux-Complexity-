@@ -6,27 +6,35 @@ function index({ props }) {
   const Icon = props.icon;
   return (
     <>
-      <Link to={`${props.url}`}>
+      <Link to={`${!props.price ?props.url:`detail/${props.elementUrl}`}`}>
         <Col>
           <Card
             hoverable
             style={{ width: 340 }}
             cover={
               <>
-                <Icon
-                  style={{
-                    fontSize: "100px",
-                    marginTop: "80px",
-                    marginBottom: "40px",
-                  }}
-                />
+                {!props.img ? (
+                  <Icon
+                    style={{
+                      fontSize: "100px",
+                      marginTop: "80px",
+                      marginBottom: "40px",
+                    }}
+                  />
+                ) : (
+                  <img
+                    src={props.img}
+                    style={{ width: "auto", margin: "auto" }}
+                  />
+                )}
+
                 <Divider></Divider>
               </>
             }
           >
             <Meta
               title={props.label ? props.label : props.name}
-              description={props.url}
+              description={!props.price ? props.url : `Price: ${props.price}  ||  Stock: ${props.stock} || Category: ${props.category}`}
             />
           </Card>
         </Col>
