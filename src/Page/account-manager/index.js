@@ -1,7 +1,12 @@
-import React from 'react';
+import React from "react";
+import Card from "./components";
 
 function index() {
-  return <div>account-manager</div>;
+  return (
+    <div>
+      <Card />
+    </div>
+  );
 }
 
 export default index;

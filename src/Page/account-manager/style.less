@@ -1,0 +1,77 @@
+@import url('../../utilities/style.less');
+
+.logo {
+    svg {
+        transition: all ease 0.7s;
+        color: fade(@dps, 50%);
+    }
+
+    font-size:calc(20px + 1.3vw);
+}
+
+.logoContainer {
+    display: flex;
+    justify-content: center;
+    transition: all ease 0.7s;
+    align-items: center;
+
+    span {
+        color: @dps;
+        margin-left: 10px;
+        transition: all ease 0.7s;
+        font-weight: 500;
+    }
+}
+
+.lContainer {
+    cursor: pointer;
+    border: 1px solid fade(@dps, 20%);
+    padding: 10px 40px 10px 0px;
+    border-radius: 10px;
+    transition: all ease 0.7s;
+}
+
+#lContainer-1:hover {
+    border: 1px solid fade(@dps, 0%);
+    background-color: #00acee;
+
+    .logo {
+        svg {
+            color: @white-custom;
+        }
+    }
+
+    span {
+        color: @white-custom;
+    }
+}
+#lContainer-2:hover {
+    border: 1px solid fade(@dps, 0%);
+    // background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+    // background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+    
+    .logo {
+        svg {
+            color: @white-custom;
+        }
+    }
+
+    span {
+        color: @white-custom;
+    }
+}
+#lContainer-3:hover {
+    border: 1px solid fade(@dps, 0%);
+    background-color: #3b5998;
+
+    .logo {
+        svg {
+            color: @white-custom;
+        }
+    }
+
+    span {
+        color: @white-custom;
+    }
+}
