@@ -150,7 +150,9 @@ export const Routers = [
     name: "product-analysis",
     label: "Product Analysis",
     parent: true,
+    model: true,
     icon: DotChartOutlined,
+  fixedName:"AnalysisProduct" ,
     url: "/Product_Folder/product-analysis",
   },
 

@@ -4,24 +4,34 @@ import { Card, Col, Divider, Row } from "antd";
 import React from "react";
 import "./style.less";
 import ProductCard from "../../Component/routeCard/index";
-import { AccountBookFilled } from "@ant-design/icons";
+import Pie from "./components/PieChart";
+import Liquid from "./components/Liquid";
 
-function index({ dispatch, state: { ProductManager } }) {
+function index({ dispatch, state: { AnalysisProduct } }) {
   const array = [{ name: "mouse" }, { name: "Keyboard" }, { name: "headset" }];
   React.useEffect(() => {
-    dispatch("product/all", "/products/all", "POST", {});
+    dispatch("productAnalysis/all", "/products/all", "POST", {});
   }, []);
-  console.log(ProductManager.data.product);
   return (
     <Row justify={"center"} align={"middle"}>
       <Col span={18}>
-        <Card>
+        <Card hoverable>
           <Line />
         </Card>
       </Col>
       <Col span={18}>
-        <Card style={{ marginTop: "40px" }}>
+        <Card style={{ marginTop: "40px" }} hoverable>
           <MultiLine />
+        </Card>
+      </Col>
+      <Col span={10}>
+        <Card style={{ marginTop: "40px" }} hoverable>
+          <Pie />
+        </Card>
+      </Col>
+      <Col span={8}>
+        <Card style={{ marginTop: "40px" }} hoverable>
+          <Liquid />
         </Card>
       </Col>
       <Col span={18}>
@@ -29,7 +39,7 @@ function index({ dispatch, state: { ProductManager } }) {
           <h1 className="headerTitle">Product List</h1>
           <Divider />
           <Row justify={"space-around"} align={"middle"}>
-            {ProductManager?.data?.product?.map((ele) => {
+            {AnalysisProduct?.data?.product?.map((ele) => {
               let props = {
                 name: ele.name,
                 elementUrl: ele._id,

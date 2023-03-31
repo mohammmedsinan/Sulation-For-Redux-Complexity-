@@ -24,7 +24,7 @@ function index({ props }) {
                 ) : (
                   <img
                     src={props.img}
-                    style={{ width: "auto", margin: "auto" }}
+                    style={{ width: "auto", margin: "auto" ,maxWidth:"150px",marginTop:"30px"}}
                   />
                 )}
 
