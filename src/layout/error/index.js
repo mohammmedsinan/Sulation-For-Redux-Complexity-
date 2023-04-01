@@ -1,8 +1,8 @@
 import React from 'react';
-import MenuS from '../../Component/menu';
+import MenuS from '../../Components/menu';
 import { Card, Layout } from 'antd';
-import HeaderS from '../../Component/header';
-import FooterS from '../../Component/footer';
+import HeaderS from '../../Components/header';
+import FooterS from '../../Components/footer';
 
 function BaseLayout({ child }) {
   const { Content } = Layout;

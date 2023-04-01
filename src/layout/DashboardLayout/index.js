@@ -1,10 +1,10 @@
 import { Routes, Route } from 'react-router-dom';
 import React from 'react';
-import MenuS from '../../Component/menu';
+import MenuS from '../../Components/menu';
 import { Card, Layout } from 'antd';
-import HeaderS from '../../Component/header';
-import FooterS from '../../Component/footer';
-import BreadCrumb from '../../Component/breadcrumb';
+import HeaderS from '../../Components/header';
+import FooterS from '../../Components/footer';
+import BreadCrumb from '../../Components/breadcrumb';
 
 function BaseLayout({ child }) {
   const { Content } = Layout;

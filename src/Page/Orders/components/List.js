@@ -1,7 +1,7 @@
 import { Card, Popconfirm, Popover, Table, Typography } from 'antd';
 import { Link } from 'react-router-dom';
 import React from 'react';
-import { Search } from '../../../Component/listSearch/index';
+import { Search } from '../../../Components/listSearch/index';
 
 function List({ dispatch, orders }) {
   const { Text } = Typography;

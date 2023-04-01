@@ -1,5 +1,5 @@
 import React from "react";
-import RouteCard from "../../Component/routeCard";
+import RouteCard from "../../Components/routeCard";
 import { Routers } from "routes";
 import { Card, Row } from "antd";
 

@@ -1,6 +1,6 @@
 import { Card, Table } from 'antd';
 import React from 'react';
-import { Search } from '../../../Component/listSearch/index';
+import { Search } from '../../../Components/listSearch/index';
 
 function List({ dispatch, users }) {
   React.useEffect(() => {

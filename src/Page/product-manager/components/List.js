@@ -1,6 +1,6 @@
 import { Card, Table } from "antd";
 import React from "react";
-import { Search } from "../../../Component/listSearch/index";
+import { Search } from "../../../Components/listSearch/index";
 import moment from "moment";
 import { Link } from "react-router-dom";
 
@@ -95,7 +95,7 @@ function List({ props }) {
   return (
       <Table
         columns={columns}
-        dataSource={props.state.ProductManager.data.product}
+        dataSource={props?.state?.ProductManager?.data.product}
         bordered
         loading={props.state.ProductManager.status ==="loading"}
         pagination={{ position: ["bottomCenter"] }}
