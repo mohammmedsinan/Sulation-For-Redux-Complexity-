@@ -2,12 +2,13 @@ import React from "react";
 import LineChart from "../components/LineChart";
 import { Row, Col, Divider } from "antd";
 import "../style.less";
+import Title from "../../../Components/textTitle/index";
 
 function detailsPage({ state }) {
   return (
     <Row justify={"center"}>
       <Col>
-        <h1 id="detailsHeader">{state?.details?.name}</h1>
+        <Title title={state?.details?.name} />
       </Col>
       <Col span={24}>
         <LineChart />

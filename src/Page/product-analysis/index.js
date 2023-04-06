@@ -6,6 +6,7 @@ import "./style.less";
 import ProductCard from "../../Components/routeCard/index";
 import Pie from "./components/PieChart";
 import Liquid from "./components/Liquid";
+import Title from '../../Components/textTitle'
 
 function index({ dispatch, state: { AnalysisProduct } }) {
   const array = [{ name: "mouse" }, { name: "Keyboard" }, { name: "headset" }];
@@ -36,7 +37,7 @@ function index({ dispatch, state: { AnalysisProduct } }) {
       </Col>
       <Col span={18}>
         <Card style={{ marginTop: "40px" }}>
-          <h1 className="headerTitle">Product List</h1>
+          <Title title={"Product List"}/>
           <Divider />
           <Row justify={"space-around"} align={"middle"}>
             {AnalysisProduct?.data?.product?.map((ele) => {

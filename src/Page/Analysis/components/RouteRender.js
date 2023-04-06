@@ -10,13 +10,13 @@ function RouteRender() {
   const location = useLocation();
   const [route, setRoute] = React.useState("undefined");
   React.useEffect(() => {
-    if (!location.search === "")setRoute(location.search.split("=")[1].toLowerCase());
+    if (!location.search == "") setRoute(location.search.split("=")[1].toLowerCase());
   }, [location.search]);
   if (route === "all") {
     return <AllPlatforms />;
   } else if (route === "twitter") {
     return <Twitter />;
-  } else if (route === "insta") {
+  } else if (route === "instagram") {
     return <Insta />;
   } else if (route === "facebook") {
     return <Facebook />;
