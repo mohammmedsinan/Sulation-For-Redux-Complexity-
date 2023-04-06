@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Row, Col, Card, Modal } from "antd";
+import { Row, Col, Card, Modal, Button } from "antd";
 import {
   TwitterCircleFilled,
   InstagramFilled,
@@ -77,14 +77,13 @@ function socialMediaIcons() {
         </Card>
       </Col>
       <Col span={24} style={{ marginTop: "30px" }}>
-        <Row justify={"space-around"} align={"middle"}>
-          <Card>
-            <Col>DDD</Col>
-          </Card>
-          <Card>
-            <Col>DDD</Col>
-          </Card>
-        </Row>
+        <Card>
+          <Row justify={"space-around"}>
+            <Col><Button>Disconnect</Button></Col>
+            <Col><Button>New User</Button></Col>
+            <Col><Button>Connect</Button></Col>
+          </Row>
+        </Card>
       </Col>
     </Row>
   );

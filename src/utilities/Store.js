@@ -31,6 +31,11 @@ export const store = configureStore({
     ...Reducers[13],
     ...Reducers[14],
     ...Reducers[15],
+    ...Reducers[16],
+    ...Reducers[17],
+    ...Reducers[18],
+    ...Reducers[19],
+    ...Reducers[20],
   },
 });
 export default store;
