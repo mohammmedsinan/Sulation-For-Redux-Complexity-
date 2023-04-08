@@ -152,7 +152,7 @@ export const Routers = [
     parent: true,
     model: true,
     icon: DotChartOutlined,
-  fixedName:"AnalysisProduct" ,
+    fixedName: "AnalysisProduct",
     url: "/Product_Folder/product-analysis",
   },
 
@@ -250,5 +250,14 @@ export const Routers = [
     icon: ShoppingCartOutlined,
     outSide: true,
     url: "/Product_Folder/product-analysis/detail/:id",
+  },
+  {
+    id: 1004,
+    parent: true,
+    parentId: 103,
+    name: "Post",
+    icon: ShoppingCartOutlined,
+    outSide: true,
+    url: "/Social_Media/post-manager/post/:id",
   },
 ];

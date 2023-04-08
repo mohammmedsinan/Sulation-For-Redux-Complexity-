@@ -3,7 +3,7 @@ import { Line } from "@ant-design/plots";
 
 function LinePolt() {
   const [data, setData] = useState([]);
-  const asyncFetch = () => {
+  useEffect(() => {
     fetch(
       "https://gw.alipayobjects.com/os/bmw-prod/1d565782-dde4-4bb6-8946-ea6a38ccf184.json"
     )
@@ -12,7 +12,8 @@ function LinePolt() {
       .catch((error) => {
         console.log("fetch data failed", error);
       });
-  };
+  }, []);
+
   const config = {
     data,
     padding: "auto",
@@ -26,9 +27,6 @@ function LinePolt() {
       end: 0.5,
     },
   };
-  useEffect(() => {
-    asyncFetch();
-  }, []);
 
   return <Line {...config} />;
 }
