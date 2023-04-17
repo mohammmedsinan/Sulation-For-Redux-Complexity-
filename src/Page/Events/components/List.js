@@ -213,6 +213,9 @@ const List = () => {
         dataSource={data}
         bordered
         pagination={{ position: ['bottomCenter'] }}
+        scroll={{
+          x: 'calc(1000px)',
+        }}
       />
     </Card>
   );

@@ -1,0 +1,61 @@
+.logo {
+    font-size: calc(20px + 1.3vw);
+}
+
+.logo svg {
+    transition: all ease 0.7s;
+}
+
+.logoContainer {
+    display: flex;
+    justify-content: center;
+    transition: all ease 0.7s;
+    align-items: center;
+}
+
+#logoContainer span {
+    margin-left: 10px;
+    transition: all ease 0.7s;
+    font-weight: 500;
+}
+
+.lContainer {
+    cursor: pointer;
+    padding: 10px 40px 10px 0px;
+    border-radius: 10px;
+    transition: all ease 0.7s;
+}
+
+#lContainer-1:hover {
+    background-color: #00acee;
+}
+
+#lContainer-2:hover span {
+    color: #fff;
+}
+
+#lContainer-1:hover .logo svg {
+    color: #fff;
+}
+
+#lContainer-2:hover {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+#lContainer-2:hover span {
+    color: #fff;
+}
+
+#lContainer-2:hover .logo svg {
+    color: #fff;
+}
+
+#lContainer-3:hover {
+    background-color: #3b5998;
+}
+#lContainer-3:hover span {
+    color: #fff;
+}
+#lContainer-3:hover .logo svg {
+    color: #fff;
+}

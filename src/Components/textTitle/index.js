@@ -1,5 +1,5 @@
 import React from "react";
-import './style.less'
+import './style.css'
 
 function index({ title }) {
   return <h1 id="detailsHeader">{title}</h1>;

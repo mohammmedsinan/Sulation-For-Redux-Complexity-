@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Col, Row } from "antd";
-import "../style.less";
+import "../style.css";
 
 function notSelected() {
   return (

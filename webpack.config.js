@@ -2,6 +2,16 @@ const miniCssExtractPlugin = require('mini-css-extract-plugin');
 const config = require('./src/utilities/config');
 const path = require('path');
 const { Site_Theme } = config;
+//=========less migration===================================
+const { theme } = require('antd/lib');
+const { convertLegacyToken } = require('@ant-design/compatible/lib');
+
+const { defaultAlgorithm, defaultSeed } = theme;
+
+const mapToken = defaultAlgorithm(defaultSeed);
+const v4Token = convertLegacyToken(mapToken);
+//============================================
+
 module.exports = {
   entry: {
     index: './src/index.js',
@@ -28,6 +38,7 @@ module.exports = {
   },
   module: {
     rules: [
+      { test: /\.css$/, use: [ 'style-loader', 'css-loader' ] },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
@@ -40,6 +51,7 @@ module.exports = {
         use: [
           {
             loader: 'style-loader',
+            
           },
           {
             loader: 'css-loader', // translates CSS into CommonJS
@@ -48,8 +60,7 @@ module.exports = {
             loader: 'less-loader', // compiles Less to CSS
             options: {
               lessOptions: {
-                modifyVars: Site_Theme,
-                javascriptEnabled: true,
+                modifyVars: v4Token,
               },
             },
           },

@@ -1,6 +1,5 @@
 import { Card, Col, List, Row, Typography } from 'antd';
 import React from 'react';
-import '../../../utilities/style.less';
 import { useLocation } from 'react-router-dom';
 const data = [
   {

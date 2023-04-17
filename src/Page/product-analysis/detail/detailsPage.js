@@ -1,7 +1,7 @@
 import React from "react";
 import LineChart from "../components/LineChart";
 import { Row, Col, Divider } from "antd";
-import "../style.less";
+import "../style.css";
 import Title from "../../../Components/textTitle/index";
 
 function detailsPage({ state }) {

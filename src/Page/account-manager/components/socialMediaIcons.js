@@ -5,7 +5,7 @@ import {
   InstagramFilled,
   FacebookFilled,
 } from "@ant-design/icons";
-import "../style.less";
+import "../style.css";
 function socialMediaIcons() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [data, setData] = useState({});

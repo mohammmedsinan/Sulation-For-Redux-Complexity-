@@ -2,7 +2,7 @@ import MultiLine from "./components/MultiLineChart";
 import Line from "./components/LineChart";
 import { Card, Col, Divider, Row } from "antd";
 import React from "react";
-import "./style.less";
+import "./style.css";
 import ProductCard from "../../Components/routeCard/index";
 import Pie from "./components/PieChart";
 import Liquid from "./components/Liquid";

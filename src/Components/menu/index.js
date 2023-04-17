@@ -100,12 +100,11 @@ function index() {
   const [collapsed, setCollapsed] = useState(false);
   return (
     <Sider
-      width={250}
+      width={270}
       collapsible
       collapsed={collapsed}
       onCollapse={(value) => setCollapsed(value)}
-      style={{ boxShadow: '1px 0px 10px 0px' }}
-      theme="light"
+      theme={"light"}
     >
       <div id="logo" style={{ height: '100px' }} />
       <Menu
@@ -115,6 +114,7 @@ function index() {
         defaultOpenKeys={
           pathname.length > 4 ? [`${defaultOpen[0]}`, `${defaultOpen[1]}`] : [`${defaultOpen}`]
         }
+        theme={"light"}
       />
     </Sider>
   );
