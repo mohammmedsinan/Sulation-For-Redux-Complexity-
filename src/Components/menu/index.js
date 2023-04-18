@@ -105,6 +105,7 @@ function index() {
       collapsed={collapsed}
       onCollapse={(value) => setCollapsed(value)}
       theme={"light"}
+      style={{ overflow: 'auto', height: '100vh', position: 'sticky', top: 0, left: 0, }}
     >
       <div id="logo" style={{ height: '100px' }} />
       <Menu

@@ -4,18 +4,40 @@ import React from "react";
 import { useSelector } from "react-redux";
 import Dashboard from "./error";
 import FolderLayout from "./folder";
+import {Site_Theme} from '../utilities/config'
+import { ConfigProvider, theme } from "antd";
+
+//Transform from RGB to HEX
+function rgbToHex(RGB) {
+  const RGBarray = RGB.split(',')
+  const rgb = (Number(RGBarray[0]) << 16) | (Number(RGBarray[1]) << 8) | (Number(RGBarray[2]) << 0);
+  return '#' + (0x1000000 + rgb).toString(16).slice(1);
+}
 
 function index(props) {
   const state = useSelector((state) => state);
   const location = useLocation();
   const pathname = location.pathname.split("/");
   const [switcher, setSwitcher] = React.useState("");
+  const { primaryColor } = Site_Theme
+  // const state = useSelector(state => state.ThemeToggle.DarkMode)
+  //Declare a Global css variable 
+  React.useEffect(() => {
+    document.documentElement.style.setProperty('--PrimaryColor',primaryColor);
+  },[])
   React.useEffect(() => {
     if (pathname.length === 2) setSwitcher(pathname[1].toLowerCase());
     if (pathname.length >= 3) setSwitcher(pathname[2].toLowerCase());
     if (pathname.length === 5) setSwitcher(pathname[3].toLowerCase());
   }, [location.pathname]);
   return (
+    <ConfigProvider
+            theme={{
+              algorithm:state.ThemeToggle.DarkMode ?theme.darkAlgorithm:theme.defaultAlgorithm,
+              token: {
+                colorPrimary: rgbToHex(primaryColor),
+              },
+            }}>
     <Routes>
       <Route path="*" element={<Dashboard />} />
       {Routers.map(
@@ -57,7 +79,8 @@ function index(props) {
           );
         }
       )}
-    </Routes>
+      </Routes>
+      </ConfigProvider>
   );
 }
 export default index;

@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { Routers } from "routes";
 import common from "../service/model";
+import ThemeToggle from "./GlobalReducer"
 
 let Reducers = [];
 Routers.map(({ name, model, fixedName }) => {
@@ -15,6 +16,7 @@ Routers.map(({ name, model, fixedName }) => {
 export const store = configureStore({
   reducer: {
     common,
+    ThemeToggle,
     ...Reducers[0],
     ...Reducers[1],
     ...Reducers[2],

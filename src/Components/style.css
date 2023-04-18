@@ -1,0 +1,10 @@
+#logo {
+    background-color: rgba(var(--PrimaryColor),0.8);
+}
+
+.ant-layout-sider-trigger {
+    background-color: rgba(var(--PrimaryColor),0.8) !important;
+}
+.ant-layout-header{
+    background-color: rgba(var(--PrimaryColor));
+}

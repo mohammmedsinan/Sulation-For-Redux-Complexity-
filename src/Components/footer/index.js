@@ -7,7 +7,7 @@ const FooterS = () => (
       textAlign: 'center',
     }}
   >
-    Ant Design ©2018 Created by Ant UED
+    DashEco ©2023 Created by Mohammed Sinan
   </Footer>
 );
 export default FooterS;
