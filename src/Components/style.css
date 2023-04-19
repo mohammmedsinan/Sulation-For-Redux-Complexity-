@@ -11,3 +11,7 @@
 .ant-menu-item-icon {
     font-size: 20px !important;
 }
+.ant-layout-footer{
+    background-color: rgba(var(--PrimaryColor),0.1);
+    height: 40px;
+}

@@ -1,78 +1,32 @@
 import { Routers } from "routes";
 import React, { useEffect } from "react";
 import { Breadcrumb } from "antd";
-import { Link, useLocation } from "react-router-dom";
-
+import { useLocation } from "react-router-dom";
 function useRoute() {
-  const location = useLocation();
-  let current = [];
-  let parent = [];
+  let page = [];
+  let subPage = [];
   let folder = [];
-  if (location.pathname.split("/").length === 2) {
-    Routers.map((route) => {
-      location.pathname.split("/")[1].toLowerCase() ===
-        route.name.toLowerCase() && current.push(route);
-    });
-  }
-  if (location.pathname.split("/").length >= 3) {
-    Routers.map((route) => {
-      location.pathname.split("/")[1].toLowerCase() ===
-        route.name.toLowerCase() && current.push(route);
-      location.pathname.split("/")[2].toLowerCase() ===
-        route.name.toLowerCase() && folder.push(route);
-    });
-  }
-  if (location.pathname.split("/").length === 5) {
-    Routers.map((route) => {
-    
-      location.pathname.split("/")[3].toLowerCase() ===
-        route.name.toLowerCase() && parent.push(route);
-    });
-  }
-  return [current, parent, folder];
-}
-
-function BreadCrumb() {
   const location = useLocation();
-  const [current, parent, folder] = useRoute();
-  const [Current, setCurrent] = React.useState(current[0]);
-  const [Parent, setParent] = React.useState(parent[0]);
-  const [Folder, setFolder] = React.useState(folder[0]);
-  useEffect(() => {
-    setCurrent(current[0]);
-    setFolder(folder[0]);
-    setParent(parent[0]);
-  }, [location.pathname]);
-  return (
-    <Breadcrumb
-      style={{
-        margin: "16px 0",
-      }}
-    >
-      <Breadcrumb.Item>
-        <Current.icon />
-        <Link to={`/${Current?.name}`}>
-          {!Current.label ? Current?.name : Current.label}
-        </Link>
-      </Breadcrumb.Item>
-      {Folder && (
-        <Breadcrumb.Item>
-          <Folder.icon />
-          <Link to={`/${Current.name}/${Folder?.name}`}>
-            {!Folder.label ? Folder?.name : Folder.label}
-          </Link>
-        </Breadcrumb.Item>
-      )}
-      {Parent && (
-        <Breadcrumb.Item>
-          <Folder.icon />
-          <Link to={`/${Parent?.name}`}>
-            {!Parent.label ? Parent?.name : Parent.label}
-          </Link>
-        </Breadcrumb.Item>
-      )}
-    </Breadcrumb>
-  );
+  const pathnameArray = location.pathname.split("/");
+  Routers.map(route => {
+    if (pathnameArray[1].toLowerCase() === route.name) folder.push(route);
+    if (folder !== [] && folder[0]?.child === true && pathnameArray.length >=3 ) pathnameArray[2].toLowerCase() === route.name.toLowerCase()&&page.push(route);
+    if (page !== [] && page[0]?.child === true && pathnameArray.length >=4 ) pathnameArray[3].toLowerCase() === route.name.toLowerCase()&&subPage.push(route);
+  })
+  return [page, subPage, folder];
 }
-
-export default BreadCrumb;
+ function BreadCrumb() {
+  const [page, subPage, folder] = useRoute();
+   const [Breads, setBreads] = React.useState([]);
+   const location = useLocation();
+   const pathnameArray = location.pathname.split("/");
+   useEffect(() => {
+     setBreads([])
+     const Folder = folder[0];
+     setBreads(e => [...e, { title: (<><Folder.icon /><span>{!Folder.label ? Folder?.name : Folder.label}</span></>), href: `${Folder.url}` }])
+     if( pathnameArray.length > 2){ const Current = page[0];setBreads(e => [...e, { title: (<><Current.icon /><span>{!Current.label ? Current?.name : Current.label}</span></>),href:`${Current.url}` }])}
+     if(subPage !== [] && pathnameArray.length > 3){ const SubPage = subPage[0];setBreads(e => [...e, { title: (<><SubPage.icon /><span>{!SubPage.label ? SubPage?.name : SubPage.label}</span></>),href:`${SubPage.url}` }])}
+  }, [location.pathname]);
+  return <Breadcrumb style={{margin: "16px 0", }} items={Breads} />
+}
+export default BreadCrumb
