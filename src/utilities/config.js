@@ -5,7 +5,7 @@ module.exports = {
   Api_Base_URl: "http://localhost:5000/",
   Header_Fixed: false,
   Site_Theme: {
-    primaryColor: '247, 112, 54',
+    primaryColor: '254,97,82',
     logo: "./",
     
   },

@@ -1,9 +1,16 @@
-import React from 'react'
+import React from "react";
+import Progress from './components/progress'
+import "./style.css";
+import { Card, Col, Row } from "antd";
 
 function index() {
   return (
-    <div style={{color:"red"}}>sdfsdfasdfdsfd</div>
-  )
+    <Row>
+      <Col span={24}>
+        <Card><Progress /></Card>
+      </Col>
+    </Row>
+  );
 }
 
-export default index
+export default index;

@@ -2,7 +2,7 @@ import { Route, Router, Routes, useLocation } from "react-router-dom";
 import { Routers } from "routes";
 import React from "react";
 import { useSelector } from "react-redux";
-import Dashboard from "./error";
+import Dashboard from "./DashboardLayout/index";
 import FolderLayout from "./folder";
 import {Site_Theme} from '../utilities/config'
 import { ConfigProvider, theme } from "antd";
@@ -24,7 +24,7 @@ function index(props) {
   return (
     <ConfigProvider theme={{algorithm:state.ThemeToggle.DarkMode ? theme.darkAlgorithm:theme.defaultAlgorithm,token: {colorPrimary:rgbToHex(primaryColor),},}}>
     <Routes>
-      <Route path="*" element={<Dashboard />} />
+      <Route path="*" element={<Dashboard error={true} child={<h1 style={{textAlign:"center"}}>Error this page isn't found</h1>}/>} />
         {Routers.map(({ name, pin, outSide, url, parentId, customLayout, subRoute, id,label }) => {
           let CustomLayout = require(`./DashboardLayout`).default;
           let AllRoutes = () => <FolderLayout id={id} />;
@@ -32,7 +32,7 @@ function index(props) {
           if (!outSide && !pin) AllRoutes = require("../Page/" + name + "/index").default;
           if (outSide && !pin) AllRoutes = require(`../Page/${Routers.find((e) => e.id === parentId).name}/${name}`).default;
           if (subRoute && !pin) AllRoutes = require(`../Page/${Routers.find((route) => parentId === route.id).name}/${name}/index`).default;
-          return <>{switcher === label ?label.toLowerCase():name.toLowerCase()&&(<Route path={url} key={name} element={<CustomLayout child={<AllRoutes dispatch={props.Dispatch} state={state}/>}/>}/>)}</>
+          return <>{switcher === label ? label.toLowerCase() : name.toLowerCase() && (<Route path={url} key={id} element={<CustomLayout child={<AllRoutes dispatch={props.Dispatch} state={state} title={label?label:name } />} />} />)}</>
         }
       )}
       </Routes>

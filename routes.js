@@ -5,7 +5,9 @@ import {
   BankFilled,
   InteractionFilled,
   ProjectFilled,
-  CustomerServiceFilled 
+  CustomerServiceFilled,
+  AppstoreAddOutlined,
+  UnorderedListOutlined
 } from "@ant-design/icons";
 
 // {
@@ -26,7 +28,6 @@ import {
 // },
 
 export const Routers = [
-
   //Pins----------------
   {
     name: "Content_Management",
@@ -94,30 +95,21 @@ export const Routers = [
   //---------------------------------Routes--------------------------
   {
     id: 100,
-    parentId: 6,
+    parentId: 3,
     name: "project_manager_Creator",
-    label: "Creator",
+    label: "Product Creator",
     parent: true,
-    icon: ProjectFilled,
-    url: "/project_manager/project_manager_Creator",
+    icon: AppstoreAddOutlined ,
+    url: "/store_management/project_manager_Creator",
   },
   {
     id: 101,
-    parentId: 6,
-    name: "project_manager_list",
-    label: "List",
-    parent: true,
-    icon: ProjectFilled,
-    url: "/project_manager/project_manager_list",
-  },
-  {
-    id: 102,
     parentId: 3,
-    name: "test",
-    label: "For",
+    name: "project_manager_list",
+    label: "Products List",
     parent: true,
-    icon: ProjectFilled,
-    url: "/store_management/test",
+    icon: UnorderedListOutlined ,
+    url: "/store_management/project_manager_list",
   },
   // {
   //   id: 100,
