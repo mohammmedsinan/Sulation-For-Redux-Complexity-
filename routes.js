@@ -9,7 +9,8 @@ import {
   AppstoreAddOutlined,
   UnorderedListOutlined,
   AreaChartOutlined,
-  ControlFilled 
+  ControlFilled,
+  MessageFilled
 } from "@ant-design/icons";
 
 // {
@@ -85,6 +86,15 @@ export const Routers = [
     parent: true,
     icon: ControlFilled,
     url: "/social_media/social_media_accounts",
+  },
+  {
+    id: 104,
+    parentId:2,
+    name: "social_media_post",
+    label: "Post Creator",
+    parent: true,
+    icon: MessageFilled ,
+    url: "/social_media/social_media_post",
   },
   //Pins----------------
   {
