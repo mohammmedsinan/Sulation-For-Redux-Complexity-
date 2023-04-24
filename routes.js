@@ -8,7 +8,8 @@ import {
   CustomerServiceFilled,
   AppstoreAddOutlined,
   UnorderedListOutlined,
-  AreaChartOutlined
+  AreaChartOutlined,
+  ControlFilled 
 } from "@ant-design/icons";
 
 // {
@@ -29,6 +30,62 @@ import {
 // },
 
 export const Routers = [
+    //==============================Store Management=====================================
+    {
+      name: "store_management",
+      label: "Store Management",
+      child: true,
+      id: 3,
+      icon: GoldenFilled,
+      pin: true,
+      url: "/store_management",
+    },
+    {
+      id: 100,
+      parentId: 3,
+      name: "product_manager_Creator",
+      label: "Product Creator",
+      parent: true,
+      icon: AppstoreAddOutlined ,
+      url: "/store_management/product_manager_Creator",
+    },
+    {
+      id: 101,
+      parentId: 3,
+      name: "product_manager_list",
+      label: "Products List",
+      parent: true,
+      icon: UnorderedListOutlined ,
+      url: "/store_management/product_manager_list",
+    },
+    {
+      id: 102,
+      parentId: 3,
+      name: "product_manager_analyzer",
+      label: "Products Analyzer",
+      parent: true,
+      icon: AreaChartOutlined  ,
+      url: "/store_management/product_manager_analyzer",
+    },
+    //============================== Social Media =====================================
+    {
+      name: "social_media",
+      label: "Social Media Manager",
+      child: true,
+      id: 2,
+      icon: InstagramFilled,
+      pin: true,
+      url: "/social_media",
+  },
+  {
+    id: 103,
+    parentId:2,
+    name: "social_media_accounts",
+    label: "Accounts Controller",
+    parent: true,
+    icon: ControlFilled,
+    url: "/social_media/social_media_accounts",
+  },
   //Pins----------------
   {
     name: "Content_Management",
@@ -38,24 +95,6 @@ export const Routers = [
     icon: DatabaseFilled,
     pin: true,
     url: "/Content_Management",
-  },
-  {
-    name: "Social_Media",
-    label: "Social Media Manager",
-    child: true,
-    id: 2,
-    icon: InstagramFilled,
-    pin: true,
-    url: "/Social_Media",
-  },
-  {
-    name: "store_management",
-    label: "Store Management",
-    child: true,
-    id: 3,
-    icon: GoldenFilled,
-    pin: true,
-    url: "/store_management",
   },
   {
     name: "financial_management",
@@ -94,52 +133,5 @@ export const Routers = [
     url: "/customer_section",
   },
   //---------------------------------Routes--------------------------
-  {
-    id: 100,
-    parentId: 3,
-    name: "product_manager_Creator",
-    label: "Product Creator",
-    parent: true,
-    icon: AppstoreAddOutlined ,
-    url: "/store_management/product_manager_Creator",
-  },
-  {
-    id: 101,
-    parentId: 3,
-    name: "product_manager_list",
-    label: "Products List",
-    parent: true,
-    icon: UnorderedListOutlined ,
-    url: "/store_management/product_manager_list",
-  },
-  {
-    id: 102,
-    parentId: 3,
-    name: "product_manager_analyzer",
-    label: "Products Analyzer",
-    parent: true,
-    icon: AreaChartOutlined  ,
-    url: "/store_management/product_manager_analyzer",
-  },
-  // {
-  //   id: 100,
-  //   parentId: 1,
-  //   name: "website-builder",
-  //   label: "Website Builder",
-  //   parent: true,
-  //   icon: ToolOutlined,
-  //   url: "/Content_Management/Website-Builder",
-  // },
-  //=============== OUTSIDE THE MODEL =========================
 
-  // {
-  //   id: 1000,
-  //   parent: true,
-  //   parentId: 110,
-  //   name: "orders-details",
-  //   label: "Order Details",
-  //   icon: ShoppingCartOutlined,
-  //   outSide: true,
-  //   url: "/Orders/orders-details/:id",
-  // },
 ];
