@@ -7,7 +7,8 @@ import {
   ProjectFilled,
   CustomerServiceFilled,
   AppstoreAddOutlined,
-  UnorderedListOutlined
+  UnorderedListOutlined,
+  AreaChartOutlined
 } from "@ant-design/icons";
 
 // {
@@ -96,20 +97,29 @@ export const Routers = [
   {
     id: 100,
     parentId: 3,
-    name: "project_manager_Creator",
+    name: "product_manager_Creator",
     label: "Product Creator",
     parent: true,
     icon: AppstoreAddOutlined ,
-    url: "/store_management/project_manager_Creator",
+    url: "/store_management/product_manager_Creator",
   },
   {
     id: 101,
     parentId: 3,
-    name: "project_manager_list",
+    name: "product_manager_list",
     label: "Products List",
     parent: true,
     icon: UnorderedListOutlined ,
-    url: "/store_management/project_manager_list",
+    url: "/store_management/product_manager_list",
+  },
+  {
+    id: 102,
+    parentId: 3,
+    name: "product_manager_analyzer",
+    label: "Products Analyzer",
+    parent: true,
+    icon: AreaChartOutlined  ,
+    url: "/store_management/product_manager_analyzer",
   },
   // {
   //   id: 100,
