@@ -1,8 +1,9 @@
 import React from 'react'
+import Page from './components'
 
 function index() {
   return (
-    <div>index</div>
+    <div><Page /></div>
   )
 }
 
