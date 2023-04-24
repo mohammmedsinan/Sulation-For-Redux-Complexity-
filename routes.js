@@ -10,7 +10,9 @@ import {
   UnorderedListOutlined,
   AreaChartOutlined,
   ControlFilled,
-  MessageFilled
+  MessageFilled,
+  CompassFilled,
+  FundFilled
 } from "@ant-design/icons";
 
 // {
@@ -96,6 +98,43 @@ export const Routers = [
     icon: MessageFilled ,
     url: "/social_media/social_media_post",
   },
+  {
+    id: 105,
+    parentId:2,
+    name: "social_media_campaign",
+    label: "Campaigns",
+    parent: true,
+    icon: CompassFilled ,
+    url: "/social_media/social_media_campaign",
+  },
+  {
+    id: 106,
+    parentId:2,
+    name: "social_media_analyzer",
+    label: "Social Media Analyzer",
+    parent: true,
+    icon: FundFilled  ,
+    url: "/social_media/social_media_analyzer",
+  },
+  //============================== Finance Folder =====================================
+  {
+    name: "financial_management",
+    label: "Financial Management",
+    child: true,
+    id: 4,
+    icon: BankFilled,
+    pin: true,
+    url: "/financial_management",
+  },
+  {
+    id: 107,
+    parentId:4,
+    name: "financial_budget",
+    label: "General Budget",
+    parent: true,
+    icon: FundFilled  ,
+    url: "/financial_management/financial_budget",
+  },
   //Pins----------------
   {
     name: "Content_Management",
@@ -105,15 +144,6 @@ export const Routers = [
     icon: DatabaseFilled,
     pin: true,
     url: "/Content_Management",
-  },
-  {
-    name: "financial_management",
-    label: "Financial Management",
-    child: true,
-    id: 4,
-    icon: BankFilled,
-    pin: true,
-    url: "/financial_management",
   },
   {
     name: "interaction_section",
