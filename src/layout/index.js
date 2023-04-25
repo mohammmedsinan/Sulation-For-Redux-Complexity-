@@ -29,7 +29,7 @@ function index(props) {
           let CustomLayout = require(`./DashboardLayout`).default;
           let AllRoutes = () => <FolderLayout id={id} />;
           if (customLayout) CustomLayout = require(`./${customLayout}`).default;
-          if (!outSide && !pin) AllRoutes = require("../Page/" + name + "/index").default;
+          if (!outSide && !pin && !subRoute) AllRoutes = require("../Page/" + name + "/index").default;
           if (outSide && !pin) AllRoutes = require(`../Page/${Routers.find((e) => e.id === parentId).name}/${name}`).default;
           if (subRoute && !pin) AllRoutes = require(`../Page/${Routers.find((route) => parentId === route.id).name}/${name}/index`).default;
           return <>{switcher === label ? label.toLowerCase() : name.toLowerCase() && (<Route path={url} key={id} element={<CustomLayout child={<AllRoutes dispatch={props.Dispatch} state={state} title={label?label:name } />} />} />)}</>

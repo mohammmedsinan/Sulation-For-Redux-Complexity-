@@ -12,7 +12,9 @@ import {
   ControlFilled,
   MessageFilled,
   CompassFilled,
-  FundFilled
+  FundFilled,
+  ScheduleFilled,
+  TransactionOutlined
 } from "@ant-design/icons";
 
 // {
@@ -116,6 +118,7 @@ export const Routers = [
     icon: FundFilled  ,
     url: "/social_media/social_media_analyzer",
   },
+
   //============================== Finance Folder =====================================
   {
     name: "financial_management",
@@ -134,6 +137,43 @@ export const Routers = [
     parent: true,
     icon: FundFilled  ,
     url: "/financial_management/financial_budget",
+  },
+  {
+    id: 108,
+    parentId:4,
+    name: "financial_receipt",
+    label: "General Budget",
+    parent: true,
+    icon: ScheduleFilled,
+    url: "/financial_management/financial_receipt",
+  },
+  {
+    id: 109,
+    parentId:4,
+    name: "financial_transfer",
+    label: "Transfer Operation",
+    parent: true,
+    icon: TransactionOutlined ,
+    url: "/financial_management/financial_transfer",
+  },
+  {
+    id: 110,
+    parentId:4,
+    name: "financial_analyzer",
+    label: "Analyzer",
+    parent: true,
+    icon: TransactionOutlined ,
+    url: "/financial_management/financial_analyzer",
+  },
+  {
+    id: 1000,
+    parentId:108,
+    name: "create",
+    label: "Create Receipt",
+    parent: true,
+    icon: FundFilled  ,
+    url: "/financial_management/financial_receipt/create",
+    subRoute: true,
   },
   //Pins----------------
   {

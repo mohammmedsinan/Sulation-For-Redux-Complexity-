@@ -1,8 +1,9 @@
 import React from 'react'
-import Page from './components'
-
+import Chart from './components'
 function index() {
-  return <Page />
+  return (
+    <Chart />
+  )
 }
 
 export default index

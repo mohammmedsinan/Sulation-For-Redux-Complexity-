@@ -1,0 +1,13 @@
+#budget-number{
+    color: rgba(var(--PrimaryColor));
+    font-size: 60px;
+    text-align: center;
+    font-weight: bold;
+    display: block;
+}
+#upArrow{
+    font-size: 60px;
+}
+#downArrow{
+    font-size: 60px;
+}
