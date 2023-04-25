@@ -14,7 +14,9 @@ import {
   CompassFilled,
   FundFilled,
   ScheduleFilled,
-  TransactionOutlined
+  TransactionOutlined,
+  MailFilled,
+  PropertySafetyFilled
 } from "@ant-design/icons";
 
 // {
@@ -133,7 +135,7 @@ export const Routers = [
     id: 107,
     parentId:4,
     name: "financial_budget",
-    label: "General Budget",
+    label: "Budget",
     parent: true,
     icon: FundFilled  ,
     url: "/financial_management/financial_budget",
@@ -142,7 +144,7 @@ export const Routers = [
     id: 108,
     parentId:4,
     name: "financial_receipt",
-    label: "General Budget",
+    label: "Receipt",
     parent: true,
     icon: ScheduleFilled,
     url: "/financial_management/financial_receipt",
@@ -151,7 +153,7 @@ export const Routers = [
     id: 109,
     parentId:4,
     name: "financial_transfer",
-    label: "Transfer Operation",
+    label: "Transfer",
     parent: true,
     icon: TransactionOutlined ,
     url: "/financial_management/financial_transfer",
@@ -175,6 +177,34 @@ export const Routers = [
     url: "/financial_management/financial_receipt/create",
     subRoute: true,
   },
+  //============================== Interaction Folder =====================================
+  {
+    name: "interaction_section",
+    label: "Interaction Section",
+    child: true,
+    id: 5,
+    icon: InteractionFilled ,
+    pin: true,
+    url: "/interaction_section",
+  },
+  {
+    id: 111,
+    parentId:5,
+    name: "interaction_email",
+    label: "Email",
+    parent: true,
+    icon: MailFilled   ,
+    url: "/interaction_section/interaction_email",
+  },
+  {
+    id: 112,
+    parentId:5,
+    name: "interaction_employee",
+    label: "Employees",
+    parent: true,
+    icon: PropertySafetyFilled    ,
+    url: "/interaction_section/interaction_employee",
+  },
   //Pins----------------
   {
     name: "Content_Management",
@@ -184,15 +214,6 @@ export const Routers = [
     icon: DatabaseFilled,
     pin: true,
     url: "/Content_Management",
-  },
-  {
-    name: "interaction_section",
-    label: "Interaction Section",
-    child: true,
-    id: 5,
-    icon: InteractionFilled ,
-    pin: true,
-    url: "/interaction_section",
   },
   {
     name: "project_manager",
