@@ -16,7 +16,9 @@ import {
   ScheduleFilled,
   TransactionOutlined,
   MailFilled,
-  PropertySafetyFilled
+  PropertySafetyFilled,
+  OrderedListOutlined,
+  BarsOutlined
 } from "@ant-design/icons";
 
 // {
@@ -205,6 +207,43 @@ export const Routers = [
     icon: PropertySafetyFilled    ,
     url: "/interaction_section/interaction_employee",
   },
+  //============================== Project Manager Folder =====================================
+  {
+    name: "project_manager",
+    label: "Project Manager",
+    child: true,
+    id: 6,
+    icon: ProjectFilled ,
+    pin: true,
+    url: "/project_manager",
+  },
+  {
+    id: 113,
+    parentId:6,
+    name: "project_manager_list",
+    label: "Projects List",
+    parent: true,
+    icon: OrderedListOutlined,
+    url: "/project_manager/project_manager_list",
+  },
+  {
+    id: 114,
+    parentId:6,
+    name: "project_manager_task_manager",
+    label: "Task Manager",
+    parent: true,
+    icon: BarsOutlined ,
+    url: "/project_manager/project_manager_task_manager",
+  },
+  {
+    id: 115,
+    parentId:6,
+    name: "project_manager_analyzer",
+    label: "Task Manager",
+    parent: true,
+    icon: FundFilled ,
+    url: "/project_manager/project_manager_analyzer",
+  },
   //Pins----------------
   {
     name: "Content_Management",
@@ -215,15 +254,7 @@ export const Routers = [
     pin: true,
     url: "/Content_Management",
   },
-  {
-    name: "project_manager",
-    label: "Project Manager",
-    child: true,
-    id: 6,
-    icon: ProjectFilled ,
-    pin: true,
-    url: "/project_manager",
-  },
+  
   {
     name: "customer_section",
     label: "Customer service Section",
