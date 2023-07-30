@@ -11,7 +11,7 @@ import { Dispatch } from "API";
 const app = document.getElementById("root");
 
 ReactDOM.render( 
-    <Provider store={store}>
+  <Provider store={store}>
       <Router>
         <Layout Dispatch={Dispatch} />
       </Router>

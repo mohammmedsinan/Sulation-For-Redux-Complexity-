@@ -5,9 +5,7 @@ const { Site_Theme } = config;
 //=========less migration===================================
 const { theme } = require('antd/lib');
 const { convertLegacyToken } = require('@ant-design/compatible/lib');
-
 const { defaultAlgorithm, defaultSeed } = theme;
-
 const mapToken = defaultAlgorithm(defaultSeed);
 const v4Token = convertLegacyToken(mapToken);
 //============================================

@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  DarkMode: false,
+  DarkMode: true,
 };
 
 const GlobalReducer = createSlice({
