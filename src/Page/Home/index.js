@@ -2,7 +2,10 @@ import React from 'react'
 
 function index() {
   return (
-    <div>index</div>
+    <div>
+      
+      <a href='/financial_management/financial_budget'> Back to the dashboard</a>
+    </div>
   )
 }
 
