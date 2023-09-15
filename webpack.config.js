@@ -8,7 +8,10 @@ const { convertLegacyToken } = require('@ant-design/compatible/lib');
 const { defaultAlgorithm, defaultSeed } = theme;
 const mapToken = defaultAlgorithm(defaultSeed);
 const v4Token = convertLegacyToken(mapToken);
+const CopyPlugin = require("copy-webpack-plugin");
+
 //============================================
+
 module.exports = {
   entry: {
     index: './src/index.js',
@@ -39,5 +42,5 @@ module.exports = {
       { test: /\.less$/, use: [ { loader: 'style-loader', }, { loader: 'css-loader', }, { loader: 'less-loader',  options: { lessOptions: { modifyVars: v4Token, }, }, }, ], },
     ],
   },
-  plugins: [new miniCssExtractPlugin()],
+  plugins: [new miniCssExtractPlugin(),new CopyPlugin({ patterns: [{ from: "./src/public/_redirects", to: "./" }]})],
 };
