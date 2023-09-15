@@ -9,12 +9,10 @@ const { defaultAlgorithm, defaultSeed } = theme;
 const mapToken = defaultAlgorithm(defaultSeed);
 const v4Token = convertLegacyToken(mapToken);
 //============================================
-
 module.exports = {
   entry: {
     index: './src/index.js',
   },
-
   output: {
     path: path.join(__dirname, './dist'),
     filename: 'index.js',
@@ -36,34 +34,9 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.css$/, use: [ 'style-loader', 'css-loader' ] },
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-        },
-      },
-      {
-        test: /\.less$/,
-        use: [
-          {
-            loader: 'style-loader',
-            
-          },
-          {
-            loader: 'css-loader', // translates CSS into CommonJS
-          },
-          {
-            loader: 'less-loader', // compiles Less to CSS
-            options: {
-              lessOptions: {
-                modifyVars: v4Token,
-              },
-            },
-          },
-        ],
-      },
+      { test: /\.css$/i,include:path.resolve(__dirname,"src") ,use: ['style-loader', 'css-loader','postcss-loader'] },
+      { test: /\.(js|jsx)$/, exclude: /node_modules/, use: { loader: 'babel-loader', },},
+      { test: /\.less$/, use: [ { loader: 'style-loader', }, { loader: 'css-loader', }, { loader: 'less-loader',  options: { lessOptions: { modifyVars: v4Token, }, }, }, ], },
     ],
   },
   plugins: [new miniCssExtractPlugin()],
