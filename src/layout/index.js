@@ -13,9 +13,14 @@ function index(props) {
   const location = useLocation();
   const pathname = location.pathname.split("/");
   const [switcher, setSwitcher] = React.useState("");
-  const { primaryColor } = Site_Theme
+  const { primaryColor,secondaryColor,accentColor } = Site_Theme
   //Declare a Global css variable 
-  React.useEffect(() => {document.documentElement.style.setProperty('--PrimaryColor', primaryColor)},[])
+  React.useEffect(() => {
+    function setCssColorVar(name = "", color = "") { return document.documentElement.style.setProperty(name, color) };
+    setCssColorVar('--primary', rgbToHex(primaryColor));
+    setCssColorVar('--secondary', rgbToHex(secondaryColor));
+    setCssColorVar('--accent', rgbToHex(accentColor));
+  }, [])
   React.useEffect(() => {
     if (pathname.length === 2) setSwitcher(pathname[1].toLowerCase());
     if (pathname.length >= 3) setSwitcher(pathname[2].toLowerCase());

@@ -1,17 +1,19 @@
 #logo {
-    background-color: rgba(var(--PrimaryColor),0.2);
+    background-color: var(--primary);
+    opacity: 0.2;
 }
 
 .ant-layout-sider-trigger {
-    background-color: rgba(var(--PrimaryColor)) !important;
+    opacity: 0.2;
+    background-color: var(--primary) !important;
 }
 .ant-layout-header{
-    background-color: rgba(var(--PrimaryColor));
+    background-color: var(--primary);
 }
 .ant-menu-item-icon {
     font-size: 20px !important;
 }
 .ant-layout-footer{
-    background-color: rgba(var(--PrimaryColor),0.2);
+    background-color: var(--primary);
     height: 40px;
 }

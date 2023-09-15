@@ -6,6 +6,8 @@ module.exports = {
   Header_Fixed: false,
   Site_Theme: {
     primaryColor: '6, 198, 246',
+    secondaryColor: '6, 198, 246',
+    accentColor: '6, 198, 246',
     logo: "./",
     
   },

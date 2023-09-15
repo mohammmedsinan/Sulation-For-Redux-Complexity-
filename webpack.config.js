@@ -2,16 +2,14 @@ const miniCssExtractPlugin = require('mini-css-extract-plugin');
 const config = require('./src/utilities/config');
 const path = require('path');
 const { Site_Theme } = config;
+const CopyPlugin = require("copy-webpack-plugin");
 //=========less migration===================================
 const { theme } = require('antd/lib');
 const { convertLegacyToken } = require('@ant-design/compatible/lib');
 const { defaultAlgorithm, defaultSeed } = theme;
 const mapToken = defaultAlgorithm(defaultSeed);
 const v4Token = convertLegacyToken(mapToken);
-const CopyPlugin = require("copy-webpack-plugin");
-
 //============================================
-
 module.exports = {
   entry: {
     index: './src/index.js',
