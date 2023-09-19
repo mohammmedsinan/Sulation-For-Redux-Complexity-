@@ -1,6 +1,7 @@
 import React from "react";
-import { LineAPI } from '../../../public/LineAPI'
-import {Line} from '@ant-design/plots'
+import { LineAPI } from '../../../public/LineAPI';
+import { Line } from '@ant-design/plots';
+import {Primary} from 'color'
 
 function LineChart() {
   const config = {
@@ -8,6 +9,7 @@ function LineChart() {
     padding: "auto",
     xField: "Date",
     yField: "scales",
+    color:Primary ,
     xAxis: {
       // type: 'timeCat',
       tickCount: 5,

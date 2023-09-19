@@ -22,7 +22,7 @@ function BaseLayout({ child, error }) {
         <Content style={{ margin: "0 16px" }}>
           {!error&&<BreadCrumb />}
           {child}
-          <Button onClick={() => dispatch(toggle())}>Toggle</Button>
+          {/* <Button onClick={() => dispatch(toggle())}>Toggle</Button> */}
         </Content>
         <FooterS />
       </Layout>

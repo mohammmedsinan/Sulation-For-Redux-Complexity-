@@ -4,6 +4,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import Dashboard from "./DashboardLayout/index";
 import FolderLayout from "./folder";
+import ErrorLayout from "./error";
 import {Site_Theme} from '../utilities/config'
 import { ConfigProvider, theme } from "antd";
 //Transform from RGB to HEX
@@ -21,15 +22,17 @@ function index(props) {
     setCssColorVar('--secondary', rgbToHex(secondaryColor));
     setCssColorVar('--accent', rgbToHex(accentColor));
   }, [])
+  //Switcher setters
   React.useEffect(() => {
     if (pathname.length === 2) setSwitcher(pathname[1].toLowerCase());
     if (pathname.length >= 3) setSwitcher(pathname[2].toLowerCase());
     if (pathname.length === 5) setSwitcher(pathname[3].toLowerCase());
   }, [location.pathname]);
+  //Content Rendering
   return (
     <ConfigProvider theme={{algorithm:state.ThemeToggle.DarkMode ? theme.darkAlgorithm:theme.defaultAlgorithm,token: {colorPrimary:rgbToHex(primaryColor),},}}>
     <Routes>
-      <Route path="*" element={<Dashboard error={true} child={<h1 style={{textAlign:"center"}}>Error this page isn't found</h1>}/>} />
+      <Route path="*" element={<Dashboard error={true} child={<ErrorLayout />}/>} />
         {Routers.map(({ name, pin, outSide, url, parentId, customLayout, subRoute, id,label }) => {
           let CustomLayout = require(`./DashboardLayout`).default;
           let AllRoutes = () => <FolderLayout id={id} />;

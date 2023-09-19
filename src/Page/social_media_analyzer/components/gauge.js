@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { Gauge } from '@ant-design/plots';
-
+import {Primary} from 'color'
 const DemoGauge = () => {
   const config = {
-    percent: 0.75,
+    percent: 0.55,
     range: {
-      color: '#30BF78',
+      color: Primary,
     },
     indicator: {
       pointer: {
         style: {
-          stroke: '#D0D0D0',
+          stroke: Primary,
         },
       },
       pin: {
         style: {
-          stroke: '#D0D0D0',
+          stroke: Primary,
         },
       },
     },
@@ -33,12 +33,13 @@ const DemoGauge = () => {
       content: {
         formatter: ({ percent }) => `Rate: ${(percent * 100).toFixed(0)}%`,
         style: {
-          color: 'rgba(0,0,0,0.65)',
+          color: Primary,
           fontSize: 48,
         },
       },
     },
   };
+  console.log(Primary)
   return <Gauge {...config} />;
 };
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Pie, G2 } from '@ant-design/plots';
+import {Primary} from 'color'
 
 const PieChart = () => {
   const G = G2.getEngine('canvas');
@@ -49,7 +50,7 @@ const PieChart = () => {
             width: 40,
             height: 50,
             r: 5,
-            fill: mappingData.color,
+            fill: Primary,
           },
         });
         group.addShape({
@@ -58,7 +59,7 @@ const PieChart = () => {
             x: 10,
             y: 8,
             text: `${data.type}`,
-            fill: mappingData.color,
+            fill: Primary,
           },
         });
         group.addShape({
@@ -67,7 +68,7 @@ const PieChart = () => {
             x: 0,
             y: 25,
             text: `${data.value}个 ${data.percent * 100}%`,
-            fill: 'rgba(0, 0, 0, 0.65)',
+            fill: Primary,
             fontWeight: 700,
           },
         });
@@ -84,7 +85,7 @@ const PieChart = () => {
     ],
   };
   const config = cfg;
-  return <Pie {...config} />;
+  return <Pie {...config} color={Primary}/>;
 };
 
 export default PieChart;

@@ -31,6 +31,7 @@ module.exports = {
       API: path.resolve(__dirname, 'src/service/api.js'),
       Config: path.resolve(__dirname, 'src/utilities/config.js'),
       routes: path.resolve(__dirname, './routes.js'),
+      color: path.resolve(__dirname, 'src/utilities/colorProvider.js'),
     },
   },
   module: {
