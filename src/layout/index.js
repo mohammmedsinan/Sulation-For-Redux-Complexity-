@@ -14,7 +14,7 @@ function index(props) {
   const location = useLocation();
   const pathname = location.pathname.split("/");
   const [switcher, setSwitcher] = React.useState("");
-  const { primaryColor,secondaryColor,accentColor } = Site_Theme
+  const { primaryColor, secondaryColor, accentColor } = Site_Theme;
   //Declare a Global css variable 
   React.useEffect(() => {
     function setCssColorVar(name = "", color = "") { return document.documentElement.style.setProperty(name, color) };
@@ -22,7 +22,7 @@ function index(props) {
     setCssColorVar('--secondary', rgbToHex(secondaryColor));
     setCssColorVar('--accent', rgbToHex(accentColor));
   }, [])
-  //Switcher setters
+  //Switcher setters (USeState)
   React.useEffect(() => {
     if (pathname.length === 2) setSwitcher(pathname[1].toLowerCase());
     if (pathname.length >= 3) setSwitcher(pathname[2].toLowerCase());
@@ -30,21 +30,18 @@ function index(props) {
   }, [location.pathname]);
   //Content Rendering
   return (
-    <ConfigProvider theme={{algorithm:state.ThemeToggle.DarkMode ? theme.darkAlgorithm:theme.defaultAlgorithm,token: {colorPrimary:rgbToHex(primaryColor),},}}>
-    <Routes>
-      <Route path="*" element={<Dashboard error={true} child={<ErrorLayout />}/>} />
-        {Routers.map(({ name, pin, outSide, url, parentId, customLayout, subRoute, id,label }) => {
-          let CustomLayout = require(`./DashboardLayout`).default;
-          let AllRoutes = () => <FolderLayout id={id} />;
-          if (customLayout) CustomLayout = require(`./${customLayout}`).default;
-          if (!outSide && !pin && !subRoute) AllRoutes = require("../Page/" + name + "/index").default;
-          if (outSide && !pin) AllRoutes = require(`../Page/${Routers.find((e) => e.id === parentId).name}/${name}`).default;
-          if (subRoute && !pin) AllRoutes = require(`../Page/${Routers.find((route) => parentId === route.id).name}/${name}/index`).default;
-          return <>{switcher === label ? label.toLowerCase() : name.toLowerCase() && (<Route path={url} key={id} element={<CustomLayout child={<AllRoutes dispatch={props.Dispatch} state={state} title={label?label:name } />} />} />)}</>
-        }
-      )}
-      </Routes>
-      </ConfigProvider>
-  );
-}
+<ConfigProvider theme={{algorithm:state.ThemeToggle.DarkMode ? theme.darkAlgorithm:theme.defaultAlgorithm,token: {colorPrimary:rgbToHex(primaryColor),},}}>
+<Routes>
+<Route path="*" element={<Dashboard error={true} child={<ErrorLayout />}/>} />
+{Routers.map(({ name, pin, outSide, url, parentId, customLayout, subRoute, id,label }) => {
+  let CustomLayout = require(`./DashboardLayout`).default;
+  let AllRoutes = () => <FolderLayout id={id} />;
+  if (customLayout) CustomLayout = require(`./${customLayout}`).default;
+  if (!outSide && !pin && !subRoute) AllRoutes = require("../Page/" + name + "/index").default;
+  if (outSide && !pin) AllRoutes = require(`../Page/${Routers.find((e) => e.id === parentId).name}/${name}`).default;
+  if (subRoute && !pin) AllRoutes = require(`../Page/${Routers.find((route) => parentId === route.id).name}/${name}/index`).default;
+  return <>{switcher === label ? label.toLowerCase() : name.toLowerCase() && (<Route path={url} key={id} element={<CustomLayout child={<AllRoutes dispatch={props.Dispatch} state={state} title={label?label:name } />} />} />)}</>
+})}
+</Routes>
+</ConfigProvider>)}
 export default index;

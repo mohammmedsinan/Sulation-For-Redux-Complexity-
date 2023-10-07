@@ -1,11 +1,7 @@
 import {
-  DatabaseFilled,
   InstagramFilled,
   GoldenFilled,
   BankFilled,
-  InteractionFilled,
-  ProjectFilled,
-  CustomerServiceFilled,
   AppstoreAddOutlined,
   UnorderedListOutlined,
   AreaChartOutlined,
@@ -15,10 +11,7 @@ import {
   FundFilled,
   ScheduleFilled,
   TransactionOutlined,
-  MailFilled,
   PropertySafetyFilled,
-  OrderedListOutlined,
-  BarsOutlined
 } from "@ant-design/icons";
 
 // {

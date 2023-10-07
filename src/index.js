@@ -11,10 +11,4 @@ const app = document.getElementById("root");
 
 
 const root = createRoot(app)
-root.render(
-  <Provider store={store}>
-      <Router>
-        <Layout Dispatch={Dispatch} />
-      </Router>
-  </Provider>
-)
+root.render(<Provider store={store}> <Router> <Layout Dispatch={Dispatch} /> </Router></Provider>)

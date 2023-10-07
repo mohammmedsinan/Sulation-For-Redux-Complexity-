@@ -3,7 +3,7 @@ import { Gauge } from '@ant-design/plots';
 import {Primary} from 'color'
 const DemoGauge = () => {
   const config = {
-    percent: 0.55,
+    percent: 0.85,
     range: {
       color: Primary,
     },
