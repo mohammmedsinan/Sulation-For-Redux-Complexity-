@@ -1,32 +1,14 @@
-import React from 'react';
-import MenuS from '../../Component/menu';
-import { Card, Layout } from 'antd';
-import HeaderS from '../../Component/header';
-import FooterS from '../../Component/footer';
+import React from "react";
+import {Button} from 'antd'
 
-function BaseLayout({ child }) {
-  const { Content } = Layout;
+function ErrorLayout({ child }) {
   return (
-    <Layout style={{ minHeight: '100vh' }}>
-      <MenuS />
-      <Layout>
-        <HeaderS />
-        <Content
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <Card>
-            <h1 style={{ fontSize: '30px' }}>Error this page isn't found</h1>
-            {child}
-          </Card>
-        </Content>
-        <FooterS />
-      </Layout>
-    </Layout>
+    <div className="w-full h-full flex justify-center items-center flex-col">
+      <h1 className="text-3xl text-primary">Error this page isn't found 404</h1>
+      <h1 className="text-3xl text-primary">Don't Worry we can redirected you to the main page</h1>
+      <Button type="link" href="/" size="large">Redirect</Button>
+    </div>
   );
 }
 
-export default BaseLayout;
+export default ErrorLayout;

@@ -1,0 +1,19 @@
+#logo {
+    background-color: var(--primary);
+    opacity: 0.2;
+}
+
+.ant-layout-sider-trigger {
+    opacity: 0.2;
+    background-color: var(--primary) !important;
+}
+.ant-layout-header{
+    background-color: var(--primary);
+}
+.ant-menu-item-icon {
+    font-size: 20px !important;
+}
+.ant-layout-footer{
+    background-color: var(--primary);
+    height: 40px;
+}

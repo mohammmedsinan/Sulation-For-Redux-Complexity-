@@ -1,16 +1,22 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { Routers } from '../routes';
-import common from '../service/model';
+import { configureStore } from "@reduxjs/toolkit";
+import { Routers } from "routes";
+import common from "../service/model";
+import ThemeToggle from "./GlobalReducer"
 
 let Reducers = [];
-Routers.map(({ name, model }) => {
+Routers.map(({ name, model, fixedName }) => {
+  let FixedName = name;
+  if (fixedName) FixedName = fixedName;
   if (model) {
-    return Reducers.push({ [name]: require('../Page/' + name + '/model').default });
+    return Reducers.push({
+      [FixedName]: require("../Page/" + name + "/model").default,
+    });
   }
 });
 export const store = configureStore({
   reducer: {
     common,
+    ThemeToggle,
     ...Reducers[0],
     ...Reducers[1],
     ...Reducers[2],
@@ -27,6 +33,11 @@ export const store = configureStore({
     ...Reducers[13],
     ...Reducers[14],
     ...Reducers[15],
+    ...Reducers[16],
+    ...Reducers[17],
+    ...Reducers[18],
+    ...Reducers[19],
+    ...Reducers[20],
   },
 });
 export default store;
